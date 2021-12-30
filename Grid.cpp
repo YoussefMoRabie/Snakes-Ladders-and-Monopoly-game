@@ -125,6 +125,7 @@ void Grid::SetCurrentPlayer(int curr)
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
+	GetCurrentPlayer()->skipCheck(this); //Check if the new current player should skip the turn 
 }
 
 // ========= Other Getters =========

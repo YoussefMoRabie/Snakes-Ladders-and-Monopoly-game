@@ -60,7 +60,7 @@ public:
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
 
-	void SetCurrentPlayer(int curr); // A setter for current player, Mainly for NewGame
+	void SetCurrentPlayer(int); // A setter for current player, Mainly for NewGame
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 

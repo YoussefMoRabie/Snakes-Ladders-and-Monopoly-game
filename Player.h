@@ -16,6 +16,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
+	int turnsToSkip;	   // Number of turns the player will be unable to play
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -35,6 +36,8 @@ public:
 	void setTurnCount(int);
 	int GetStepCount() const;
 
+	void setTurnsToSkip(int);
+
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Circle on its current cell
@@ -42,6 +45,7 @@ public:
 	void ClearDrawing(Output* pOut) const;	// Clears the Player's Circle from its current cell
 
 	// ====== Game Functions ======
+	void skipCheck(Grid*);					// Checks if the player has to skip his turn
 
 	void Move(Grid * pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
 	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
