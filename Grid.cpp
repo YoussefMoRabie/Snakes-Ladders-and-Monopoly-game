@@ -155,7 +155,7 @@ Player * Grid::GetNextPlayerOnGrid(Player * p) const
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		x = p->GetStepCount() - PlayerList[i]->GetStepCount();
-		if(x>0);
+		if(x>0)
 		{
 			y1 = x;
 			if (y1 < y2)
