@@ -4,18 +4,18 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 {
 	
 	this->endCellPos = endCellPos;
-	setStart_End(position, this->endCellPos);
 	
-	size = endCellPos.VCell() - startCellPos.VCell();
-	cellsCounter = new int[size];
-	for (int i = 0; i < size; i++) {
+	
+	size = -endCellPos.VCell() + startCellPos.VCell();
+	cellsCounter = new int[size+1];
+	for (int i = 0; i <= size; i++) {
 		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;
 		
 	}
-	if (IsOverlapping(this))
-		return;
+	
 
-
+	
+	
 
 	
 
@@ -24,10 +24,16 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 void Ladder::setStart_End(CellPosition start, CellPosition End) {
 
 	if (start.GetCellNum() <= 1 || start.VCell() == 0)
-		return;
+	{
+		position = -1;
+		endCellPos = -1;
+	}
 
 	if (start.HCell() != End.HCell() || start.VCell() <= End.VCell())
-		return;
+	{
+		position = -1;
+		endCellPos = -1;
+	}
 }
 
 void Ladder::Draw(Output* pOut) const
@@ -52,25 +58,24 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 }
 bool Ladder::IsOverlapping(GameObject*p)
 {
-	Grid * ptr=NULL;
-	
-	if (dynamic_cast<Ladder*>(p) != NULL)
-	{
-		Ladder *Ladders[4];
-		int count = 0;
-		ptr->GetVerticalLadder(p->GetPosition(), count, Ladders);
-		for (int i = 0; i < 9; i++)
+	int h = endCellPos.HCell();
+		
+		Ladder* L = dynamic_cast<Ladder*>(p);
+		if (L != NULL)
 		{
-			
+			for (int i = 0; i < 9; i++)
+			{
 
-				for (int k = 0; k < size; k++) {
-					for (int j = 0; j < Ladders[i]->size; j++)
-						if (cellsCounter[k] == Ladders[i]->cellsCounter[j])
+
+				for (int k = 0; k <= L->size; k++) {
+			
+						if (cellsCounter[i] == L->cellsCounter[k])
 							return true;
 				}
-			
+
+			}
 		}
-	}
+	
 	return false;
 }
 
@@ -82,4 +87,5 @@ CellPosition Ladder::GetEndPosition() const
 
 Ladder::~Ladder()
 {
+	delete[]cellsCounter;
 }

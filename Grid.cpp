@@ -48,7 +48,8 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-
+		if (IsOverlapping(pNewObject))
+			return false;
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 		return true; // indicating that addition is done
@@ -130,17 +131,15 @@ void Grid::AdvanceCurrentPlayer()
 
 // ========= Other Getters =========
 
-void Grid::GetVerticalLadder(CellPosition end, int& count, Ladder** Ptr) {
-
-	count = 0;
-	int h = end.HCell();
-	for (int i = 0; i < 9; i++) {
-		if (dynamic_cast<Ladder*>(CellList[i][h]->GetGameObject()) != NULL) {
-
-			Ptr[count++] = (Ladder*)(CellList[i][h]->GetGameObject());
-		}
-
+bool Grid::IsOverlapping(GameObject*p) {
+	int h=p->GetPosition().HCell();
+	for (int i = 0; i < NumVerticalCells; i++) {
+		GameObject* y = CellList[i][h]->GetGameObject();
+		bool x=p->IsOverlapping(y);
+		if (x)
+			return true;
 	}
+	return false;
 }
 
 
