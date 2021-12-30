@@ -2,10 +2,6 @@
 
 #include "Card.h"
 
-// [ CardTwo ] Summary:
-// Its Apply() Function: Decrements the value of the passing player’s wallet by a value
-// Its Parameters: The Wallet Value to decrease --> put it as a "data member" and read it in ReadCardParameters()
-
 class CardTwo : public Card
 {
 public:

@@ -190,14 +190,8 @@
     <ClCompile Include="CardThree.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="CardSeven.cpp">
+    <ClCompile Include="CardFour.cpp">
       <Filter>GameObjects\Cards</Filter>
-    </ClCompile>
-    <ClCompile Include="NewGame.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDiceValue.cpp">
-      <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,14 +310,8 @@
     <ClInclude Include="CardThree.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="CardSeven.h">
+    <ClInclude Include="CardFour.h">
       <Filter>GameObjects\Cards</Filter>
-    </ClInclude>
-    <ClInclude Include="InputDiceValue.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="NewGame.h">
-      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

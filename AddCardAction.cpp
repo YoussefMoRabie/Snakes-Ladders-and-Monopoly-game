@@ -3,6 +3,9 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -80,15 +83,15 @@ void AddCardAction::Execute()
 		break;
 
 	case 2:
-		//pCard = new CardTwo(cardPosition);
+		pCard = new CardTwo(cardPosition);
 		break;
 
 	case 3:
-		//pCard = new CardThree(cardPosition);
+		pCard = new CardThree(cardPosition, pManager);
 		break;
 
 	case 4:
-		//pCard = new CardFour(cardPosition);
+		pCard = new CardFour(cardPosition);
 		break;
 
 	case 5:
