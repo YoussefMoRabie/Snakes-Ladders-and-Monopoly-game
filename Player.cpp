@@ -48,9 +48,14 @@ void Player::setTurnCount(int t)
 	}
 }
 
-int Player::getPlayerNum() const {
-	return playerNum;
+int Player::GetStepCount() const
+{
+	return stepCount;
 }
+
+
+
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

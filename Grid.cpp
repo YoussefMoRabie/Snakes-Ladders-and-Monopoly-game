@@ -135,6 +135,23 @@ Player * Grid::GetCurrentPlayer() const
 	return PlayerList[currPlayerNumber];
 }
 
+Player * Grid::GetNextPlayerOnGrid(Player * p) const
+{
+	int arr[MaxPlayerCount] = {};
+	int x,y;
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		x = p->GetStepCount() - PlayerList[i]->GetStepCount();
+		if(x>0);
+		{
+			arr[i] = x;
+		}
+		
+	}
+	
+	return NULL;
+}
+
 Ladder * Grid::GetNextLadder(const CellPosition & position)
 {
 	

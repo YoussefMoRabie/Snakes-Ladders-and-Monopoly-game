@@ -3,7 +3,7 @@
 
 CardThree::CardThree(const CellPosition& pos, ApplicationManager* pApp) : Card(pos), pManager(pApp) // set the cell position of the card
 {
-	cardNumber = 3; // set the inherited cardNumber data member with the card number (1 here)
+	cardNumber = 3; // set the inherited cardNumber data member with the card number 
 }
 
 CardThree::~CardThree(void)

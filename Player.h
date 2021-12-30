@@ -34,8 +34,7 @@ public:
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	void setTurnCount(int);
-
-	int getPlayerNum() const;
+	int GetStepCount() const;
 
 	// ====== Drawing Functions ======
 
