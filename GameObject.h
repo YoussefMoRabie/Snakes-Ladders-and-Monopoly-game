@@ -9,7 +9,7 @@ class GameObject
 protected:
 
 	CellPosition position; // The current cell position of the GameObject
-	Grid* ptr;
+	
 public:
 
 	GameObject(const CellPosition & pos); // Constructor for initializing data members

@@ -16,8 +16,6 @@ int Card::GetCardNumber()
 	return cardNumber;
 }
 bool Card::IsOverlapping(GameObject* g) {
-	if (position.GetCellNum() == g->GetPosition().GetCellNum())
-		return true;
 	return false;
 }
 

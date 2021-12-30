@@ -67,6 +67,7 @@ Card * Cell::HasCard() const
 
 void Cell::DrawCellOrCard(Output* pOut) const
 {
+	
 	// Checks if there is a Card on the cell
 	if (HasCard()) // means if not NULL
 		pGameObject->Draw(pOut); // draw the card then
@@ -77,6 +78,7 @@ void Cell::DrawCellOrCard(Output* pOut) const
 // separate from the above function because ladders/snakes should be drawn AFTER All Cells are drawn
 void Cell::DrawLadderOrSnake(Output* pOut) const
 {
+	
 	if (HasLadder() || HasSnake())
 		pGameObject->Draw(pOut); // draw it either ladder or snake
 
