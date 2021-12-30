@@ -116,6 +116,12 @@ bool Grid::GetEndGame() const
 	return endGame;
 }
 
+void Grid::SetCurrentPlayer(int curr)
+{
+	if (curr >= 0 && curr < MaxPlayerCount)
+		currPlayerNumber = curr;
+}
+
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
@@ -140,7 +146,9 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 
 
 			///TODO: Check if CellList[i][j] has a ladder, if yes return it
-			
+			if (CellList[i][j]->HasLadder() != NULL) {
+				return CellList[i][j]->HasLadder();
+			}
 
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
@@ -207,7 +215,6 @@ void Grid::PrintErrorMessage(string msg)
 	pIn->GetPointClicked(x, y);
 	pOut->ClearStatusBar();
 }
-
 
 Grid::~Grid()
 {
