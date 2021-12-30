@@ -124,7 +124,7 @@ void AddCardAction::Execute()
 
 		bool added = pGrid->AddObjectToCell(pCard);
 
-		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
+		/// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
 		if (!added)
 		{
 			// Print an appropriate message

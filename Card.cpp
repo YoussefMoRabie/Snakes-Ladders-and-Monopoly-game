@@ -21,6 +21,7 @@ void Card::Draw(Output* pOut) const
 
 	///TODO: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
 	pOut->DrawCell(position, cardNumber);
+	
 }
 
 void Card::ReadCardParameters(Grid * pGrid)

@@ -135,6 +135,7 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardOne.cpp" />
+    <ClCompile Include="CardSeven.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwo.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -178,7 +179,9 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="InputDiceValue.cpp" />
     <ClCompile Include="Ladder.cpp" />
+    <ClCompile Include="NewGame.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -191,6 +194,7 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardOne.h" />
+    <ClInclude Include="CardSeven.h" />
     <ClInclude Include="CardThree.h" />
     <ClInclude Include="CardTwo.h" />
     <ClInclude Include="Cell.h" />
@@ -219,7 +223,9 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="InputDiceValue.h" />
     <ClInclude Include="Ladder.h" />
+    <ClInclude Include="NewGame.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
