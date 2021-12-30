@@ -184,13 +184,13 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
-    <ClCompile Include="InputDiceValue.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
-    <ClCompile Include="NewGame.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="CardTwo.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardThree.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFour.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
   </ItemGroup>
@@ -304,13 +304,13 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
-    <ClInclude Include="InputDiceValue.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
-    <ClInclude Include="NewGame.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="CardTwo.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardThree.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFour.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,12 +13,12 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -134,6 +134,7 @@
     <ClCompile Include="AddLadderAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardFour.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwo.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="AddLadderAction.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CardFour.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardThree.h" />
     <ClInclude Include="CardTwo.h" />
