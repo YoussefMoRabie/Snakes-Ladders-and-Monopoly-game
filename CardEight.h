@@ -11,7 +11,7 @@
 class CardEight : public Card
 {
 	
-		// CardOne Parameters:
+		// CardEight Parameters:
 		int GoOut; // The amount of coins needed to go out of the prison
 
 	public:
@@ -19,8 +19,7 @@ class CardEight : public Card
 
 		virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 
-		virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
-														  // by decrementing the player's wallet by the walletAmount data member
+		virtual void Apply(Grid* pGrid, Player* pPlayer); 
 
 		virtual ~CardEight(); // A Virtual Destructor
 	

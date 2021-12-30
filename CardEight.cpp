@@ -20,8 +20,6 @@ void CardEight::ReadCardParameters(Grid * pGrid)
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 	Output *pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	// 2- Read an Integer from the user using the Input class and set the walletAmount parameter with it
-	//    Don't forget to first print to a descriptive message to the user like:"New CardOne: Enter its wallet amount ..."
 	pOut->PrintMessage("New CardEight: Enter The amount of coins needed to go out of the prison ...");
 	GoOut = pIn->GetInteger(pOut);
 	while (GoOut < 1)
@@ -59,4 +57,6 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 	// 3- Make the turnskip of the player who stood on the card = 3
 	if(x==2)
 	pPlayer->setTurnsToSkip(3);
+	pOut->ClearStatusBar();
+
 }

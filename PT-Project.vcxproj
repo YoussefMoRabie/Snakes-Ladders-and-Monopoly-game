@@ -135,9 +135,12 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="CardEight.cpp" />
+    <ClCompile Include="CardEleven.cpp" />
     <ClCompile Include="CardFour.cpp" />
+    <ClCompile Include="CardNine.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="CardSeven.cpp" />
+    <ClCompile Include="CardTen.cpp" />
     <ClCompile Include="CardThree.cpp" />
     <ClCompile Include="CardTwo.cpp" />
     <ClCompile Include="Cell.cpp" />
@@ -196,9 +199,12 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardEight.h" />
+    <ClInclude Include="CardEleven.h" />
     <ClInclude Include="CardFour.h" />
+    <ClInclude Include="CardNine.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="CardSeven.h" />
+    <ClInclude Include="CardTen.h" />
     <ClInclude Include="CardThree.h" />
     <ClInclude Include="CardTwo.h" />
     <ClInclude Include="Cell.h" />

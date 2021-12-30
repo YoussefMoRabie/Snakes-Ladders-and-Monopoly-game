@@ -7,6 +7,9 @@
 #include "CardThree.h"
 #include "CardFour.h"
 #include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -112,6 +115,20 @@ void AddCardAction::Execute()
 		pCard = new CardEight(cardPosition);
 		break;
 
+	case 9:
+		pCard = new CardNine(cardPosition);
+		break;
+
+	case 10:
+		pCard = new CardTen(cardPosition);
+		break;
+
+	case 11:
+		pCard = new CardEleven(cardPosition);
+		break;
+
+
+
 
 
 		// A- Add the remaining cases
@@ -141,7 +158,7 @@ void AddCardAction::Execute()
 		}
 		
 	}
-
+	delete pCard;
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
 
 }
@@ -149,4 +166,5 @@ void AddCardAction::Execute()
 
 AddCardAction::~AddCardAction()
 {
+
 }
