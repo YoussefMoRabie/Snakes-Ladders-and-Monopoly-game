@@ -123,6 +123,19 @@ void Grid::AdvanceCurrentPlayer()
 
 // ========= Other Getters =========
 
+void Grid::GetVerticalLadder(CellPosition end, int& count, Ladder** Ptr) {
+
+	count = 0;
+	int h = end.HCell();
+	for (int i = 0; i < 9; i++) {
+		if (dynamic_cast<Ladder*>(CellList[i][h]->GetGameObject()) != NULL) {
+
+			Ptr[count++] = (Ladder*)(CellList[i][h]->GetGameObject());
+		}
+
+	}
+}
+
 
 Player * Grid::GetCurrentPlayer() const
 {
