@@ -1,0 +1,30 @@
+#pragma once
+#include "Card.h"
+
+// [ CardEight ] Summary:
+	// This card is a prison. 
+	// When a player stops at a Card8 cell, the player should choose either to pay specific amount of coins to go out of the prison, or stay in prison and not playing for 3 turns.
+	// Input data in design mode: i.The amount of coins needed to go out of the prison
+
+ 
+
+class CardEight : public Card
+{
+	
+		// CardOne Parameters:
+		int GoOut; // The amount of coins needed to go out of the prison
+
+	public:
+		CardEight(const CellPosition & pos); // A Constructor takes card position
+
+		virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
+
+		virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
+														  // by decrementing the player's wallet by the walletAmount data member
+
+		virtual ~CardEight(); // A Virtual Destructor
+	
+
+
+};
+

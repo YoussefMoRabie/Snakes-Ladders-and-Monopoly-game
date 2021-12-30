@@ -6,6 +6,7 @@
 #include "CardTwo.h"
 #include "CardThree.h"
 #include "CardFour.h"
+#include "CardEight.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -104,6 +105,11 @@ void AddCardAction::Execute()
 
 	case 7:
 		//pCard = new CardSeven(cardPosition);
+		break;
+
+
+	case 8:
+		pCard = new CardEight(cardPosition);
 		break;
 
 
