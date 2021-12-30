@@ -48,6 +48,11 @@ void Player::setTurnCount(int t)
 	}
 }
 
+int Player::GetStepCount() const
+{
+	return stepCount;
+}
+
 void Player::setTurnsToSkip(int turns)
 {
 	if (turns > 0)
@@ -73,14 +78,14 @@ void Player::Draw(Output* pOut) const
 void Player::ClearDrawing(Output* pOut) const
 {
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
-	
-	
+
+
 	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
 	pOut->DrawPlayer(pCell->GetCellPosition(), playerNum, cellColor);
 }
 
 // ====== Game Functions ======
-void Player::skipCheck(Grid * pGrid) 
+void Player::skipCheck(Grid * pGrid)
 {
 	//This function checks if the player should skip this turn, and if that's the case, 
 	//calls AdvanceCurrentPlayer() to give the turn to the next player
@@ -88,7 +93,7 @@ void Player::skipCheck(Grid * pGrid)
 	if (turnsToSkip > 0)
 	{
 		turnsToSkip--;
-		pGrid->PrintErrorMessage("Player "+to_string(getPlayerNum())+ " skips the turn this round! click to continue...");
+		pGrid->PrintErrorMessage("Player " + to_string(getPlayerNum()) + " skips the turn this round! click to continue...");
 		pGrid->AdvanceCurrentPlayer();
 	}
 }
@@ -134,7 +139,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 void Player::AppendPlayerInfo(string & playersInfo) const
 {
-	playersInfo += "P" + to_string(playerNum) + "(" ;
+	playersInfo += "P" + to_string(playerNum) + "(";
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
 }

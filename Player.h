@@ -8,14 +8,14 @@ class Player
 	Cell * pCell;		   // pointer to the current Cell of the player
 
 	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
-	                       // player number does NOT change after construction (const.)
+						   // player number does NOT change after construction (const.)
 
 	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
 	int wallet;		       // player's wallet (how many coins he has -- integer)
 	int justRolledDiceNum; // the current dice number which is just rolled by the player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
-	                       // and reset again when reached 3
-	                       // it is used to indicate when to move and when to add to your wallet
+						   // and reset again when reached 3
+						   // it is used to indicate when to move and when to add to your wallet
 	int turnsToSkip;	   // Number of turns the player will be unable to play
 public:
 
@@ -35,7 +35,7 @@ public:
 
 	void setTurnCount(int);
 	int GetStepCount() const;
-
+	int getPlayerNum() const;
 	void setTurnsToSkip(int);
 
 	// ====== Drawing Functions ======
@@ -48,11 +48,10 @@ public:
 	void skipCheck(Grid*);					// Checks if the player has to skip his turn
 
 	void Move(Grid * pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
-	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
-	                                            // for example, if the end cell contains a ladder, take it
-	
+												// and Applies the Game Object's effect (if any) of the end reached cell 
+												// for example, if the end cell contains a ladder, take it
+
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
-	                                                   // for example: P0(wallet, turnCount)
+													   // for example: P0(wallet, turnCount)
 
 };
-
