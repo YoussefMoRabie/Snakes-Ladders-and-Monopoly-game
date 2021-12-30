@@ -58,8 +58,7 @@ Card * Cell::HasCard() const
 {
 
 	///TODO: Implement the following function like HasLadder() function
-
-	return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<Card *>(pGameObject);
 
 }
 

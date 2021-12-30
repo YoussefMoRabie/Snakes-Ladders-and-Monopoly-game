@@ -3,8 +3,6 @@
 #include "Grid.h"
 #include "Player.h"
 
-#include <time.h> // used to in srand to generate random numbers with different seed
-
 InputDiceValue::InputDiceValue(ApplicationManager* pApp) : Action(pApp)
 {
 }
