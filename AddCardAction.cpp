@@ -158,7 +158,6 @@ void AddCardAction::Execute()
 		}
 		
 	}
-	delete pCard;
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
 
 }
@@ -166,5 +165,5 @@ void AddCardAction::Execute()
 
 AddCardAction::~AddCardAction()
 {
-
+	
 }
