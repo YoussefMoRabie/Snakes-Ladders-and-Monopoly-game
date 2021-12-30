@@ -4,9 +4,49 @@ Snakes-ladders-and-Monopoly-
 A OOP class project were the rules of object oriented programming are used to implement the game's stucture.
 
 # Game description
-4 players will compete to reach the cell 99 on the grid with all of them starting from cell 1
-snakes get you down ladders get you up and cards can be your friend or your worst enemy
-players start the game with 100 coins in their wallets and every three dice rolls the player don't move on the grid but get his wallet charged by 10*dice_value
+In the Design mode, the player can add, copy, cut, paste, and delete any game object. He
+can also save a grid and load a previously saved grid.
+In the Play mode, the player is moving in a grid of 99 cells divided into rows and columns.
+Each cell has a number from 1 to 99. They are divided to 9 rows and 11 columns.
+
+**Grid cells may contain:**
+1. Ladder
+2. Snake
+3. Card making the cell a special cell
+
+**Players:**
+1. The Game has four players.
+2. Each player has:
+
+	  o Steps’ count (initially step 0). This holds the value of the current cell the player is in.
+			
+ 	 o Wallet (initially contains 100 coins).
+			
+3. The player can only move if there is at least 1 coin in his wallet. If he has zero
+or less coins, he must wait till his wallet is recharged with coins.
+4. Players take turn rolling the dice, one after another.
+5. After a player rolls the dice, he moves from his n cell to n + t, where t is the result of rolling
+the dice. For example, if the player gets 4 after rolling the dice and he is in cell 25, he
+moves to cell 29.
+6. Every 3 turns, a player dice roll is used to add money to his wallet instead of moving. A
+player gets 10*t coins (where t is the result of rolling the dice). For example:
+
+	  o The game starts and player 0 has 100 coins. He rolls the dice to get 5. He moves
+to cell 5.
+
+	  o In his next turn he gets 2 and moves to cell 7.
+
+	  o In his third turn, he rolls the dice and gets 4. Then, 40 coins are added to his wallet,
+and he will not move to cell 11. This happens every three turns, i.e., turn 3, 6, 9,
+… etc.
+7. The player’s target in the game is to reach the last cell before any opponent reaches it.
+8. Winning Player → Is the first player to reach cell #100.
+A Game cell contains players’ objects and game objects. It can hold multiple player objects, and at
+most one game object.
+
+A Game object is the fixed objects placed in the grid’s cells.
+You cannot place game objects in the first or last cell.
+
 # The Cards rules
 **• Card1:**
 Decrements the value of the passing player’s wallet by a value specified when creating
