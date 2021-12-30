@@ -184,6 +184,12 @@
     <ClCompile Include="Output.cpp">
       <Filter>GUIClasses</Filter>
     </ClCompile>
+    <ClCompile Include="CardTwo.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="CardThree.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -295,5 +301,11 @@
       <Filter>GUIClasses</Filter>
     </ClInclude>
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="CardTwo.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CardThree.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
