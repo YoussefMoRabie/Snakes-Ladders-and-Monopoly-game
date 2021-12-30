@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(1), wallet(100), playerNum(playerNum)
+Player::Player(Cell * pCell, int playerNum) : stepCount(1), wallet(100), playerNum(playerNum), turnsToSkip(0)
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
@@ -48,6 +48,14 @@ void Player::setTurnCount(int t)
 	}
 }
 
+void Player::setTurnsToSkip(int turns)
+{
+	if (turns > 0)
+	{
+		turnsToSkip = turns;
+	}
+}
+
 int Player::getPlayerNum() const {
 	return playerNum;
 }
@@ -72,6 +80,18 @@ void Player::ClearDrawing(Output* pOut) const
 }
 
 // ====== Game Functions ======
+void Player::skipCheck(Grid * pGrid) 
+{
+	//This function checks if the player should skip this turn, and if that's the case, 
+	//calls AdvanceCurrentPlayer() to give the turn to the next player
+
+	if (turnsToSkip > 0)
+	{
+		turnsToSkip--;
+		pGrid->PrintErrorMessage("Player "+to_string(getPlayerNum())+ " skips the turn this round! click to continue...");
+		pGrid->AdvanceCurrentPlayer();
+	}
+}
 
 void Player::Move(Grid * pGrid, int diceNumber)
 {
