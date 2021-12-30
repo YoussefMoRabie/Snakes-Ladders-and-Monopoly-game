@@ -401,6 +401,7 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 
 	///TODO: Draw the player circle in center(x,y) and filled with the playerColor passed to the function
 	pWind->SetBrush(playerColor);
+	pWind->SetPen(playerColor);
 	pWind->DrawCircle(x, y, radius, FILLED);
 
 }

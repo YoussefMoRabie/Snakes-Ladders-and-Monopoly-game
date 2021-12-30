@@ -60,6 +60,8 @@ public:
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
 
+	void SetCurrentPlayer(int); // A setter for current player, Mainly for NewGame
+
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
@@ -67,6 +69,7 @@ public:
 	// ========= Other Getters =========
 	void GetVerticalLadder(CellPosition ,int&, Ladder**);
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
+	Player * GetNextPlayerOnGrid(Player * p) const;	// Gets a Pointer to the Current Player	                                    
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 
 	// ========= User Interface Functions =========
