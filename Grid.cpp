@@ -137,18 +137,24 @@ Player * Grid::GetCurrentPlayer() const
 
 Player * Grid::GetNextPlayerOnGrid(Player * p) const
 {
-	int arr[MaxPlayerCount] = {};
-	int x,y;
+	int x,y1,y2=99,index=-1;
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		x = p->GetStepCount() - PlayerList[i]->GetStepCount();
 		if(x>0);
 		{
-			arr[i] = x;
+			y1 = x;
+			if (y1 < y2)
+			{
+				index = i; 
+				y2 = y1;
+			}
 		}
 		
 	}
-	
+	if (index > -1)
+		return PlayerList[index];
+	else
 	return NULL;
 }
 
