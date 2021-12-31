@@ -83,7 +83,7 @@ void CardTen::BuyStation(Grid * pGrid, Player * pPlayer)
 	{
 		Output *pOut = pGrid->GetOutput();
 		Input* pIn = pGrid->GetInput();
-		pOut->PrintMessage("Do you want to buy this station ? (Y / N)");
+		pOut->PrintMessage("Do you want to buy this station for " + to_string(StationPrice) + " coin ? (Y / N)");
 		string x = pIn->GetString(pOut);
 		while (x != "y"&&x != "Y"&&x != "N"&&x != "n")
 		{
