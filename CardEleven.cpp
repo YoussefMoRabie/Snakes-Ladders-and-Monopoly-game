@@ -7,7 +7,7 @@ Player* CardEleven::Owner = NULL;
 
 CardEleven::CardEleven(const CellPosition & pos) : Card(pos) // set the cell position of the card
 {
-	cardNumber = 9; // set the inherited cardNumber data member with the card number 
+	cardNumber = 11; // set the inherited cardNumber data member with the card number 
 
 }
 CardEleven::~CardEleven(void)
@@ -16,6 +16,16 @@ CardEleven::~CardEleven(void)
 void CardEleven::SetOwner(Player * p)
 {
 	Owner = p;
+}
+
+Player * CardEleven::GetOwner()
+{
+	return Owner;
+}
+
+int CardEleven::GetStationPrice()
+{
+	return StationPrice;
 }
 
 void CardEleven::ReadCardParameters(Grid * pGrid)

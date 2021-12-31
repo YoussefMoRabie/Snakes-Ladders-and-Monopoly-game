@@ -15,7 +15,9 @@ class CardNine : public Card
 
 public:
 	CardNine(const CellPosition & pos); // A Constructor takes card position
-	void SetOwner(Player * p);
+	static void SetOwner(Player * p);
+	static Player * GetOwner();
+	static int GetStationPrice();
 	virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 	bool StationIsBought();
 	virtual void Apply(Grid* pGrid, Player* pPlayer);

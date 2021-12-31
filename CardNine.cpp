@@ -18,6 +18,16 @@ void CardNine::SetOwner(Player * p)
 	Owner = p;
 }
 
+Player * CardNine::GetOwner()
+{
+	return Owner;
+}
+
+int CardNine::GetStationPrice()
+{
+	return StationPrice;
+}
+
 void CardNine::ReadCardParameters(Grid * pGrid)
 {
 

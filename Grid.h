@@ -69,7 +69,8 @@ public:
 	// ========= Other Getters =========
 	bool IsOverlapping(GameObject*);
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
-	Player * GetNextPlayerOnGrid(Player * p) const;	// Gets a Pointer to the Current Player	                                    
+	Player * GetNextPlayerOnGrid(Player * p) const;	// Gets a Pointer to the Next Player On Grid	                                    
+	Player * GetPlayerWithLeastMoney(Player * p) const;	// Gets a Pointer to the Player has s the least amount of coins in his wallet.                                     
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 
 	// ========= User Interface Functions =========
