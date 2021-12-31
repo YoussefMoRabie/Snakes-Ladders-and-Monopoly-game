@@ -1,6 +1,7 @@
 #pragma once
 #include "Card.h"
-class CardTwelve :public Card
+class CardTwelve : public Card
 {
+
 };
 

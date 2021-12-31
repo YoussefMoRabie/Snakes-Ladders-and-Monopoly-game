@@ -64,6 +64,9 @@ void Player::setTurnsToSkip(int turns)
 int Player::getPlayerNum() const {
 	return playerNum;
 }
+int Player::getJustRolledDice()const{
+	return justRolledDiceNum;
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -96,6 +99,18 @@ void Player::skipCheck(Grid * pGrid)
 		pGrid->PrintErrorMessage("Player " + to_string(getPlayerNum()) + " skips the turn this round! click to continue...");
 		pGrid->AdvanceCurrentPlayer();
 	}
+}
+void Player:: MoveWithoutDice(Grid* pGrid,CellPosition & toCell) {
+	pGrid->UpdatePlayerCell(this, toCell);
+	stepCount = pCell->GetCellPosition().GetCellNum();
+	CellPosition pos = pCell->GetCellPosition();
+	if (pCell->GetGameObject() != NULL)
+	{
+		pCell->GetGameObject()->Apply(pGrid, this);
+	}
+	// 8- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells)
+		pGrid->SetEndGame(true);
 }
 
 void Player::Move(Grid * pGrid, int diceNumber)

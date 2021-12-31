@@ -19,11 +19,6 @@ void CardTen::SetOwner(Player * p)
 	Owner = p;
 }
 
-Player * CardTen::GetOwner()
-{
-	return Owner;
-}
-
 void CardTen::ReadCardParameters(Grid * pGrid)
 {
 
