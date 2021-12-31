@@ -87,7 +87,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
-		
+
 
 		///TODO: Add a case for EACH Action type in the Design mode or Play mode
 
