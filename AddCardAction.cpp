@@ -4,13 +4,16 @@
 #include "Output.h"
 #include "CardOne.h"
 #include "CardTwo.h"
-#include "CardFive.h"
 #include "CardThree.h"
 #include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
+#include "CardSeven.h"
 #include "CardEight.h"
 #include "CardNine.h"
 #include "CardTen.h"
 #include "CardEleven.h"
+#include "CardTwelve.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -104,11 +107,11 @@ void AddCardAction::Execute()
 		break;
 
 	case 6:
-		//pCard = new CardSix(cardPosition);
+		pCard = new CardSix(cardPosition);
 		break;
 
 	case 7:
-		//pCard = new CardSeven(cardPosition);
+		pCard = new CardSeven(cardPosition);
 		break;
 
 
@@ -128,8 +131,9 @@ void AddCardAction::Execute()
 		pCard = new CardEleven(cardPosition);
 		break;
 
-
-
+	case 12:
+		pCard = new CardTwelve(cardPosition);
+		break;
 
 
 		// A- Add the remaining cases
