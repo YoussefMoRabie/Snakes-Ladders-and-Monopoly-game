@@ -4,6 +4,7 @@ CardSix::CardSix(CellPosition& p) :Card(p) {
 }
 void CardSix::ReadCardParameters(Grid * pGrid) {
 	pGrid->GetOutput()->PrintMessage("Please, Click on a Cell....");
+	pGrid->GetOutput()->PrintMessage("Please, Click on the destination cell....");
 	cellNumToMove= pGrid->GetInput()->GetCellClicked().GetCellNum();
 }
 void CardSix::Apply(Grid* pGrid, Player * pPlayer) {
