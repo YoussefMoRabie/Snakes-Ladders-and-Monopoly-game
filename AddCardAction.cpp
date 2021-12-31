@@ -89,36 +89,39 @@ void AddCardAction::Execute()
 	case 1:
 		pCard = new CardOne(cardPosition);
 		break;
-
 	case 2:
 		pCard = new CardTwo(cardPosition);
 		break;
-
 	case 3:
 		pCard = new CardThree(cardPosition, pManager);
 		break;
-
 	case 4:
 		pCard = new CardFour(cardPosition);
 		break;
-
 	case 5:
 		pCard = new CardFive(cardPosition);
 		break;
-
 	case 6:
 		pCard = new CardSix(cardPosition);
 		break;
-
 	case 7:
-		//pCard = new CardSeven(cardPosition);
+		pCard = new CardSeven(cardPosition);
 		break;
-
+	case 8:
+		pCard = new CardEight(cardPosition);
+		break;
+	case 9:
+		pCard = new CardNine(cardPosition);
+		break;
+	case 10:
+		pCard = new CardTen(cardPosition);
+		break;
+	case 11:
+		pCard = new CardEleven(cardPosition);
+		break;
 	case 12:
 		pCard = new CardTwelve(cardPosition);
 		break;
-
-
 		// A- Add the remaining cases
 
 	}
