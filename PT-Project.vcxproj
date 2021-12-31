@@ -196,6 +196,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="ToDesignModeAction.cpp" />
+    <ClCompile Include="ToPlayModeAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -249,6 +251,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="ToDesignModeAction.h" />
+    <ClInclude Include="ToPlayModeAction.h" />
     <ClInclude Include="UI_Info.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
