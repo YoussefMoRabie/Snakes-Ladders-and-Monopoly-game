@@ -9,17 +9,10 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 	
 	size =abs( -endCellPos.VCell() + startCellPos.VCell());
 	cellsCounter = new int[size+1];
-	for (int i = 0; i <= size; i++) {
+	for (int i = 0; i <= size; i++) 
+	{
 		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;
-		
 	}
-	
-
-	
-	
-
-	
-
 	///TODO: Do the needed validation
 }
 
@@ -31,7 +24,7 @@ void Ladder::Draw(Output* pOut) const
 void Ladder::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	
-	pGrid->PrintErrorMessage("You have reached a ladder.	 Click to continue ...");
+	pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
 	pPlayer->MoveWithoutDice(pGrid, endCellPos);
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	//Done

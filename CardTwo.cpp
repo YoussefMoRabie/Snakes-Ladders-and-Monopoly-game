@@ -1,4 +1,5 @@
 #include "CardTwo.h"
+#include "Ladder.h"
 
 CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
@@ -20,9 +21,10 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	// 2- Get the Player's next ladder
 	Ladder* nextLadder = pGrid->GetNextLadder(pPlayer->GetCell()->GetCellPosition());
-	// 3- If a nextLadder exists, move the player to it
+	// 3- If a nextLadder exists, move the player to it then applay it
 	if (nextLadder != NULL) {
-
+		pGrid->UpdatePlayerCell(pPlayer, nextLadder->GetPosition());
+		nextLadder->Apply(pGrid, pPlayer);
 	}
 		
 }
