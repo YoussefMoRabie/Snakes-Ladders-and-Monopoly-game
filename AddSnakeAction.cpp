@@ -23,8 +23,11 @@ void AddSnakeAction::ReadActionParameters()
 
 	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
-	
-	while (startPos.VCell() == NumVerticalCells-1 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
+	Ladder* end = pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasLadder();
+	int x = -1;
+	if (end != NULL)
+		x = end->GetEndPosition().GetCellNum();
+	while (startPos.VCell() == NumVerticalCells-1 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL||startPos.GetCellNum()==x)
 	{
 		pGrid->PrintErrorMessage("Invalid Snake, Click to retry  ...");
 		pOut->PrintMessage("New Snake: Click on its Start Cell ...");
@@ -34,11 +37,7 @@ void AddSnakeAction::ReadActionParameters()
 	// Read the endPos parameter
 	pOut->PrintMessage("New Snake: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
-	Ladder* end = pGrid->GetCell(endPos.VCell(), endPos.HCell())->HasLadder();
-	int x = -1;
-	if (end != NULL)
-		x = end->GetPosition().GetCellNum();
-	while (startPos.VCell() >= endPos.VCell() || startPos.HCell() != endPos.HCell()||x==endPos.GetCellNum()) {
+	while (startPos.VCell() >= endPos.VCell() || startPos.HCell() != endPos.HCell()) {
 		pGrid->PrintErrorMessage("Invalid Snake, Click to retry ...");
 		pOut->PrintMessage("New Snake: Click on its Start Cell ...");
 		startPos = pIn->GetCellClicked();

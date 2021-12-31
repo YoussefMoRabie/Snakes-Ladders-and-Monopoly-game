@@ -31,7 +31,7 @@ void Ladder::Draw(Output* pOut) const
 void Ladder::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	
-	pGrid->PrintErrorMessage("You have reached a ladder.Click to continue ...");
+	pGrid->PrintErrorMessage("You have reached a ladder.	 Click to continue ...");
 	pPlayer->MoveWithoutDice(pGrid, endCellPos);
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	//Done

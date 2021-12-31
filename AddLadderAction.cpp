@@ -24,52 +24,21 @@ void AddLadderAction::ReadActionParameters()
 	
 		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 		startPos = pIn->GetCellClicked();
-		Snake* end;
-		bool thereSnake =false;
-		
-		
-		while (!thereSnake) {
-
-			while (startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
-			{
-				pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
-				pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-				startPos = pIn->GetCellClicked();
-			}
-			for (int i = 0; i < NumVerticalCells - 1; i++) {
-				end = pGrid->GetCell(i, startPos.HCell())->HasSnake();
-				if (end != NULL) {
-					if (end->GetEndPosition().GetCellNum() == startPos.GetCellNum())
-					{
-						thereSnake = true;
-						break;
-					}
-				}
-			}
-
-			if (thereSnake)
-			{
-				pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
-				pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-				startPos = pIn->GetCellClicked();
-			}
-			else
-				thereSnake = true;
-
-			
-
+		Snake* end = pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasSnake();
+		int x = -1;
+		if (end!=NULL)
+		x=end->GetEndPosition().GetCellNum();
+		while(startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL||startPos.GetCellNum()== x)
+		{
+			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
+			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
+			startPos = pIn->GetCellClicked();
 		}
-		
-
 	
 		// Read the endPos parameter
 		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 		endPos = pIn->GetCellClicked();
-		end=pGrid->GetCell(endPos.VCell(), endPos.HCell())->HasSnake();
-		int x = -1;
-		if (end!=NULL)
-			x = end->GetPosition().GetCellNum();
-		while (startPos.VCell() <= endPos.VCell()||startPos.HCell()!= endPos.HCell()||x==endPos.GetCellNum()) {
+		while (startPos.VCell() <= endPos.VCell()||startPos.HCell()!= endPos.HCell()) {
 			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again ...");
 			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 			startPos = pIn->GetCellClicked();
