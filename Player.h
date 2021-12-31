@@ -16,7 +16,7 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 						   // and reset again when reached 3
 						   // it is used to indicate when to move and when to add to your wallet
-	int turnsToSkip;	   // Number of turns the player will be unable to play
+	int turnsToSkip;	   // Number of turns the player will be unable to play "initailly 0"
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -33,10 +33,10 @@ public:
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
-	void setTurnCount(int);
-	int GetStepCount() const;
-	int getPlayerNum() const;
-	void setTurnsToSkip(int);
+	void setTurnCount(int);			// A setter for the turnCount
+	int GetStepCount() const;		// A getter for the stepCount
+	int getPlayerNum() const;		// A getter for the playerNum
+	void setTurnsToSkip(int);		// A setter for TurnsToSkip
 
 	// ====== Drawing Functions ======
 

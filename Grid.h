@@ -68,9 +68,10 @@ public:
 
 	// ========= Other Getters =========
 	
-	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
-	Player * GetNextPlayerOnGrid(Player * p) const;	// Gets a Pointer to the Current Player	                                    
+	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                                                        
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
+	CellPosition* GetNextCellWithPlayers(const Cell& cell);
+	void RestartPlayersOnCell(CellPosition* cell);
 
 	// ========= User Interface Functions =========
 

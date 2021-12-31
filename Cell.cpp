@@ -62,6 +62,29 @@ Card * Cell::HasCard() const
 
 }
 
+CellPosition* Cell::FindNextCellWithPlayers(int playerCellNumArr[])const
+{
+	for (int i = 0; i < MaxPlayerCount - 1; i++)
+	{
+		if (playerCellNumArr[i] > playerCellNumArr[i + 1])
+		{
+			swap(playerCellNumArr[i], playerCellNumArr[i + 1]);
+			i = -1;
+		}
+
+	}
+
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (playerCellNumArr[i] > position.GetCellNum())
+		{
+			CellPosition* NextCell = &CellPosition::GetCellPositionFromNum(playerCellNumArr[i]);
+			return NextCell;
+		}
+	}
+	return NULL;
+}
+
 
 // ======= Drawing Functions ======= 
 

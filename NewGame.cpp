@@ -18,10 +18,10 @@ void NewGame::Execute()
 {
 	
 	Grid* pGrid = pManager->GetGrid();
+	CellPosition firstCell(1);
 
 	for (int i = 0; i < MaxPlayerCount; i++) {
 		Player* current = pGrid->GetCurrentPlayer();
-		CellPosition firstCell(1);
 		pGrid->UpdatePlayerCell(current, firstCell);
 		current->SetWallet(100);
 		current->setTurnCount(0);

@@ -1,6 +1,7 @@
 #include "Grid.h"
 
 #include "Cell.h"
+#include "CellPosition.h"
 #include "GameObject.h"
 #include "Ladder.h"
 #include "Card.h"
@@ -136,28 +137,6 @@ Player * Grid::GetCurrentPlayer() const
 	return PlayerList[currPlayerNumber];
 }
 
-Player * Grid::GetNextPlayerOnGrid(Player * p) const
-{
-	int x,y1,y2=99,index=-1;
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		x = p->GetStepCount() - PlayerList[i]->GetStepCount();
-		if(x>0);
-		{
-			y1 = x;
-			if (y1 < y2)
-			{
-				index = i; 
-				y2 = y1;
-			}
-		}
-		
-	}
-	if (index > -1)
-		return PlayerList[index];
-	else
-	return NULL;
-}
 
 Ladder * Grid::GetNextLadder(const CellPosition & position)
 {
@@ -180,9 +159,32 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
+CellPosition* Grid::GetNextCellWithPlayers(const Cell& startCell)
+{
+	int PlayerCellNumArray[MaxPlayerCount];
+	for (int i = 0; i < MaxPlayerCount; i++) {
+		PlayerCellNumArray[i] = PlayerList[i]->GetCell()->GetCellPosition().GetCellNum();
+	}
+	PrintErrorMessage("i'm here 1");
+	CellPosition* playerCell = startCell.FindNextCellWithPlayers(PlayerCellNumArray);
+	return playerCell;
+}
+
+void Grid::RestartPlayersOnCell(CellPosition* cell)
+{
+	CellPosition firstCell(1);
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		if (PlayerList[i]->GetCell()->GetCellPosition().GetCellNum() == cell->GetCellNum())
+		{
+			PrintErrorMessage("i'm here and the cell is "+to_string(cell->GetCellNum())+" player is "+to_string(PlayerList[i]->getPlayerNum()));
+			UpdatePlayerCell(PlayerList[i], firstCell);
+			PrintErrorMessage("now the cell of player " + to_string(PlayerList[i]->getPlayerNum()) + " is " + to_string(PlayerList[i]->GetCell()->GetCellPosition().GetCellNum()));
+		}
+	}
+}
 
 // ========= User Interface Functions =========
-
 
 void Grid::UpdateInterface() const
 {

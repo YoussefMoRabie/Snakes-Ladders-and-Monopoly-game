@@ -54,6 +54,7 @@ public:
 	static CellPosition GetCellPositionFromNum(int cellNum); // Returns the corresponding CellPosition (vCell, hCell) of the passed cellNum
 															 // It is a static function (no need for a calling obj)
 
+
 	///TODO: IMPLEMENT THE FOLLOWING FUNCTION
 	void AddCellNum (int addedNum); // Adds the passed "addedNum" to the "cellNum" of the current cell position
 	                                // and updates the data members (vCell and hCell) accordingly

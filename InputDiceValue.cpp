@@ -15,6 +15,11 @@ void InputDiceValue::ReadActionParameters()
 
 	pOut->PrintMessage("please enter a dice value between 1-6");
 	diceValue = pIn->GetInteger(pOut);
+	while (diceValue > 6 || diceValue < 0)
+	{
+		pOut->PrintMessage("Invalid input, please enter a dice value between 1-6");
+		diceValue = pIn->GetInteger(pOut);
+	}
 	pOut->ClearStatusBar();
 }
 
