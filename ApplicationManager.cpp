@@ -1,6 +1,7 @@
 #include "ApplicationManager.h"
 
 #include "Grid.h"
+#include"DeleteGameObjectAction.h"
 #include "AddLadderAction.h"
 #include"AddSnakeAction.h"
 #include "AddCardAction.h"
@@ -69,6 +70,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case ADD_SNAKE:
 		pAct = new AddSnakeAction(this);
+		break;
+	case DELETE_GAME_OBJECT:
+		pAct = new DeleteGameObjectAction(this);
 		break;
 	case EXIT:
 		break;

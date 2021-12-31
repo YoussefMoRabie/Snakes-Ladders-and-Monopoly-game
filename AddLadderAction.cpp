@@ -69,13 +69,9 @@ void AddLadderAction::ReadActionParameters()
 	int x = -1;
 	if (end != NULL)
 		x = end->GetPosition().GetCellNum();
-	while (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell() || x == endPos.GetCellNum()) {
-		pGrid->PrintErrorMessage("Invalid Ladder, Click to try again ...");
-		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-		startPos = pIn->GetCellClicked();
-		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
-		endPos = pIn->GetCellClicked();
-	}
+	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell() || x == endPos.GetCellNum()) 
+		pGrid->PrintErrorMessage("Invalid Ladder, Click to Continue ...");
+		
 
 	///TODO: Make the needed validations on the read parameters
 		//Done
