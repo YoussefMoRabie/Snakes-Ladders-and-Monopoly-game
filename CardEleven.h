@@ -10,7 +10,8 @@ class CardEleven :public Card
 
 public:
 	CardEleven(const CellPosition & pos); // A Constructor takes card position
-	void SetOwner(Player * p);
+	static void SetOwner(Player * p);
+	static  Player * GetOwner();
 	virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 	bool StationIsBought();
 	virtual void Apply(Grid* pGrid, Player* pPlayer);

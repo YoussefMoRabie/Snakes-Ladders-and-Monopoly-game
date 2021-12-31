@@ -48,8 +48,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-		if (IsOverlapping(pNewObject))
-			return false;
+
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 		return true; // indicating that addition is done
@@ -84,9 +83,7 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 
 
 // ========= Setters and Getters Functions =========
-Cell* Grid::GetCell(int v, int h) {
-	return CellList[v][h];
-}
+
 
 Input * Grid::GetInput() const
 {
@@ -134,22 +131,6 @@ void Grid::AdvanceCurrentPlayer()
 // ========= Other Getters =========
 
 
-bool Grid::IsOverlapping(GameObject*p) {
-	int h=p->GetPosition().HCell();
-	
-	for (int i = 0; i < NumVerticalCells; i++) {
-		
-		GameObject* y = CellList[i][h]->GetGameObject();
-
-		
-		bool x=p->IsOverlapping(y);
-		if (x)
-			return true;
-	}
-	return false;
-}
-
-
 Player * Grid::GetCurrentPlayer() const
 {
 	return PlayerList[currPlayerNumber];
@@ -161,7 +142,7 @@ Player * Grid::GetNextPlayerOnGrid(Player * p) const
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		x = p->GetStepCount() - PlayerList[i]->GetStepCount();
-		if(x>0)
+		if(x>0);
 		{
 			y1 = x;
 			if (y1 < y2)

@@ -36,9 +36,8 @@ public:
 	void setTurnCount(int);
 	int GetStepCount() const;
 	int getPlayerNum() const;
-	int getJustRolledDice() const;
 	void setTurnsToSkip(int);
-	void MoveWithoutDice(Grid*,CellPosition&);
+
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Circle on its current cell

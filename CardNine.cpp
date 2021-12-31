@@ -13,10 +13,15 @@ CardNine::CardNine(const CellPosition & pos) : Card(pos) // set the cell positio
 CardNine::~CardNine(void)
 {
 }
-void CardNine::SetOwner(Player * p)
+  void CardNine::SetOwner(Player * p)
 {
 	Owner = p;
 }
+
+  Player * CardNine::GetOwner()
+  {
+	  return Owner;
+  }
 
 void CardNine::ReadCardParameters(Grid * pGrid)
 {

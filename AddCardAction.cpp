@@ -4,7 +4,6 @@
 #include "Output.h"
 #include "CardOne.h"
 #include "CardTwo.h"
-#include "CardFive.h"
 #include "CardThree.h"
 #include "CardFour.h"
 #include "CardEight.h"
@@ -100,7 +99,7 @@ void AddCardAction::Execute()
 		break;
 
 	case 5:
-		pCard = new CardFive(cardPosition);
+		//pCard = new CardFive(cardPosition);
 		break;
 
 	case 6:
@@ -159,6 +158,7 @@ void AddCardAction::Execute()
 		}
 		
 	}
+	delete pCard;
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
 
 }
@@ -166,5 +166,5 @@ void AddCardAction::Execute()
 
 AddCardAction::~AddCardAction()
 {
-	
+
 }

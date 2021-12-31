@@ -15,9 +15,6 @@ int Card::GetCardNumber()
 {
 	return cardNumber;
 }
-bool Card::IsOverlapping(GameObject* g) {
-	return false;
-}
 
 void Card::Draw(Output* pOut) const
 {

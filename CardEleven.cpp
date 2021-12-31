@@ -18,6 +18,11 @@ void CardEleven::SetOwner(Player * p)
 	Owner = p;
 }
 
+Player * CardEleven::GetOwner()
+{
+	return Owner;
+}
+
 void CardEleven::ReadCardParameters(Grid * pGrid)
 {
 
