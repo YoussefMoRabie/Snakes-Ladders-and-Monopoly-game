@@ -36,6 +36,7 @@ public:
 	void setTurnCount(int);
 	int GetStepCount() const;
 	int getPlayerNum() const;
+	int getJustRolledDice() const;
 	void setTurnsToSkip(int);
 
 	// ====== Drawing Functions ======

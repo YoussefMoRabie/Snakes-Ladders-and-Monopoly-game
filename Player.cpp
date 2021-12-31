@@ -64,6 +64,9 @@ void Player::setTurnsToSkip(int turns)
 int Player::getPlayerNum() const {
 	return playerNum;
 }
+int Player::getJustRolledDice()const{
+	return justRolledDiceNum;
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const

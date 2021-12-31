@@ -50,7 +50,7 @@ public:
 	    																	  // and  Draws it in the new cell
 
 	// ========= Setters and Getters Functions =========
-
+	Cell* GetCell(int, int);
 	Input * GetInput() const;	// Gets a Pointer to the Input
 	Output * GetOutput() const; // Gets a Pointer to the Output 
 

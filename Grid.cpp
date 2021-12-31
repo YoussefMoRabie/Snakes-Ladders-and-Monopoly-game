@@ -84,7 +84,9 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 
 
 // ========= Setters and Getters Functions =========
-
+Cell* Grid::GetCell(int v, int h) {
+	return CellList[v][h];
+}
 
 Input * Grid::GetInput() const
 {

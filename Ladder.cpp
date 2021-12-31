@@ -1,12 +1,12 @@
 #include "Ladder.h"
-
+#include <cmath>
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
 	
 	this->endCellPos = endCellPos;
 	
 	
-	size = -endCellPos.VCell() + startCellPos.VCell();
+	size =abs( -endCellPos.VCell() + startCellPos.VCell());
 	cellsCounter = new int[size+1];
 	for (int i = 0; i <= size; i++) {
 		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;
@@ -20,20 +20,6 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 	
 
 	///TODO: Do the needed validation
-}
-void Ladder::setStart_End(CellPosition start, CellPosition End) {
-
-	if (start.GetCellNum() <= 1 || start.VCell() == 0)
-	{
-		position = -1;
-		endCellPos = -1;
-	}
-
-	if (start.HCell() != End.HCell() || start.VCell() <= End.VCell())
-	{
-		position = -1;
-		endCellPos = -1;
-	}
 }
 
 void Ladder::Draw(Output* pOut) const

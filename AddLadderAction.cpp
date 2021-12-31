@@ -13,25 +13,37 @@ AddLadderAction::~AddLadderAction()
 {
 }
 
-void AddLadderAction::ReadActionParameters() 
-{	
+void AddLadderAction::ReadActionParameters()
+{
 	// Get a Pointer to the Input / Output Interfaces
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
 	// Read the startPos parameter
-	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-	startPos = pIn->GetCellClicked();
-
-	// Read the endPos parameter
-	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
-	endPos = pIn->GetCellClicked();
-
-    
-
+	
+		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
+		startPos = pIn->GetCellClicked();
+		while(startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
+		{
+			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
+			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
+			startPos = pIn->GetCellClicked();
+		}
+	
+		// Read the endPos parameter
+		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
+		endPos = pIn->GetCellClicked();
+		while (startPos.VCell() < endPos.VCell()||startPos.HCell()!= endPos.HCell()) {
+			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again ...");
+			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
+			startPos = pIn->GetCellClicked();
+			pOut->PrintMessage("New Ladder: Click on its End Cell ...");
+			endPos = pIn->GetCellClicked();
+		}
+		
 	///TODO: Make the needed validations on the read parameters
-
+		//Done
 	
 
 	// Clear messages
