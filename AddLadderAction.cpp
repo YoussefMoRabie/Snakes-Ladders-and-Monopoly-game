@@ -1,5 +1,5 @@
 #include "AddLadderAction.h"
-
+#include"Snake.h"
 #include "Input.h"
 #include "Output.h"
 #include "Ladder.h"
@@ -24,7 +24,11 @@ void AddLadderAction::ReadActionParameters()
 	
 		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 		startPos = pIn->GetCellClicked();
-		while(startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
+		Snake* end = pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasSnake();
+		int x = -1;
+		if (end!=NULL)
+		x=end->GetEndPosition().GetCellNum();
+		while(startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL||startPos.GetCellNum()== x)
 		{
 			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
 			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
@@ -34,7 +38,7 @@ void AddLadderAction::ReadActionParameters()
 		// Read the endPos parameter
 		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 		endPos = pIn->GetCellClicked();
-		while (startPos.VCell() < endPos.VCell()||startPos.HCell()!= endPos.HCell()) {
+		while (startPos.VCell() <= endPos.VCell()||startPos.HCell()!= endPos.HCell()) {
 			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again ...");
 			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 			startPos = pIn->GetCellClicked();

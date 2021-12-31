@@ -100,6 +100,18 @@ void Player::skipCheck(Grid * pGrid)
 		pGrid->AdvanceCurrentPlayer();
 	}
 }
+void Player:: MoveWithoutDice(Grid* pGrid,CellPosition & toCell) {
+	pGrid->UpdatePlayerCell(this, toCell);
+	stepCount = pCell->GetCellPosition().GetCellNum();
+	CellPosition pos = pCell->GetCellPosition();
+	if (pCell->GetGameObject() != NULL)
+	{
+		pCell->GetGameObject()->Apply(pGrid, this);
+	}
+	// 8- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells)
+		pGrid->SetEndGame(true);
+}
 
 void Player::Move(Grid * pGrid, int diceNumber)
 {

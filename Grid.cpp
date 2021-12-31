@@ -133,10 +133,15 @@ void Grid::AdvanceCurrentPlayer()
 
 // ========= Other Getters =========
 
+
 bool Grid::IsOverlapping(GameObject*p) {
 	int h=p->GetPosition().HCell();
+	
 	for (int i = 0; i < NumVerticalCells; i++) {
+		
 		GameObject* y = CellList[i][h]->GetGameObject();
+
+		
 		bool x=p->IsOverlapping(y);
 		if (x)
 			return true;

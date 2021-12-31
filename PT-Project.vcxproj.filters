@@ -220,6 +220,12 @@
     <ClCompile Include="CardSix.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="AddSnakeAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -366,6 +372,12 @@
     </ClInclude>
     <ClInclude Include="CardSix.h">
       <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSnakeAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

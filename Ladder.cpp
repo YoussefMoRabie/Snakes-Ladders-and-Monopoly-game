@@ -1,4 +1,5 @@
 #include "Ladder.h"
+#include "Player.h"
 #include <cmath>
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
@@ -30,9 +31,10 @@ void Ladder::Draw(Output* pOut) const
 void Ladder::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	
-
+	pGrid->PrintErrorMessage("You have reached a ladder.	 Click to continue ...");
+	pPlayer->MoveWithoutDice(pGrid, endCellPos);
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
+	//Done
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 	

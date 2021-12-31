@@ -6,7 +6,7 @@ CardFive::CardFive(CellPosition& pos) :Card(pos) {
 
 void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	int x = pPlayer->getJustRolledDice();
-	
-	pPlayer->Move(pGrid, -x);
+	int newCell = pPlayer->GetCell()->GetCellPosition().GetCellNum() - x;
+	pPlayer->MoveWithoutDice(pGrid, pPlayer->GetCell()->GetCellPosition().GetCellPositionFromNum(newCell));
 
 }
