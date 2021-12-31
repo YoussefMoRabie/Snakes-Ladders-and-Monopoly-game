@@ -37,6 +37,7 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
+	Card::Apply(pGrid, pPlayer);
 
 
 	Output *pOut = pGrid->GetOutput();
@@ -49,7 +50,6 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 		GoOut = pIn->GetInteger(pOut);
 	}
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
-	Card::Apply(pGrid, pPlayer);
 	
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
 	if(x==1)
