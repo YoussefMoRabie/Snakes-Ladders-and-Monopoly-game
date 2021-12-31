@@ -6,7 +6,14 @@
 #include "CardTwo.h"
 #include "CardThree.h"
 #include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
 #include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -96,17 +103,20 @@ void AddCardAction::Execute()
 		break;
 
 	case 5:
-		//pCard = new CardFive(cardPosition);
+		pCard = new CardFive(cardPosition);
 		break;
 
 	case 6:
-		//pCard = new CardSix(cardPosition);
+		pCard = new CardSix(cardPosition);
 		break;
 
 	case 7:
-		pCard = new CardSeven(cardPosition);
+		//pCard = new CardSeven(cardPosition);
 		break;
 
+	case 12:
+		pCard = new CardTwelve(cardPosition);
+		break;
 
 
 		// A- Add the remaining cases
@@ -134,9 +144,8 @@ void AddCardAction::Execute()
 			// Print an appropriate message
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 		}
-		
-	}
 
+	}
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
 
 }
@@ -144,4 +153,6 @@ void AddCardAction::Execute()
 
 AddCardAction::~AddCardAction()
 {
+	
+
 }

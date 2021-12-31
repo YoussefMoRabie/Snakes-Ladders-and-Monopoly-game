@@ -50,7 +50,7 @@ public:
 	    																	  // and  Draws it in the new cell
 
 	// ========= Setters and Getters Functions =========
-
+	Cell* GetCell(int, int);
 	Input * GetInput() const;	// Gets a Pointer to the Input
 	Output * GetOutput() const; // Gets a Pointer to the Output 
 
@@ -67,8 +67,10 @@ public:
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
-	
-	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                                                        
+	bool IsOverlapping(GameObject*);
+	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
+	Player * GetNextPlayerOnGrid(Player * p) const;	// Gets a Pointer to the Next Player On Grid	                                    
+	Player * GetPlayerWithLeastMoney(Player * p) const;	// Gets a Pointer to the Player has s the least amount of coins in his wallet.                                     
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
 	CellPosition* GetNextCellWithPlayers(const Cell& cell);
 	void RestartPlayersOnCell(CellPosition* cell);

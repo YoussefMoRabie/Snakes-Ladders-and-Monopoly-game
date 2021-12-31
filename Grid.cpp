@@ -49,7 +49,8 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-
+		if (IsOverlapping(pNewObject))
+			return false;
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 		return true; // indicating that addition is done
@@ -84,7 +85,9 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 
 
 // ========= Setters and Getters Functions =========
-
+Cell* Grid::GetCell(int v, int h) {
+	return CellList[v][h];
+}
 
 Input * Grid::GetInput() const
 {
@@ -132,11 +135,51 @@ void Grid::AdvanceCurrentPlayer()
 // ========= Other Getters =========
 
 
+bool Grid::IsOverlapping(GameObject*p) {
+	int h=p->GetPosition().HCell();
+	
+	for (int i = 0; i < NumVerticalCells; i++) {
+		
+		GameObject* y = CellList[i][h]->GetGameObject();
+
+		
+		bool x=p->IsOverlapping(y);
+		if (x)
+			return true;
+	}
+	return false;
+}
+
+
 Player * Grid::GetCurrentPlayer() const
 {
 	return PlayerList[currPlayerNumber];
 }
 
+
+Player * Grid::GetPlayerWithLeastMoney(Player * p) const
+{
+	int min,index;
+	if (p != PlayerList[0])
+	{
+		min = PlayerList[0]->GetWallet();
+		index = 0;
+	}
+	else
+	{
+		min = PlayerList[1]->GetWallet();
+		index = 1;
+	}	for (int i = 1; i < MaxPlayerCount; i++)
+	{
+		if (p != PlayerList[i] && min > PlayerList[i]->GetWallet())
+		{
+			min = PlayerList[i]->GetWallet();
+			index = i;
+
+		}
+	}
+	return PlayerList[index];
+}
 
 Ladder * Grid::GetNextLadder(const CellPosition & position)
 {

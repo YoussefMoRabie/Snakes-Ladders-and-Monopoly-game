@@ -33,11 +33,12 @@ public:
 
 	///TODO: You can add setters and getters for data members here (if needed)
 
-	void setTurnCount(int);			// A setter for the turnCount
-	int GetStepCount() const;		// A getter for the stepCount
-	int getPlayerNum() const;		// A getter for the playerNum
-	void setTurnsToSkip(int);		// A setter for TurnsToSkip
-
+	void setTurnCount(int);
+	int GetStepCount() const;
+	int getPlayerNum() const;
+	int getJustRolledDice() const;
+	void setTurnsToSkip(int);
+	void MoveWithoutDice(Grid*,CellPosition&);
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Circle on its current cell
