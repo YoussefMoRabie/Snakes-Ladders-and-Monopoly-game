@@ -62,7 +62,7 @@ Card * Cell::HasCard() const
 
 }
 
-CellPosition* Cell::FindNextCellWithPlayers(int playerCellNumArr[])const
+CellPosition Cell::FindNextCellWithPlayers(int playerCellNumArr[])const
 {
 	for (int i = 0; i < MaxPlayerCount - 1; i++)
 	{
@@ -78,7 +78,7 @@ CellPosition* Cell::FindNextCellWithPlayers(int playerCellNumArr[])const
 	{
 		if (playerCellNumArr[i] > position.GetCellNum())
 		{
-			CellPosition* NextCell = &CellPosition::GetCellPositionFromNum(playerCellNumArr[i]);
+			CellPosition NextCell = CellPosition::GetCellPositionFromNum(playerCellNumArr[i]);;
 			return NextCell;
 		}
 	}

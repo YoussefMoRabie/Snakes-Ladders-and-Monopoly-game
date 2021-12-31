@@ -72,7 +72,7 @@ public:
 	Player * GetNextPlayerOnGrid(Player * p) const;	// Gets a Pointer to the Next Player On Grid	                                    
 	Player * GetPlayerWithLeastMoney(Player * p) const;	// Gets a Pointer to the Player has s the least amount of coins in his wallet.                                     
 	Ladder * GetNextLadder(const CellPosition & position);  // Gets a Pointer to the first Ladder after the passed "position"
-	CellPosition* GetNextCellWithPlayers(const Cell& cell);
+	CellPosition GetNextCellWithPlayers(const Cell& cell);
 	void RestartPlayersOnCell(CellPosition* cell);
 
 	// ========= User Interface Functions =========

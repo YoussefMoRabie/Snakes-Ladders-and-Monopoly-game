@@ -53,6 +53,12 @@ int Player::GetStepCount() const
 	return stepCount;
 }
 
+void Player::setStepCount(int cellNum)
+{
+	if (cellNum > 0 && cellNum <= NumVerticalCells * NumHorizontalCells)
+		stepCount = cellNum;
+}
+
 void Player::setTurnsToSkip(int turns)
 {
 	if (turns > 0)
@@ -140,14 +146,12 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
 	//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
 	pGrid->UpdatePlayerCell(this, pos);
-	// 6- Increment the stepcount to point to the right cell
-	stepCount = pCell->GetCellPosition().GetCellNum();
-	// 7- Apply() the game object of the reached cell (if any)
+	// 6- Apply() the game object of the reached cell (if any)
 	if (pCell->GetGameObject() != NULL)
 	{
 		pCell->GetGameObject()->Apply(pGrid, this);
 	}
-	// 8- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells)
 		pGrid->SetEndGame(true);
 }

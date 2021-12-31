@@ -74,11 +74,11 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 {
 	// Clear the player's circle from the old cell position
 	player->ClearDrawing(pOut);
-
 	// Set the player's CELL with the new position
 	Cell * newCell = CellList[newPosition.VCell()][newPosition.HCell()];
 	player->SetCell(newCell);	
-
+	// Update the stepCount
+	player->setStepCount(player->GetCell()->GetCellPosition().GetCellNum());
 	// Draw the player's circle on the new cell position
 	player->Draw(pOut);
 }
@@ -129,6 +129,7 @@ void Grid::SetCurrentPlayer(int curr)
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
+	UpdateInterface();
 	GetCurrentPlayer()->skipCheck(this); //Check if the new current player should skip the turn 
 }
 
@@ -141,10 +142,7 @@ bool Grid::IsOverlapping(GameObject*p) {
 	for (int i = 0; i < NumVerticalCells; i++) {
 		
 		GameObject* y = CellList[i][h]->GetGameObject();
-
-		
-		bool x=p->IsOverlapping(y);
-		if (x)
+		if (p->IsOverlapping(y))
 			return true;
 	}
 	return false;
@@ -169,7 +167,8 @@ Player * Grid::GetPlayerWithLeastMoney(Player * p) const
 	{
 		min = PlayerList[1]->GetWallet();
 		index = 1;
-	}	for (int i = 1; i < MaxPlayerCount; i++)
+	}	
+	for (int i = 1; i < MaxPlayerCount; i++)
 	{
 		if (p != PlayerList[i] && min > PlayerList[i]->GetWallet())
 		{
@@ -202,14 +201,13 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 	return NULL; // not found
 }
 
-CellPosition* Grid::GetNextCellWithPlayers(const Cell& startCell)
+CellPosition Grid::GetNextCellWithPlayers(const Cell& startCell)
 {
 	int PlayerCellNumArray[MaxPlayerCount];
 	for (int i = 0; i < MaxPlayerCount; i++) {
-		PlayerCellNumArray[i] = PlayerList[i]->GetCell()->GetCellPosition().GetCellNum();
+		PlayerCellNumArray[i] = PlayerList[i]->GetStepCount();
 	}
-	PrintErrorMessage("i'm here 1");
-	CellPosition* playerCell = startCell.FindNextCellWithPlayers(PlayerCellNumArray);
+	CellPosition playerCell = startCell.FindNextCellWithPlayers(PlayerCellNumArray);
 	return playerCell;
 }
 
@@ -218,11 +216,9 @@ void Grid::RestartPlayersOnCell(CellPosition* cell)
 	CellPosition firstCell(1);
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
-		if (PlayerList[i]->GetCell()->GetCellPosition().GetCellNum() == cell->GetCellNum())
+		if (PlayerList[i]->GetStepCount() == cell->GetCellNum())
 		{
-			PrintErrorMessage("i'm here and the cell is "+to_string(cell->GetCellNum())+" player is "+to_string(PlayerList[i]->getPlayerNum()));
 			UpdatePlayerCell(PlayerList[i], firstCell);
-			PrintErrorMessage("now the cell of player " + to_string(PlayerList[i]->getPlayerNum()) + " is " + to_string(PlayerList[i]->GetCell()->GetCellPosition().GetCellNum()));
 		}
 	}
 }
