@@ -247,6 +247,12 @@
     <ClCompile Include="DeleteGameObjectAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -419,6 +425,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="DeleteGameObjectAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveGridAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

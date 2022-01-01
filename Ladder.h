@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
-
+using namespace std;
 class Ladder :	public GameObject // inherited from GameObject
 {
 	// Note: the "position" data member inherited from the GameObject class is used as the ladder's "Start Cell Position"
@@ -20,7 +20,8 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the ladder by moving player to ladder's end cell
 	
-	
+	virtual void Save(ofstream & OutFile);	
+	virtual void Load(ifstream & Infile);
 	
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member

@@ -9,7 +9,7 @@ class CardEleven :public Card
 	static Player * Owner;
 
 public:
-	CardEleven(const CellPosition & pos); // A Constructor takes card position
+	CardEleven(const CellPosition & pos, const int num); // A Constructor takes card position
 	static void SetOwner(Player * p);
 	static Player * GetOwner();
 	static int GetStationPrice();

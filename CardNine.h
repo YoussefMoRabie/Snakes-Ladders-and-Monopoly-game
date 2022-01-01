@@ -14,7 +14,7 @@ class CardNine : public Card
 	static Player * Owner;
 
 public:
-	CardNine(const CellPosition & pos); // A Constructor takes card position
+	CardNine(const CellPosition & pos, const int num); // A Constructor takes card position
 	static void SetOwner(Player * p);
 	static Player * GetOwner();
 	static int GetStationPrice();

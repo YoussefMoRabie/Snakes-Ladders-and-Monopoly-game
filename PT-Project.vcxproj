@@ -194,11 +194,13 @@
     <ClCompile Include="InputDiceValue.cpp" />
     <ClCompile Include="Ladder.cpp" />
     <ClCompile Include="NewGame.cpp" />
+    <ClCompile Include="OpenGridAction.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PasteCardAction.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RollDiceAction.cpp" />
+    <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="ToDesignModeAction.cpp" />
     <ClCompile Include="ToPlayModeAction.cpp" />
@@ -254,10 +256,12 @@
     <ClInclude Include="InputDiceValue.h" />
     <ClInclude Include="Ladder.h" />
     <ClInclude Include="NewGame.h" />
+    <ClInclude Include="OpenGridAction.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RollDiceAction.h" />
+    <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="ToDesignModeAction.h" />
     <ClInclude Include="ToPlayModeAction.h" />

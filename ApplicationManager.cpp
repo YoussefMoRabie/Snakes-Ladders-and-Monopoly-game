@@ -1,12 +1,17 @@
 #include "ApplicationManager.h"
 
 #include "Grid.h"
+#include "PasteCardAction.h"
+#include "CutCardAction.h"
 #include"DeleteGameObjectAction.h"
 #include "AddLadderAction.h"
 #include"AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
+#include"CopyCardAction.h"
 #include "InputDiceValue.h"
+#include"SaveGridAction.h"
+#include"OpenGridAction.h"
 #include "NewGame.h"
 
 ///TODO: Add #include for all action types
@@ -74,9 +79,22 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DELETE_GAME_OBJECT:
 		pAct = new DeleteGameObjectAction(this);
 		break;
+	case COPY_CARD:
+		pAct = new CopyCardAction(this);
 	case EXIT:
 		break;
-
+	case CUT_CARD:
+		pAct = new CutCardAction(this);
+		break;
+	case PASTE_CARD:
+		pAct = new PasteCardAction(this);
+		break;
+	case SAVE_GRID:
+		pAct = new SaveGridAction(this);
+		break;
+	case OPEN_GRID:
+		pAct = new OpenGridAction(this);
+		break;
 	case TO_PLAY_MODE:
 		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;

@@ -1,6 +1,9 @@
 #include "Ladder.h"
 #include "Player.h"
+#include<iostream>
 #include <cmath>
+#include<fstream>
+using namespace std;
 Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPos) : GameObject(startCellPos)
 {
 	
@@ -59,8 +62,22 @@ bool Ladder::IsOverlapping(GameObject*p)
 	
 	return false;
 }
+ void Ladder:: Save(ofstream& OutFile) {
 
+	 OutFile << position.VCell()<<" " << endCellPos.VCell()<<" " << position.HCell()<<" " << 'L'<<endl;
+		 
 
+}
+ void Ladder::Load(ifstream & Infile) {
+	 
+	 int vstart = -1, vend = -1, h = -1; char type;
+	 Infile >> vstart >> vend >> h>>type;
+	 position.SetVCell(vstart);
+	 position.SetHCell(h);
+	 endCellPos.SetVCell(vend);
+	 endCellPos.SetHCell(h);
+	 
+ }
 CellPosition Ladder::GetEndPosition() const
 {
 	return endCellPos;

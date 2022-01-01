@@ -1,7 +1,6 @@
 #pragma once
 #include "Action.h"
-class AddSnakeAction :
-	public Action
+class AddSnakeAction :public Action
 {
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder

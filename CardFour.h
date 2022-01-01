@@ -5,7 +5,7 @@
 class CardFour : public Card
 {
 public:
-	CardFour(const CellPosition& pos); // A Constructor takes card position
+	CardFour(const CellPosition& pos, const int num); // A Constructor takes card position
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardFour which is: walletAmount
 

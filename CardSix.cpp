@@ -1,5 +1,5 @@
 #include "CardSix.h"
-CardSix::CardSix(CellPosition& p) :Card(p) {
+CardSix::CardSix(CellPosition& p, const int num) :Card(p) {
 	SetCardNumber(6);
 }
 void CardSix::ReadCardParameters(Grid * pGrid) {
