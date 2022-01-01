@@ -247,6 +247,7 @@ void Output::CreatePlayModeToolBar() const
 	MenuItemImages[ITM_NEW_GAME] = "images\\new_game.jpg";
 	MenuItemImages[ITM_INPUT_DICE_VALUE] = "images\\input_dice_value.jpg";
 	MenuItemImages[ITM_PLAY_EXIT] = "images\\Menu_Exit.jpg";
+	MenuItemImages[ITM_ATTACK] = "images\\Menu_Attack.jpg";
 
 
 

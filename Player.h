@@ -3,6 +3,8 @@
 #include "Grid.h"
 #include "Cell.h"
 
+enum AttackType { ice, fire, poison, lighting };
+
 class Player
 {
 	Cell * pCell;		   // pointer to the current Cell of the player
@@ -17,6 +19,11 @@ class Player
 						   // and reset again when reached 3
 						   // it is used to indicate when to move and when to add to your wallet
 	int turnsToSkip;	   // Number of turns the player will be unable to play "initailly 0"
+protected:
+	int AttackCounter;     // Number of special attacks left for the player "initially 2"
+	int SpecialAttacks[4]; // Special attacks the user can use each of only once
+	int burning;		   // Number of turns the player will lose 20 coins at the start of "initially 0"
+	int poisoned;		   // Number of turns the player will be poisoned for "deduct 1 from diceroll"
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -39,6 +46,8 @@ public:
 	int getPlayerNum() const;
 	int getJustRolledDice() const;
 	void setTurnsToSkip(int);
+	void setBurning(int);
+	void setPoisoned(int);
 	void MoveWithoutDice(Grid*,CellPosition&);
 	// ====== Drawing Functions ======
 
@@ -48,6 +57,10 @@ public:
 
 	// ====== Game Functions ======
 	void skipCheck(Grid*);					// Checks if the player has to skip his turn
+	void burnCheck(Grid*);					// Checks if the player is burning "deduct 20 coins"
+	bool poisonCheck(Grid*);				// Checks if the player is poisoned "deduct 1 from dice roll"
+
+	bool UseAttack(AttackType);				// Uses one of the player's special attacks
 
 	void Move(Grid * pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
 												// and Applies the Game Object's effect (if any) of the end reached cell 

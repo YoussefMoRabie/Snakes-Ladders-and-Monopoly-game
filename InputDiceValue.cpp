@@ -15,7 +15,7 @@ void InputDiceValue::ReadActionParameters()
 
 	pOut->PrintMessage("please enter a dice value between 1-6");
 	diceValue = pIn->GetInteger(pOut);
-	while (diceValue > 6 || diceValue < 0)
+	while (diceValue > 6 || diceValue < 1)
 	{
 		pOut->PrintMessage("Invalid input, please enter a dice value between 1-6");
 		diceValue = pIn->GetInteger(pOut);
@@ -35,12 +35,18 @@ void InputDiceValue::Execute()
 
 		// 2- Get the "current" player from pGrid
 		Player* current = pGrid->GetCurrentPlayer();
-		// 3- Move the currentPlayer using function Move of class player
+		// 3- if the player is poisoned deduct one from the diceroll
+		if (current->poisonCheck(pGrid))
+		{
+			diceValue--;
+		}
+		// 4- Move the currentPlayer using function Move of class player
 		current->Move(pGrid, diceValue);
-		// 4- Advance the current player number of pGrid
+		// 5- Advance the current player number of pGrid
 		pGrid->AdvanceCurrentPlayer();
-		// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 	}
+	else
+		pGrid->PrintErrorMessage("The game is over, click on NewGame to start a new one!");
 }
 
 InputDiceValue::~InputDiceValue()

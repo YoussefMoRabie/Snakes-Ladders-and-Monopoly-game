@@ -28,6 +28,9 @@
     <Filter Include="GUIClasses">
       <UniqueIdentifier>{03fd4e0d-92e0-4271-bb9b-d6e9f21ec35f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Attacks">
+      <UniqueIdentifier>{16fcdb93-5259-4353-987f-68c9dc688830}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
@@ -253,6 +256,24 @@
     <ClCompile Include="SaveGridAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="AttackAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack.cpp">
+      <Filter>Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Ice.cpp">
+      <Filter>Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Fire.cpp">
+      <Filter>Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Poison.cpp">
+      <Filter>Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="Lighting.cpp">
+      <Filter>Attacks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -432,6 +453,24 @@
     </ClInclude>
     <ClInclude Include="OpenGridAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Ice.h">
+      <Filter>Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire.h">
+      <Filter>Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Poison.h">
+      <Filter>Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Lighting.h">
+      <Filter>Attacks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,4 @@
 #include "Grid.h"
-
 #include "Cell.h"
 #include "CellPosition.h"
 #include "GameObject.h"
@@ -130,7 +129,8 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 	UpdateInterface();
-	GetCurrentPlayer()->skipCheck(this); //Check if the new current player should skip the turn 
+	GetCurrentPlayer()->burnCheck(this);     // Checks if the player is burning "deduct 20 coins"
+	GetCurrentPlayer()->skipCheck(this); // Checks if the new current player should skip the turn 
 }
 
 // ========= Other Getters =========
@@ -154,6 +154,13 @@ Player * Grid::GetCurrentPlayer() const
 	return PlayerList[currPlayerNumber];
 }
 
+Player* Grid::GetPlayerWithNum(int num)const
+{
+	if (num < MaxPlayerCount)
+		return PlayerList[num];
+	else
+		return NULL;
+}
 
 Player * Grid::GetPlayerWithLeastMoney(Player * p) const
 {

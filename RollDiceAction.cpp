@@ -33,12 +33,19 @@ void RollDiceAction::Execute()
 		pGrid->PrintErrorMessage("Player " + to_string(pGrid->GetCurrentPlayer()->getPlayerNum()) + " rolled a " + to_string(diceNumber)+"!");
 		// 3- Get the "current" player from pGrid
 		Player * current = pGrid->GetCurrentPlayer();
+		// 4- if the player is poisoned deduct one from the diceroll
+		if (current->poisonCheck(pGrid))
+		{
+			diceNumber--;
+		}
 		// 4- Move the currentPlayer using function Move of class player
 		current->Move(pGrid, diceNumber);
 		// 5- Advance the current player number of pGrid
 		pGrid->AdvanceCurrentPlayer();
 		// NOTE: the above guidelines are the main ones but not a complete set (You may need to add more steps).
 	}
+	else
+		pGrid->PrintErrorMessage("The game is over, click on NewGame to start a new one!");
 }
 
 RollDiceAction::~RollDiceAction()

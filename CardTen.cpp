@@ -43,7 +43,7 @@ void CardTen::ReadCardParameters(Grid * pGrid)
 	Output *pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	pOut->PrintMessage("New CardNine: Enter The amount of coins needed to  buy the cell ...");
+	pOut->PrintMessage("New CardTen: Enter The amount of coins needed to  buy the cell ...");
 	StationPrice = pIn->GetInteger(pOut);
 	while (StationPrice < 1)
 	{
@@ -52,7 +52,7 @@ void CardTen::ReadCardParameters(Grid * pGrid)
 	}
 
 	//---------------------------------------------------------------------------
-	pOut->PrintMessage("New CardNine: Enter The amount of coins needed  to pay fees to the player who owns the cell ...");
+	pOut->PrintMessage("New CardTen: Enter The amount of coins needed  to pay fees to the player who owns the cell ...");
 	Fees = pIn->GetInteger(pOut);
 	while (Fees < 1)
 	{
@@ -83,11 +83,11 @@ void CardTen::BuyStation(Grid * pGrid, Player * pPlayer)
 	{
 		Output *pOut = pGrid->GetOutput();
 		Input* pIn = pGrid->GetInput();
-		pOut->PrintMessage("Do you want to buy this station for " + to_string(StationPrice) + " coin ? (Y / N)");
+		pOut->PrintMessage("Do you want to buy this station for " + to_string(StationPrice) + " coins? (Y / N)");
 		string x = pIn->GetString(pOut);
 		while (x != "y"&&x != "Y"&&x != "N"&&x != "n")
 		{
-			pOut->PrintMessage("You entered an invalid Charcter: Do you want to buy this station ? (Y / N) ...");
+			pOut->PrintMessage("You entered an invalid Charcter: Do you want to buy this station? (Y / N) ...");
 			string x = pIn->GetString(pOut);
 		}
 		if (x == "y" || x == "Y")
@@ -95,9 +95,11 @@ void CardTen::BuyStation(Grid * pGrid, Player * pPlayer)
 			if (pPlayer->GetWallet() < StationPrice)
 				pOut->PrintMessage("You can't buy this station because you don't have enough coins in wallet");
 			else
+			{
 				pPlayer->SetWallet(pPlayer->GetWallet() - StationPrice);
-			SetOwner(pPlayer);
-			pOut->PrintMessage("Congratulations, you have purchased that station");
+				SetOwner(pPlayer);
+				pOut->PrintMessage("Congratulations, you have purchased that station");
+			}
 		}
 		pOut->ClearStatusBar();
 	}

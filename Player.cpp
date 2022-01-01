@@ -1,12 +1,19 @@
 #include "Player.h"
-
 #include "GameObject.h"
+#include "Attack.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(1), wallet(100), playerNum(playerNum), turnsToSkip(0)
+Player::Player(Cell * pCell, int playerNum) : stepCount(1), wallet(100), playerNum(playerNum)
 {
 	this->pCell = pCell;
 	this->turnCount = 0;
-
+	this->turnsToSkip = 0;
+	this->AttackCounter = 2;
+	this->burning = 0;
+	this->poisoned = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		SpecialAttacks[i] = 1;
+	}
 	// Make all the needed initialization or validations
 }
 
@@ -67,9 +74,26 @@ void Player::setTurnsToSkip(int turns)
 	}
 }
 
+void Player::setBurning(int turns)
+{
+	if (turns > 0)
+	{
+		burning = turns;
+	}
+}
+
+void Player::setPoisoned(int turns)
+{
+	if (turns > 0)
+	{
+		poisoned = turns;
+	}
+}
+
 int Player::getPlayerNum() const {
 	return playerNum;
 }
+
 int Player::getJustRolledDice()const{
 	return justRolledDiceNum;
 }
@@ -106,6 +130,67 @@ void Player::skipCheck(Grid * pGrid)
 		pGrid->AdvanceCurrentPlayer();
 	}
 }
+
+void Player::burnCheck(Grid* pGrid)
+{
+	if (burning > 0)
+	{
+		burning--;
+		pGrid->PrintErrorMessage("You are burning, you lose 20 coins!");
+		this->SetWallet(GetWallet() - 20);
+	}
+}
+
+bool Player::poisonCheck(Grid* pGrid)
+{
+	if (poisoned > 0)
+	{
+		poisoned--;
+		pGrid->PrintErrorMessage("You are poisoned, you lose 1 from your dice roll!");
+		return true;
+	}
+	return false;
+}
+
+
+
+bool Player::UseAttack(AttackType atk)
+{
+	if (atk == ice)
+	{
+		if (SpecialAttacks[ice] > 0)
+		{
+			SpecialAttacks[ice]--;
+			return true;
+		}
+	}
+	else if (atk == fire)
+	{
+		if (SpecialAttacks[fire] > 0)
+		{
+			SpecialAttacks[fire]--;
+			return true;
+		}
+	}
+	else if (atk == poison)
+	{
+		if (SpecialAttacks[poison] > 0)
+		{
+			SpecialAttacks[poison]--;
+			return true;
+		}
+	}
+	else if (atk == lighting)
+	{
+		if (SpecialAttacks[lighting] > 0)
+		{
+			SpecialAttacks[lighting]--;
+			return true;
+		}
+	}
+	return false;
+}
+
 void Player:: MoveWithoutDice(Grid* pGrid,CellPosition & toCell) {
 	pGrid->UpdatePlayerCell(this, toCell);
 	stepCount = pCell->GetCellPosition().GetCellNum();

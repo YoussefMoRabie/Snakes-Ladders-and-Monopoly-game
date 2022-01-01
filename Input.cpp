@@ -125,6 +125,7 @@ ActionType Input::GetUserAction() const
 			{
 			case ITM_ROLL_DICE: return ROLL_DICE;
 			case ITM_NEW_GAME: return NEW_GAME;
+			case ITM_ATTACK: return ATTACK;
 			case ITM_INPUT_DICE_VALUE: return INPUT_DICE_VALUE;
 			case ITM_SWITCH_TO_DESIGN_MODE: return TO_DESIGN_MODE;
 			case ITM_PLAY_EXIT: return EXIT;
