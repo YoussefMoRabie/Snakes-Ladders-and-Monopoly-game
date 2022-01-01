@@ -4,7 +4,7 @@ class CardSix :public Card
 {
 	int cellNumToMove;
 public:
-	CardSix(CellPosition&);
+	CardSix(CellPosition&, const int num);
 	virtual void Apply(Grid*, Player*);
 	virtual void ReadCardParameters(Grid * );
 };

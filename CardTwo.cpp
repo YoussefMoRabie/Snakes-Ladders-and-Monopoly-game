@@ -1,7 +1,7 @@
 #include "CardTwo.h"
 #include "Ladder.h"
 
-CardTwo::CardTwo(const CellPosition& pos) : Card(pos) // set the cell position of the card
+CardTwo::CardTwo(const CellPosition& pos,const int num) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 2; // set the inherited cardNumber data member with the card number 
 }

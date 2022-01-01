@@ -15,7 +15,7 @@ class CardSeven : public Card
 	ApplicationManager* pManager; //This card needs to utilize Appmanager to execute an extra RollDiceAction
 
 public:
-	CardSeven(const CellPosition& pos); // A Constructor takes card position
+	CardSeven(const CellPosition& pos, const int num); // A Constructor takes card position
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSeven which is: walletAmount
 

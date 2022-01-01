@@ -12,7 +12,7 @@ protected:
 	int cardNumber; // an integer representing the card number
 
 public:
-	Card(const CellPosition & pos); // A Constructor for card that takes the cell position of it
+	Card(const CellPosition & pos,int =0); // A Constructor for card that takes the cell position of it
 	virtual bool IsOverlapping(GameObject*);
 
 	void SetCardNumber(int cnum);   // The setter of card number
@@ -20,7 +20,8 @@ public:
 
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card
 	                                // It has the same implementation for all Card Types (Non-Virtual)
-
+	virtual void Save(ofstream& OutFile);	
+	virtual void Load(ifstream& Infile);
 	virtual void ReadCardParameters(Grid * pGrid); // It reads the parameters specific for each Card Type
 	                                               // It is a virtual function (implementation depends on Card Type)
 

@@ -1,5 +1,5 @@
 #include "CardFive.h"
-CardFive::CardFive(CellPosition& pos) :Card(pos) {
+CardFive::CardFive(CellPosition& pos, const int num) :Card(pos) {
 	SetCardNumber(5);
 
 }

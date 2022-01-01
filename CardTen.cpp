@@ -6,7 +6,7 @@ int CardTen::Fees = 0;
 
 Player* CardTen::Owner = NULL;
 
-CardTen::CardTen(const CellPosition & pos) : Card(pos) // set the cell position of the card
+CardTen::CardTen(const CellPosition & pos,const int num) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 10; // set the inherited cardNumber data member with the card number 
 

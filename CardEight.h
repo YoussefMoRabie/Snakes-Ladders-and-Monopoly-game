@@ -15,7 +15,7 @@ class CardEight : public Card
 		int GoOut; // The amount of coins needed to go out of the prison
 
 	public:
-		CardEight(const CellPosition & pos); // A Constructor takes card position
+		CardEight(const CellPosition & pos, const int num); // A Constructor takes card position
 
 		virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 

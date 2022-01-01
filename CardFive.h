@@ -5,7 +5,7 @@ class CardFive :
 {
 	
 public :
-	CardFive(CellPosition&);
+	CardFive(CellPosition&, const int num);
 	virtual void Apply(Grid* , Player* );
 	
 };

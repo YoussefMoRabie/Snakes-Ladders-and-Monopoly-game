@@ -1,7 +1,7 @@
 #include "CardThree.h"
 #include "RollDiceAction.h"
 
-CardThree::CardThree(const CellPosition& pos, ApplicationManager* pApp) : Card(pos), pManager(pApp) // set the cell position of the card
+CardThree::CardThree(const CellPosition& pos, ApplicationManager* pApp,const int num) : Card(pos), pManager(pApp) // set the cell position of the card
 {
 	cardNumber = 3; // set the inherited cardNumber data member with the card number 
 }

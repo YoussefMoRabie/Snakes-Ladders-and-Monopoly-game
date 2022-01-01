@@ -1,5 +1,5 @@
 #include "CardEight.h"
-CardEight::CardEight(const CellPosition & pos) : Card(pos) // set the cell position of the card
+CardEight::CardEight(const CellPosition & pos, const int num) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 8; // set the inherited cardNumber data member with the card number 
 }

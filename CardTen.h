@@ -14,7 +14,7 @@
 	static Player * Owner;
 
 public:
-	CardTen(const CellPosition & pos); // A Constructor takes card position
+	CardTen(const CellPosition & pos,const int); // A Constructor takes card position
 	static void SetOwner(Player * p);
 	static Player * GetOwner();
 	static int GetStationPrice();

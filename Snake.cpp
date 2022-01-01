@@ -73,6 +73,19 @@ CellPosition Snake::GetEndPosition() const
 {
 	return endCellPos;
 }
+void Snake::Save(ofstream& OutFile) {
+	OutFile << position.VCell()<<" " << endCellPos.VCell() << " " << position.HCell() << " " << 'S'<<endl;
+}
+void Snake::Load(ifstream& Infile) {
+	int vstart = -1, vend = -1, h = -1; char type;
+	Infile >> vstart >> vend >> h>>type; 
+	position.SetVCell(vstart);
+	position.SetHCell(h);
+	endCellPos.SetVCell(vend);
+	endCellPos.SetHCell(h);
+	
+}
+ 
 
 Snake::~Snake()
 {

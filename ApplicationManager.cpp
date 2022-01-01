@@ -10,6 +10,8 @@
 #include "RollDiceAction.h"
 #include"CopyCardAction.h"
 #include "InputDiceValue.h"
+#include"SaveGridAction.h"
+#include"OpenGridAction.h"
 #include "NewGame.h"
 
 ///TODO: Add #include for all action types
@@ -86,6 +88,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case PASTE_CARD:
 		pAct = new PasteCardAction(this);
+		break;
+	case SAVE_GRID:
+		pAct = new SaveGridAction(this);
+		break;
+	case OPEN_GRID:
+		pAct = new OpenGridAction(this);
 		break;
 	case TO_PLAY_MODE:
 		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
