@@ -26,8 +26,6 @@ void PasteCardAction::Execute() {
 		else
 		{
 			pManager->GetGrid()->PrintErrorMessage("Can not Paste here....");
-
-
 		}
 	}
 } // Executes action (code depends on action type so virtual)
