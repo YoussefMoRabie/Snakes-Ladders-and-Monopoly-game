@@ -19,10 +19,11 @@ void DeleteGameObjectAction:: ReadActionParameters() {
 
 void DeleteGameObjectAction::Execute() {
 	ReadActionParameters();
-	pManager->GetGrid()->RemoveObjectFromCell(DeletedObj);
-	pManager->UpdateInterface();
-	pManager->GetGrid()->PrintErrorMessage("ObjectDeleted!...");
-		
+	if (pManager->GetGrid()->RemoveObjectFromCell(DeletedObj)) {
+		pManager->UpdateInterface();
+		pManager->GetGrid()->PrintErrorMessage("ObjectDeleted!...");
+
+	}
 
 } 
 DeleteGameObjectAction:: ~DeleteGameObjectAction() {
