@@ -5,7 +5,8 @@ CopyCardAction::CopyCardAction(ApplicationManager* pApp) :Action(pApp) {
 
 }  
 
-void CopyCardAction::ReadActionParameters() {
+void CopyCardAction::ReadActionParameters() 
+{
 
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
@@ -21,12 +22,19 @@ void CopyCardAction::ReadActionParameters() {
 	 }
 	pOut->ClearStatusBar();
 
-
 } // Reads parameters required for action to execute 
 										 // (code depends on action type so virtual)
 
-void CopyCardAction::Execute() {
+void CopyCardAction::Execute() 
+{
+	Grid* pGrid = pManager->GetGrid();
 	ReadActionParameters();
+	if (CopiedCard == NULL)
+	{
+		pGrid->PrintErrorMessage("No Cards Here! Click to Continue...");
+		return;
+	}
+
 	pManager->GetGrid()->SetClipboard(CopiedCard);
 	pManager->UpdateInterface();
 	if (CopiedCard!= NULL)
@@ -35,6 +43,7 @@ void CopyCardAction::Execute() {
 
 
 }  // Executes action (code depends on action type so virtual)
-CopyCardAction:: ~CopyCardAction() {
+CopyCardAction:: ~CopyCardAction() 
+{
 
 }
