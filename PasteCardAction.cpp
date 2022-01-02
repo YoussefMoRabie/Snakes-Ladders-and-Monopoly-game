@@ -28,7 +28,6 @@ void PasteCardAction::Execute() {
 		ptr->Execute();
 	}
 
-<<<<<<< HEAD
 		
 
 
@@ -40,14 +39,6 @@ void PasteCardAction::Execute() {
 
 	
 	
-=======
-			pManager->GetGrid()->AddObjectToCell((GameObject*)PastedCard);
-		else
-		{
-			pManager->GetGrid()->PrintErrorMessage("Can not Paste here....");
-		}
-	}
->>>>>>> ee8da039276902a1ebc915462b1e345201278eda
 } // Executes action (code depends on action type so virtual)
 
 PasteCardAction:: ~PasteCardAction() {
