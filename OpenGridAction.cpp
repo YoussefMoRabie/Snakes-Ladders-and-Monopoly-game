@@ -22,6 +22,11 @@ void OpenGridAction::Execute() {
 	GameObject* pObj = NULL;;
 	while (!LoadGrid.eof()) {
 		LoadGrid >> num1 >> num2 >> num3 >> typ;
+		if (!LoadGrid.good())
+		{
+			//input failure, leave the loop
+			break;
+		}
 		switch (typ) {
 		case 'L': {CellPosition start(num1, num3);
 			CellPosition end(num2, num3);
@@ -36,7 +41,8 @@ void OpenGridAction::Execute() {
 		case 'C': {
 			CellPosition start(num1, num2);
 
-			AddCardAction* ptr = new AddCardAction(pManager);
+			AddCardAction* ptr;
+			ptr = new AddCardAction(pManager);
 			ptr->setCardNum_Pos(num3, start);
 			ptr->Execute();
 			
@@ -45,10 +51,7 @@ void OpenGridAction::Execute() {
 		}
 
 		}
-		Grid* pGrid = pManager->GetGrid();
-
-
-		pGrid->AddObjectToCell(pObj);
+		
 	}
 	
 		
