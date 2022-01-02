@@ -17,9 +17,15 @@
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
+	cardNumber = -1;
+	
 	// Initializes the pManager pointer of Action with the passed pointer
 }
+void AddCardAction::setCardNum_Pos(int num,CellPosition pos) {
+	cardNumber = num;
+	cardPosition = pos;
 
+}
 
 void AddCardAction::ReadActionParameters() 
 {	
@@ -54,6 +60,7 @@ void AddCardAction::ReadActionParameters()
 	pOut->PrintMessage("New Card: Please click on its Cell (Except for Cell No. 1 to Cell No. 99) ...");
 	
 	cardPosition = pIn->GetCellClicked();
+	
 	while(!cardPosition.IsValidCell())
 	{
 		pOut->PrintMessage("You didn't click on the  Cell : Please click on Card Cell (Except for Cell No. 1 to Cell No. 99) ...");
@@ -81,7 +88,10 @@ void AddCardAction::Execute()
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
 	// 1- The first line of any Action Execution is to read its parameter first
-	ReadActionParameters();
+	if (cardNumber == -1) {
+		ReadActionParameters();
+	}
+
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)

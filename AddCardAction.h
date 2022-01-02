@@ -12,7 +12,7 @@ class AddCardAction : public Action
 	
 public:
 	AddCardAction(ApplicationManager *pApp); // A Constructor
-		
+	void setCardNum_Pos(int,CellPosition);
 	virtual void ReadActionParameters(); // Reads AddCardAction action parameters (cardNumber, cardPosition)
 	
 	virtual void Execute(); // Creates a new Card Object of the specific Card Number

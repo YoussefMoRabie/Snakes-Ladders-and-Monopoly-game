@@ -5,6 +5,7 @@
 #include "Snake.h"
 #include"Card.h"
 #include"Cell.h"
+#include"AddCardAction.h"
 OpenGridAction::OpenGridAction(ApplicationManager* pApp) :Action(pApp) {
 
 }
@@ -35,7 +36,9 @@ void OpenGridAction::Execute() {
 		case 'C': {
 			CellPosition start(num1, num2);
 
-			pObj = new Card(start,num3);
+			AddCardAction* ptr = new AddCardAction(pManager);
+			ptr->setCardNum_Pos(num3, start);
+			ptr->Execute();
 			
 	
 			break;

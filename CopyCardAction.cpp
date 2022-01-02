@@ -15,10 +15,9 @@ void CopyCardAction::ReadActionParameters() {
 		pOut->PrintMessage("Click On A Card...");
 		CellPosition CopiedPos = pIn->GetCellClicked();
 		CopiedCard = pGrid->GetCell(CopiedPos.VCell(), CopiedPos.HCell())->HasCard();
-		while (CopiedCard == NULL) {
-			pGrid->PrintErrorMessage("No Cards Here! Click on a Card...");
-			CellPosition CopiedPos = pIn->GetCellClicked();
-			CopiedCard = pGrid->GetCell(CopiedPos.VCell(), CopiedPos.HCell())->HasCard();
+		if (CopiedCard == NULL) {
+			pGrid->PrintErrorMessage("No Cards Here! Click to continue...");
+			return;
 	 }
 	pOut->ClearStatusBar();
 
@@ -30,6 +29,7 @@ void CopyCardAction::Execute() {
 	ReadActionParameters();
 	pManager->GetGrid()->SetClipboard(CopiedCard);
 	pManager->UpdateInterface();
+	if (CopiedCard!= NULL)
 	pManager->GetGrid()->PrintErrorMessage("Coppied!...");
 
 

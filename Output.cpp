@@ -411,7 +411,7 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 
 void Output::DrawLadder(const CellPosition & fromCell, const CellPosition & toCell) const
 {
-	if (fromCell.GetCellNum() <= 1 || fromCell.VCell() == 0)
+	if (fromCell.GetCellNum() <= 1 || fromCell.VCell() <= 0)
 		return;
 
 	///TODO: Validate the Cell Position (Must be Vertical Cells AND toCell above fromCell, otherwise, Do NOT draw)

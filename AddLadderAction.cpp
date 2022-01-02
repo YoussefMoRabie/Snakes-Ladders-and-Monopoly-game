@@ -26,16 +26,14 @@ void AddLadderAction::ReadActionParameters()
 	startPos = pIn->GetCellClicked();
 	Snake* end;
 	bool thereSnake = false;
+	if (startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
+	{
+		return;
+	}
 
+	
 
-	while (!thereSnake) {
-
-		while (startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
-		{
-			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
-			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-			startPos = pIn->GetCellClicked();
-		}
+		
 		for (int i = 0; i < NumVerticalCells - 1; i++) {
 			end = pGrid->GetCell(i, startPos.HCell())->HasSnake();
 			if (end != NULL) {
@@ -46,19 +44,18 @@ void AddLadderAction::ReadActionParameters()
 				}
 			}
 		}
+		
+		
 
 		if (thereSnake)
 		{
-			pGrid->PrintErrorMessage("Invalid Ladder, Click to try again  ...");
-			pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-			startPos = pIn->GetCellClicked();
+			pGrid->PrintErrorMessage("Invalid Ladder,here is a snake, Click to Continue ...");
+			startPos.SetVCell(-1);
+			pGrid->GetOutput()->ClearStatusBar();
+			return;
 		}
-		else
-			thereSnake = true;
 
-
-
-	}
+	
 
 
 
@@ -88,6 +85,7 @@ void AddLadderAction::Execute()
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
 	ReadActionParameters();
+	
 
 	// Create a Ladder object with the parameters read from the user
 	Ladder * pLadder = new Ladder(startPos, endPos);
