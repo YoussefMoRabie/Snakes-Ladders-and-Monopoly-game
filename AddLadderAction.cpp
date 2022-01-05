@@ -62,14 +62,16 @@ void AddLadderAction::ReadActionParameters()
 	// Read the endPos parameter
 	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
-	end = pGrid->GetCell(endPos.VCell(), endPos.HCell())->HasSnake();
+	
+	 end = pManager->GetGrid()->GetCell(endPos.VCell(), endPos.HCell())->HasSnake();
 	int x = -1;
 	if (end != NULL)
 		x = end->GetPosition().GetCellNum();
-	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell() || x == endPos.GetCellNum()) 
-		pGrid->PrintErrorMessage("Invalid Ladder, Click to Continue ...");
+	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell() || x == endPos.GetCellNum())
+	{
 		
-
+		return;
+	}
 	///TODO: Make the needed validations on the read parameters
 		//Done
 
