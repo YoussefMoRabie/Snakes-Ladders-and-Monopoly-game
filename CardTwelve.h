@@ -7,7 +7,8 @@ public:
 
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); 
-
+	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& Infile);
 	virtual ~CardTwelve(); // A Virtual Destructor
 };
 

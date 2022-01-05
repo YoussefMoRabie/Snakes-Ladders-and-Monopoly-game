@@ -20,8 +20,8 @@ public:
 
 	void Draw(Output* pOut) const;  // Draws the card number in the cell position of the card
 	                                // It has the same implementation for all Card Types (Non-Virtual)
-	virtual void Save(ofstream& OutFile);	
-	virtual void Load(ifstream& Infile);
+	virtual void Save(ofstream& OutFile)=0;	
+	virtual void Load(ifstream& Infile)=0;
 	virtual void ReadCardParameters(Grid * pGrid); // It reads the parameters specific for each Card Type
 	                                               // It is a virtual function (implementation depends on Card Type)
 

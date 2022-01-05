@@ -13,6 +13,19 @@ CardNine::CardNine(const CellPosition & pos, const int num) : Card(pos) // set t
 CardNine::~CardNine(void)
 {
 }
+void CardNine::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " "  << StationPrice <<" " << Fees << endl;
+}
+void CardNine::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	
+	Infile >> vstart >> h>>StationPrice>>Fees  ;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 void CardNine::SetOwner(Player * p)
 {
 	Owner = p;

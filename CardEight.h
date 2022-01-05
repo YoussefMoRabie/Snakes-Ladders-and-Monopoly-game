@@ -20,6 +20,8 @@ class CardEight : public Card
 		virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 
 		virtual void Apply(Grid* pGrid, Player* pPlayer); 
+		virtual void Save(ofstream& OutFile);
+		virtual void Load(ifstream& Infile);
 
 		virtual ~CardEight(); // A Virtual Destructor
 	

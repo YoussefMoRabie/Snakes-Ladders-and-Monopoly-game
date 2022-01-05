@@ -7,6 +7,18 @@ CardEight::CardEight(const CellPosition & pos, const int num) : Card(pos) // set
 CardEight::~CardEight(void)
 {
 }
+void CardEight::Save(ofstream& OutFile) {
+	OutFile << " " << GetCardNumber() << position.VCell() << " " << position.HCell()  <<" " << GoOut << endl;
+}
+void CardEight::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	Infile >> vstart >> h>>GoOut;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 void CardEight::ReadCardParameters(Grid * pGrid)
 {
 

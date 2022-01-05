@@ -14,6 +14,18 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 {
 	//This card has no parameters
 }
+void CardTwo:: Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << endl;
+}
+void CardTwo::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	Infile >> vstart >> h;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 
 void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 {

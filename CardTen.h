@@ -18,9 +18,13 @@ public:
 	static void SetOwner(Player * p);
 	static Player * GetOwner();
 	static int GetStationPrice();
+	void setstationPrice(int);
+	void setFees(int);
 	virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 	bool StationIsBought();
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
+	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& Infile);
 	void BuyStation(Grid* pGrid, Player* pPlayer);
 	void PayStation(Grid* pGrid, Player* pPlayer);
 

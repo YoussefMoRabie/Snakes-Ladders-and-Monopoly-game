@@ -13,7 +13,7 @@ void PasteCardAction::ReadActionParameters() {
 	pOut->PrintMessage("Click On your selected Cell...");
 	PasteTo = pIn->GetCellClicked();
 	if (pGrid->GetCell(PasteTo.VCell(), PasteTo.HCell())->GetGameObject() != NULL) {
-		pManager->GetGrid()->PrintErrorMessage("Can not Paste here, Click to continue....");
+		
 		return;
 	}
 	pOut->ClearStatusBar();

@@ -17,6 +17,19 @@ void CardEleven::SetOwner(Player * p)
 {
 	Owner = p;
 }
+void CardEleven::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " "  << StationPrice<<" " << Fees << endl;
+}
+void CardEleven::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	
+	Infile >> vstart >> h>>StationPrice>>Fees;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 
 Player * CardEleven::GetOwner()
 {

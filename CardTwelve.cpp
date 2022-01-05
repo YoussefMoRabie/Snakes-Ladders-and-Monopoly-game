@@ -10,6 +10,18 @@ CardTwelve::CardTwelve(const CellPosition& pos,const int num) : Card(pos) // set
 CardTwelve::~CardTwelve(void)
 {
 }
+void CardTwelve::Save(ofstream& OutFile) {
+	OutFile <<  GetCardNumber() << " " << position.VCell() << " " << position.HCell()  << endl;
+}
+void CardTwelve::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	Infile >> vstart >> h;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {

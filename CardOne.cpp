@@ -40,6 +40,22 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
+void CardOne::setWalletAmount(int w) {
+	walletAmount = w;
+}
+void CardOne:: Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " "  <<walletAmount<< endl;
+}
+void CardOne:: Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	
+	Infile >> vstart >> h>> walletAmount; 
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+
+
+ }
 
 void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 {

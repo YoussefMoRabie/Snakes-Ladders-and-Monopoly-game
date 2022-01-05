@@ -19,7 +19,9 @@ public:
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSeven which is: walletAmount
 
-	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardSeven on the passed Player
+	virtual void Apply(Grid* pGrid, Player* pPlayer);
+	virtual void Save(ofstream& OutFile);
+	virtual void Load(ifstream& Infile);// Applies the effect of CardSeven on the passed Player
 													  // by decrementing the player's wallet by the walletAmount data member
 
 	virtual ~CardSeven(); // A Virtual Destructor

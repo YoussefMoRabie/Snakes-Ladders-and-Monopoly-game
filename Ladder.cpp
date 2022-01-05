@@ -64,14 +64,14 @@ bool Ladder::IsOverlapping(GameObject*p)
 }
  void Ladder:: Save(ofstream& OutFile) {
 
-	 OutFile << position.VCell()<<" " << endCellPos.VCell()<<" " << position.HCell()<<" " << 'L'<<endl;
+	 OutFile << position.VCell()<<" " << endCellPos.VCell()<<" " << position.HCell()<<endl;
 		 
 
 }
  void Ladder::Load(ifstream & Infile) {
 	 
-	 int vstart = -1, vend = -1, h = -1; char type;
-	 Infile >> vstart >> vend >> h>>type;
+	 int vstart = -1, vend = -1, h = -1;
+	 Infile >> vstart >> vend >> h;
 	 position.SetVCell(vstart);
 	 position.SetHCell(h);
 	 endCellPos.SetVCell(vend);

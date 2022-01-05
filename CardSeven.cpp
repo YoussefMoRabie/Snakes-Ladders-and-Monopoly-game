@@ -14,6 +14,18 @@ void CardSeven::ReadCardParameters(Grid* pGrid)
 {
 	//This card has no parameters
 }
+void CardSeven::Save(ofstream& OutFile) {
+	OutFile  << GetCardNumber() << " " << position.VCell() << " " << position.HCell()  << endl;
+}
+void CardSeven::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	Infile >> vstart >> h;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 
 void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 {

@@ -5,6 +5,18 @@
 #include "Snake.h"
 #include"Card.h"
 #include"Cell.h"
+#include "CardOne.h"
+#include "CardTwo.h"
+#include "CardThree.h"
+#include "CardFour.h"
+#include "CardFive.h"
+#include "CardSix.h"
+#include "CardSeven.h"
+#include "CardEight.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
+#include "CardTwelve.h"
 #include"AddCardAction.h"
 OpenGridAction::OpenGridAction(ApplicationManager* pApp) :Action(pApp) {
 
@@ -17,47 +29,64 @@ void OpenGridAction::ReadActionParameters() {
 }
 void OpenGridAction::Execute() {
 	LoadGrid.open("Grid.txt");
-	char typ;
-	int num1, num2, num3;
-	GameObject* pObj = NULL;;
-	while (!LoadGrid.eof()) {
-		LoadGrid >> num1 >> num2 >> num3 >> typ;
-		if (!LoadGrid.good())
-		{
-			//input failure, leave the loop
+	Grid* pGrid = pManager->GetGrid();
+	int count;
+	LoadGrid >> count;
+	GameObject* pObj;
+	for (int i = 0; i < count; i++) {
+		pObj = new Ladder(-1, -1);
+		pObj->Load(LoadGrid);
+		pGrid->AddObjectToCell(pObj);
+	}
+	LoadGrid >> count;
+	for (int i = 0; i < count; i++) {
+		pObj = new Snake(-1, -1);
+		pObj->Load(LoadGrid);
+		pGrid->AddObjectToCell(pObj);
+	}
+	CellPosition pos;
+	LoadGrid >> count;
+	for (int i = 0; i < count; i++) {
+		int num;
+		LoadGrid >> num; 
+		switch (num) {
+		case1: pObj = new CardOne(pos, -1);
+			break;
+		case 2: pObj = new CardTwo(pos, -1);
+			break;
+		case 3: pObj = new CardThree(pos,pManager, -1);
+			break;
+		case 4: pObj = new CardFour(pos, -1);
+			break;
+		case 5: pObj = new CardFive(pos, -1);
+			break;
+		case 6: pObj = new CardSix(pos, -1);
+			break;
+		case 7: pObj = new CardSeven(pos, -1);
+			break;
+		case 8: pObj = new CardEight(pos, -1);
+			break;
+		case 9: pObj = new CardNine(pos, -1);
+			break;
+		case 10: pObj = new CardTen(pos, -1);
+			break;
+		case 11:pObj = new CardEleven(pos, -1);
+			break;
+		case 12: pObj = new CardTwelve(pos, -1);
 			break;
 		}
-		switch (typ) {
-		case 'L': {CellPosition start(num1, num3);
-			CellPosition end(num2, num3);
-			pObj = new Ladder(start, end);
-			break; }
-		case 'S': {
-			CellPosition start(num1, num3);
-			CellPosition end(num2, num3);
-			pObj = new Snake(start, end);
-			break;
-		}
-		case 'C': {
-			CellPosition start(num1, num2);
+		pObj->Load(LoadGrid);
+		pGrid->AddObjectToCell(pObj);
 
-			AddCardAction* ptr;
-			ptr = new AddCardAction(pManager);
-			ptr->setCardNum_Pos(num3, start);
-			ptr->Execute();
-			
+	}
 	
-			break;
-		}
-
-		}
 		
 	}
 	
 		
 		
 		
-}
+
 OpenGridAction:: ~OpenGridAction() {
 
 }

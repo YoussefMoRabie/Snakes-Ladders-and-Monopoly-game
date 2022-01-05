@@ -14,6 +14,18 @@ CardTen::CardTen(const CellPosition & pos,const int num) : Card(pos) // set the 
 CardTen::~CardTen(void)
 {
 }
+void CardTen::Save(ofstream& OutFile) {
+	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " " << StationPrice<<" " << Fees << endl;
+}
+void CardTen::Load(ifstream& Infile) {
+	int vstart = -1, h = -1;
+	
+	Infile >> vstart >> h >>StationPrice>>Fees;
+	position.SetHCell(h);
+	position.SetVCell(vstart);
+	
+
+}
 void CardTen::SetOwner(Player * p)
 {
 	Owner = p;
@@ -22,6 +34,12 @@ void CardTen::SetOwner(Player * p)
 Player * CardTen::GetOwner()
 {
 	return Owner;
+}
+void CardTen::setstationPrice(int x) {
+	StationPrice = x;
+}
+void CardTen::setFees(int y) {
+	Fees = y;
 }
 
 int CardTen::GetStationPrice()

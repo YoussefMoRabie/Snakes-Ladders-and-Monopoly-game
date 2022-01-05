@@ -41,18 +41,7 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 
 	pGrid->PrintErrorMessage("You have reached card " + to_string(cardNumber) + ". Click to continue ...");
 }
-void Card::Save(ofstream& OutFile) {
-	OutFile << position.VCell()<<" " << position.HCell() <<" "<<GetCardNumber()<<" " << 'C'<<endl;
-}
-void Card::Load(ifstream& Infile) {
-	int vstart = -1, h = -1, cardnum = -1; 
-	char type;
-	Infile >> vstart >> h >> cardnum>> type;
-	position.SetHCell(h); 
-	position.SetVCell(vstart);
-	SetCardNumber(cardnum);
-	
-}
+
 
 Card::~Card()
 {
