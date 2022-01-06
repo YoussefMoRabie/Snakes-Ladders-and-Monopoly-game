@@ -6,6 +6,7 @@
 
 AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 {
+	isValid = true;
 	// Initializes the pManager pointer of Action with the passed pointer
 }
 
@@ -26,11 +27,18 @@ void AddLadderAction::ReadActionParameters()
 	startPos = pIn->GetCellClicked();
 	Snake* end;
 	bool thereSnake = false;
-	if (startPos.VCell() == 0 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
+	if (startPos.VCell() == 0 )
 	{
+		pGrid->PrintErrorMessage("Invalid Ladder, Click to Continue ...");
+		isValid = false;
 		return;
 	}
-
+	
+	if (pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL) {
+		pGrid->PrintErrorMessage("Invalid Ladder,here is a Card, Click to Continue ...");
+		isValid = false;
+		return;
+	}
 	
 
 		
@@ -52,6 +60,7 @@ void AddLadderAction::ReadActionParameters()
 			pGrid->PrintErrorMessage("Invalid Ladder,here is a snake, Click to Continue ...");
 			startPos.SetVCell(-1);
 			pGrid->GetOutput()->ClearStatusBar();
+			isValid = false;
 			return;
 		}
 
@@ -67,11 +76,13 @@ void AddLadderAction::ReadActionParameters()
 	int x = -1;
 	if (end != NULL)
 		x = end->GetPosition().GetCellNum();
-	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell() || x == endPos.GetCellNum())
+	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell()|| x == endPos.GetCellNum())
 	{
-		
+		pGrid->PrintErrorMessage("Invalid Ladder, Click to Continue ...");
+		isValid = false;
 		return;
 	}
+	
 	///TODO: Make the needed validations on the read parameters
 		//Done
 
@@ -88,7 +99,8 @@ void AddLadderAction::Execute()
 	// and hence initializes its data members
 	ReadActionParameters();
 	
-
+	if (!isValid)
+		return;
 	// Create a Ladder object with the parameters read from the user
 	Ladder * pLadder = new Ladder(startPos, endPos);
 

@@ -3,6 +3,7 @@
 class DeleteGameObjectAction :public Action
 {
 	CellPosition DeletedObj;
+	bool thereObj;
 
 public:
 

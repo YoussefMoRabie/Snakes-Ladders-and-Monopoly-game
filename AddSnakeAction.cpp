@@ -11,7 +11,7 @@ AddSnakeAction::AddSnakeAction(ApplicationManager *pApp) : Action(pApp)
 
 AddSnakeAction::~AddSnakeAction()
 {
-	thereladder = true;
+	isValid = true;
 }
 void AddSnakeAction::ReadActionParameters()
 {
@@ -19,7 +19,7 @@ void AddSnakeAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
+	
 	// Read the startPos parameter
 
 	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
@@ -28,6 +28,7 @@ void AddSnakeAction::ReadActionParameters()
 	if  (startPos.VCell() == NumVerticalCells - 1 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
 	{
 		pGrid->PrintErrorMessage("Invalid Snake, Click to continue  ...");
+		isValid = false;
 		return;
 		
 	}
@@ -39,10 +40,13 @@ void AddSnakeAction::ReadActionParameters()
 	int x = -1;
 	if (end != NULL)
 		x = end->GetPosition().GetCellNum();
-	if (startPos.VCell() >= endPos.VCell() || startPos.HCell() != endPos.HCell() || x == endPos.GetCellNum()) {
-		pGrid->PrintErrorMessage("Error: Invalid Snake ! Click to continue ...");
-		 thereladder= false;
+	if (startPos.VCell() >= endPos.VCell() || startPos.HCell() != endPos.HCell()|| x == endPos.GetCellNum()) {
+		pGrid->PrintErrorMessage("Invalid Snake, Click to continue  ...");
+		isValid = false;
+		return;
 	}
+	
+
 
 	///TODO: Make the needed validations on the read parameters
 		//Done
@@ -59,7 +63,9 @@ void AddSnakeAction::Execute()
 	ReadActionParameters();
 
 	Grid* pGrid = pManager->GetGrid();
-	if (thereladder) {
+	if (!isValid) {
+		return;
+	}
 
 		// Create a Ladder object with the parameters read from the user
 		Snake* pSnake = new Snake(startPos, endPos);
@@ -75,9 +81,8 @@ void AddSnakeAction::Execute()
 			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
 		}
 		// Here, the ladder is created and added to the GameObject of its Cell, so we finished executing the AddLadderAction
-	}
-	else {
+	
 		
-		return;
-	}
+		
+	
 }

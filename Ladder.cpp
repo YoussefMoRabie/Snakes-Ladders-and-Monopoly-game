@@ -40,6 +40,9 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	//    Review the "pGrid" functions and decide which function can be used for that
 	
 }
+int Ladder::getSize() {
+	return size;
+}
 bool Ladder::IsOverlapping(GameObject*p)
 {
 	int h = endCellPos.HCell();
@@ -47,11 +50,11 @@ bool Ladder::IsOverlapping(GameObject*p)
 		Ladder* L = dynamic_cast<Ladder*>(p);
 		if (L != NULL)
 		{
-			for (int i = 0; i < 9; i++)
+			for (int i = 0; i < size; i++)
 			{
 
 
-				for (int k = 0; k <= L->size; k++) {
+				for (int k = 0; k <= L->getSize(); k++) {
 			
 						if (cellsCounter[i] == L->cellsCounter[k])
 							return true;

@@ -52,7 +52,7 @@ bool Snake::IsOverlapping(GameObject*p)
 	Snake* L = dynamic_cast<Snake*>(p);
 	if (L != NULL)
 	{
-		for (int i = 0; i < 9; i++)
+		for (int i = 0; i < size; i++)
 		{
 
 
