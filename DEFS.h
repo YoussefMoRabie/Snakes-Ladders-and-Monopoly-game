@@ -31,7 +31,6 @@ enum ActionType // The actions supported (add more as needed)
 	///TODO: Add more action types of Play Mode
 	INPUT_DICE_VALUE,
 	NEW_GAME,
-	ATTACK,
 
 	//  [3] Others
 

@@ -1,15 +1,19 @@
 #include "Player.h"
 #include "GameObject.h"
 #include "Attack.h"
+#include "Ice.h"
+#include "Fire.h"
+#include "Poison.h"
+#include "Lightning.h"
 
 Player::Player(Cell * pCell, int playerNum) : stepCount(1), wallet(100), playerNum(playerNum)
 {
 	this->pCell = pCell;
-	this->turnCount = 0;
-	this->turnsToSkip = 0;
-	this->AttackCounter = 2;
-	this->burning = 0;
-	this->poisoned = 0;
+	turnCount = 0;
+	turnsToSkip = 0;
+	AttackCounter = 2;
+	burning = 0;
+	poisoned = 0;
 	for (int i = 0; i < 4; i++)
 	{
 		SpecialAttacks[i] = 1;
@@ -53,6 +57,13 @@ void Player::setTurnCount(int t)
 	if (t >= 0 && t < 3) {
 		turnCount = t;
 	}
+}
+
+void Player::turnIncrement()
+{
+	turnCount++;
+	if (turnCount == 3)
+		turnCount = 0;
 }
 
 int Player::GetStepCount() const
@@ -126,6 +137,7 @@ void Player::skipCheck(Grid * pGrid)
 	if (turnsToSkip > 0)
 	{
 		turnsToSkip--;
+		turnIncrement();
 		pGrid->PrintErrorMessage("Player " + to_string(getPlayerNum()) + " skips the turn this round! click to continue...");
 		pGrid->AdvanceCurrentPlayer();
 	}
@@ -138,6 +150,7 @@ void Player::burnCheck(Grid* pGrid)
 		burning--;
 		pGrid->PrintErrorMessage("You are burning, you lose 20 coins!");
 		this->SetWallet(GetWallet() - 20);
+		pGrid->UpdateInterface();
 	}
 }
 
@@ -152,16 +165,75 @@ bool Player::poisonCheck(Grid* pGrid)
 	return false;
 }
 
-
-
-bool Player::UseAttack(AttackType atk)
+void Player::AttackChoice(Grid* pGrid)
 {
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+
+	if (AttackCounter == 0)
+	{
+		pGrid->PrintErrorMessage("You already used your 2 special attacks for this game, click to continue...");
+		return;
+	}
+
+	pOut->PrintMessage("Do you wish to launch a special attack instead of recharging? y/n");
+	string choice = pIn->GetString(pOut);
+	pOut->ClearStatusBar();
+	while (choice != "y" && choice != "Y" && choice != "N" && choice != "n")
+	{
+		pOut->PrintMessage("You entered an invalid Charcter: Do you wish to launch a special attack instead of recharging? y/n");
+		choice = pIn->GetString(pOut);
+		pOut->ClearStatusBar();
+	}
+	if (choice == "y" || choice == "Y")
+	{
+		pOut->PrintMessage("Choose the type of attack ('I'ce - 'F'ire - 'P'oison - 'L'ighting)");
+		string type = pIn->GetString(pOut);
+		pOut->ClearStatusBar();
+
+		bool used = false;
+		if (type == "i" || type == "I")
+		{
+			if (UseAttack(ice, pGrid))
+				used = true;
+		}
+		else if (type == "f" || type == "F")
+		{
+			if (UseAttack(fire, pGrid))
+				used = true;
+		}
+		else if (type == "p" || type == "P")
+		{
+			if (UseAttack(poison, pGrid))
+				used = true;
+		}
+		else if (type == "l" || type == "L")
+		{
+			if (UseAttack(lightning, pGrid))
+				used = true;
+		}
+		else
+		{
+			pGrid->PrintErrorMessage("Invalid input, click to continue...");
+			AttackChoice(pGrid);
+		}
+		if (used == false)
+		{
+			pGrid->PrintErrorMessage("You can use each special attack once per game, click to continue...");
+			AttackChoice(pGrid);
+		}
+	}
+}
+
+bool Player::UseAttack(AttackType atk, Grid* pGrid)
+{
+	Attack* attack = NULL;
 	if (atk == ice)
 	{
 		if (SpecialAttacks[ice] > 0)
 		{
 			SpecialAttacks[ice]--;
-			return true;
+			attack = new Ice(pGrid, this);
 		}
 	}
 	else if (atk == fire)
@@ -169,7 +241,7 @@ bool Player::UseAttack(AttackType atk)
 		if (SpecialAttacks[fire] > 0)
 		{
 			SpecialAttacks[fire]--;
-			return true;
+			attack = new Fire(pGrid, this);
 		}
 	}
 	else if (atk == poison)
@@ -177,16 +249,26 @@ bool Player::UseAttack(AttackType atk)
 		if (SpecialAttacks[poison] > 0)
 		{
 			SpecialAttacks[poison]--;
-			return true;
+			attack = new Poison(pGrid, this);
 		}
 	}
-	else if (atk == lighting)
+	else if (atk == lightning)
 	{
-		if (SpecialAttacks[lighting] > 0)
+		if (SpecialAttacks[lightning] > 0)
 		{
-			SpecialAttacks[lighting]--;
-			return true;
+			SpecialAttacks[lightning]--;
+			attack = new Lightning(pGrid, this);
 		}
+	}
+	if (attack != NULL)			// No going back now
+	{
+		AttackCounter--;		// Used one of his two attacks
+		turnCount = 0;			// End of wallet turn
+
+		attack->Execute();		// virtual func.
+		delete attack;			// Not needed anymore 
+		attack = NULL;
+		return true;
 	}
 	return false;
 }
@@ -199,9 +281,25 @@ void Player:: MoveWithoutDice(Grid* pGrid,CellPosition & toCell) {
 	{
 		pCell->GetGameObject()->Apply(pGrid, this);
 	}
-	// 8- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells)
+	// Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells + 1)
 		pGrid->SetEndGame(true);
+}
+
+void Player::restart(Grid* pGrid)
+{
+	CellPosition firstCell(1);
+	pGrid->UpdatePlayerCell(this, firstCell);
+	wallet = 100;
+	turnCount = 0;
+	turnsToSkip = 0;
+	AttackCounter = 2;
+	burning = 0;
+	poisoned = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		SpecialAttacks[i] = 1;
+	}
 }
 
 void Player::Move(Grid * pGrid, int diceNumber)
@@ -214,12 +312,11 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 
 	// 1- Increment the turnCount because calling Move() means that the player has rolled the dice once
-	turnCount++;
+	turnIncrement();
 	// 2- Check the turnCount to know if the wallet recharge turn comes (recharge wallet instead of move)
 	//    If yes, recharge wallet and reset the turnCount and return from the function (do NOT move)
-	if (turnCount == 3) {
+	if (turnCount == 0) {
 		wallet += diceNumber * 10;
-		turnCount = 0;
 		return;
 	}
 	// 3- Set the justRolledDiceNum with the passed diceNumber
@@ -237,7 +334,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		pCell->GetGameObject()->Apply(pGrid, this);
 	}
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells)
+	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells + 1)
 		pGrid->SetEndGame(true);
 }
 

@@ -48,7 +48,6 @@ enum PLAY_MODE_ITEMS // The items of the Play Mode (you should add more items)
 
 	ITM_ROLL_DICE,
 	ITM_INPUT_DICE_VALUE,
-	ITM_ATTACK,
 	ITM_NEW_GAME,
 	ITM_SWITCH_TO_DESIGN_MODE,
 	ITM_PLAY_EXIT,

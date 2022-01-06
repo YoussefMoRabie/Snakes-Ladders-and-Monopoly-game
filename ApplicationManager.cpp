@@ -13,7 +13,6 @@
 #include "SaveGridAction.h"
 #include "OpenGridAction.h"
 #include "NewGame.h"
-#include "AttackAction.h"
 
 ///TODO: Add #include for all action types
 
@@ -119,10 +118,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new InputDiceValue(this);
 		break;
 
-	case ATTACK:
-		// create an object of AttackAction here
-		pAct = new AttackAction(this);
-		break;
 
 	case NEW_GAME:
 		// create an object of NewGame here

@@ -1,9 +1,10 @@
 #include "NewGame.h"
-
 #include "Grid.h"
 #include "Player.h"
+#include "CardNine.h"
+#include "CardTen.h"
+#include "CardEleven.h"
 
-#include <time.h> // used to in srand to generate random numbers with different seed
 
 NewGame::NewGame(ApplicationManager* pApp) : Action(pApp)
 {
@@ -16,18 +17,14 @@ void NewGame::ReadActionParameters()
 
 void NewGame::Execute()
 {
-	
 	Grid* pGrid = pManager->GetGrid();
-	CellPosition firstCell(1);
-
-	for (int i = 0; i < MaxPlayerCount; i++) {
-		Player* current = pGrid->GetCurrentPlayer();
-		pGrid->UpdatePlayerCell(current, firstCell);
-		current->SetWallet(100);
-		current->setTurnCount(0);
-		pGrid->AdvanceCurrentPlayer();
-	}
+	pGrid->RestartAllPlayers();
 	pGrid->SetCurrentPlayer(0);
+
+	// All stations must return without an owner
+	CardNine::SetOwner(NULL);
+	CardTen::SetOwner(NULL);
+	CardEleven::SetOwner(NULL);
 }
 
 NewGame::~NewGame()

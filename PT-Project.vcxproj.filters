@@ -256,9 +256,6 @@
     <ClCompile Include="SaveGridAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="AttackAction.cpp">
-      <Filter>Actions</Filter>
-    </ClCompile>
     <ClCompile Include="Attack.cpp">
       <Filter>Attacks</Filter>
     </ClCompile>
@@ -271,7 +268,7 @@
     <ClCompile Include="Poison.cpp">
       <Filter>Attacks</Filter>
     </ClCompile>
-    <ClCompile Include="Lighting.cpp">
+    <ClCompile Include="Lightning.cpp">
       <Filter>Attacks</Filter>
     </ClCompile>
   </ItemGroup>
@@ -454,9 +451,6 @@
     <ClInclude Include="OpenGridAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="AttackAction.h">
-      <Filter>Actions</Filter>
-    </ClInclude>
     <ClInclude Include="Attack.h">
       <Filter>Attacks</Filter>
     </ClInclude>
@@ -469,7 +463,7 @@
     <ClInclude Include="Poison.h">
       <Filter>Attacks</Filter>
     </ClInclude>
-    <ClInclude Include="Lighting.h">
+    <ClInclude Include="Lightning.h">
       <Filter>Attacks</Filter>
     </ClInclude>
   </ItemGroup>

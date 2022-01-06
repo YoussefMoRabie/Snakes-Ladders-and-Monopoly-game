@@ -22,8 +22,6 @@ void CardFour::Load(ifstream& Infile) {
 	Infile >> vstart >> h;
 	position.SetHCell(h);
 	position.SetVCell(vstart);
-	
-
 }
 
 void CardFour::Apply(Grid* pGrid, Player* pPlayer)

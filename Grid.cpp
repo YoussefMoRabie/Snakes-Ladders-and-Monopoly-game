@@ -77,7 +77,7 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 	Cell * newCell = CellList[newPosition.VCell()][newPosition.HCell()];
 	player->SetCell(newCell);	
 	// Update the stepCount
-	player->setStepCount(player->GetCell()->GetCellPosition().GetCellNum());
+	player->setStepCount(newPosition.GetCellNum());
 	// Draw the player's circle on the new cell position
 	player->Draw(pOut);
 }
@@ -129,8 +129,10 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 	UpdateInterface();
-	GetCurrentPlayer()->burnCheck(this);     // Checks if the player is burning "deduct 20 coins"
-	GetCurrentPlayer()->skipCheck(this); // Checks if the new current player should skip the turn 
+	GetCurrentPlayer()->burnCheck(this);					    // Checks if the player is burning "deduct 20 coins"
+	GetCurrentPlayer()->skipCheck(this);					    // Checks if the new current player should skip the turn 
+	if (GetCurrentPlayer()->GetTurnCount() == 2)				// On their wallet turn the player can choose to launch a special attack 
+		GetCurrentPlayer()->AttackChoice(this);
 }
 
 // ========= Other Getters =========
@@ -227,6 +229,14 @@ void Grid::RestartPlayersOnCell(CellPosition* cell)
 		{
 			UpdatePlayerCell(PlayerList[i], firstCell);
 		}
+	}
+}
+
+void Grid::RestartAllPlayers()
+{
+	for (int i = 0; i < MaxPlayerCount; i++) 
+	{
+		PlayerList[i]->restart(this);
 	}
 }
 

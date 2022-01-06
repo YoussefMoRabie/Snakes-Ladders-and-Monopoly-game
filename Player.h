@@ -3,7 +3,7 @@
 #include "Grid.h"
 #include "Cell.h"
 
-enum AttackType { ice, fire, poison, lighting };
+enum AttackType { ice, fire, poison, lightning };
 
 class Player
 {
@@ -37,7 +37,7 @@ public:
 	int GetWallet() const;			// a getter for the wallet
 
 	int GetTurnCount() const;		// A getter for the turnCount
-
+	void turnIncrement();			// Increments the turn by 1, from 0 to 2
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	void setTurnCount(int);
@@ -60,7 +60,9 @@ public:
 	void burnCheck(Grid*);					// Checks if the player is burning "deduct 20 coins"
 	bool poisonCheck(Grid*);				// Checks if the player is poisoned "deduct 1 from dice roll"
 
-	bool UseAttack(AttackType);				// Uses one of the player's special attacks
+	void AttackChoice(Grid*);						// Choose to attack or not every wallet turn
+	bool UseAttack(AttackType, Grid*);				// Uses one of the player's special attacks
+	void restart(Grid*);
 
 	void Move(Grid * pGrid, int diceNumber);	// Moves the Player with the passed diceNumber 
 												// and Applies the Game Object's effect (if any) of the end reached cell 

@@ -1,12 +1,11 @@
 #pragma once
 #include "Attack.h"
 
-class Lighting :
+class Lightning :
     public Attack
 {
-    Player* AttackTarget;
 public:
-    Lighting(Grid* pGr, Player* attacker);
+    Lightning(Grid* pGr, Player* attacker);
 
     virtual void Execute();
 };
