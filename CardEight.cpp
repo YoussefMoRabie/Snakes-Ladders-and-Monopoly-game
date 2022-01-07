@@ -23,17 +23,14 @@ void CardEight::ReadCardParameters(Grid * pGrid)
 {
 
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 	Output *pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	pOut->PrintMessage("New CardEight: Enter The amount of coins needed to go out of the prison ...");
+	pOut->PrintMessage("New CardEight : Enter The amount of coins needed to go out of the prison ...");
 	GoOut = pIn->GetInteger(pOut);
+	//Check if the prison release fee is valid
 	while (GoOut < 1)
 	{
 		pOut->PrintMessage("You entered an invalid Number: Plase enter The amount of coins needed to go out of the prison ...");
@@ -47,8 +44,8 @@ void CardEight::ReadCardParameters(Grid * pGrid)
 
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
+	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	Card::Apply(pGrid, pPlayer);
 
 
@@ -61,9 +58,8 @@ void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 		pOut->PrintMessage("Incorrect selection, please choose again: 1- Pay " + to_string(GoOut) + " coins and continue playing 2- Don't play for 3 turns...");
 		GoOut = pIn->GetInteger(pOut);
 	}
-	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	
-	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
+	// 2- Decrement the wallet of pPlayer by the GoOut data member of CardEight
 	if(x==1)
 	pPlayer->SetWallet(pPlayer->GetWallet() - GoOut);
 	// 3- Make the turnskip of the player who stood on the card = 3

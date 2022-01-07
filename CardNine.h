@@ -8,7 +8,7 @@
 class CardNine : public Card
 {
 
-	// CardEight Parameters:
+	// CardNine Parameters:
 	static int StationPrice;// The amount of coins needed to  buy the cell
 	static int Fees; // The amount of coins needed  to pay fees to the player who owns the cell.
 	static Player * Owner;

@@ -25,13 +25,11 @@ void CardTwelve::Load(ifstream& Infile) {
 
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
-	//  Get a Pointer to the Input / Output Interfaces from the Grid
-	Output *pOut = pGrid->GetOutput();
-	Input* pIn = pGrid->GetInput();
+	
 
 	
-	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
+	//Find out which stations the player owns
 	int p1=0, p2=0, p3=0;
 	if(pPlayer == CardNine::GetOwner())
 	{
@@ -45,11 +43,19 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	{
 		p3 = CardEleven::GetStationPrice();
 	}
+	//Check if the player does not have stations
 	if (p1 == 0 && p2 == 0 && p3 == 0)
 	{
 		pGrid->PrintErrorMessage("You don't have any stations to lose ...");
 		return;
 	}
+	//Check if the player has least amount of coins
+	if (pGrid->GetPlayerWithLeastMoney(pPlayer)==pPlayer)
+	{
+		pGrid->PrintErrorMessage("You are the player with the least amount of coins. You don't lose any of your stations ...");
+		return;
+	}
+	//Transfer the most expensive station to the player with the least amount of coins
 	if (p1 >= p2 && p1 >= p3)
 	{
 		CardNine::SetOwner(pGrid->GetPlayerWithLeastMoney(pPlayer));
@@ -67,6 +73,5 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum()) + "take station NO.11 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 
 	}
-	pOut->ClearStatusBar();
 
 }
