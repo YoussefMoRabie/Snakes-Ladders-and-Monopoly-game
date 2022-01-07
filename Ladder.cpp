@@ -10,13 +10,13 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 	this->endCellPos = endCellPos;
 	
 	
-	size =abs( -endCellPos.VCell() + startCellPos.VCell());
+	size =abs( -endCellPos.VCell() + startCellPos.VCell()); // the number of vertical cells on the ladder path
 	cellsCounter = new int[size+1];
 	for (int i = 0; i <= size; i++) 
 	{
-		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;
+		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;  // getting the cell number of the cells on the ladder path 
 	}
-	///TODO: Do the needed validation
+	///TODO: Do the needed validation  // the validation of the overlapping is below in function "IsOverlapping" 
 }
 
 void Ladder::Draw(Output* pOut) const
@@ -28,7 +28,8 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 {
 	
 	pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
-	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
+	pGrid->UpdatePlayerCell(pPlayer, endCellPos); // upadates the player cell to the end cell of the ladder
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	//Done
 
@@ -40,9 +41,7 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	//    Review the "pGrid" functions and decide which function can be used for that
 	
 }
-int Ladder::getSize() {
-	return size;
-}
+
 bool Ladder::IsOverlapping(GameObject*p)
 {
 	int h = endCellPos.HCell();
@@ -54,9 +53,10 @@ bool Ladder::IsOverlapping(GameObject*p)
 			{
 
 
-				for (int k = 0; k <= L->getSize(); k++) {
+				for (int k = 0; k <= L->size; k++) {
 			
-						if (cellsCounter[i] == L->cellsCounter[k])
+						if (cellsCounter[i] == L->cellsCounter[k])   // checks if there is at least one cell overlapping between the existing ladder
+							                                         //and the ladder to be created
 							return true;
 				}
 
@@ -67,13 +67,14 @@ bool Ladder::IsOverlapping(GameObject*p)
 }
  void Ladder:: Save(ofstream& OutFile) {
 
-	 OutFile << position.VCell()<<" " << endCellPos.VCell()<<" " << position.HCell()<<endl;
+	 OutFile << position.VCell()<<" " << endCellPos.VCell()<<" " << position.HCell()<<endl; //save the ladder information
 		 
 
 }
  void Ladder::Load(ifstream & Infile) {
 	 
-	 int vstart = -1, vend = -1, h = -1;
+	 int vstart = -1, vend = -1, h = -1;                               
+	                                         // loads the ladder information and setting the members
 	 Infile >> vstart >> vend >> h;
 	 position.SetVCell(vstart);
 	 position.SetHCell(h);

@@ -7,23 +7,26 @@ PasteCardAction::PasteCardAction(ApplicationManager* pApp) :Action(pApp) {
 }  // Constructor
 
 void PasteCardAction::ReadActionParameters() {
+
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
+
 	pOut->PrintMessage("Click On your selected Cell...");
-	PasteTo = pIn->GetCellClicked();
-	if (pGrid->GetCell(PasteTo.VCell(), PasteTo.HCell())->GetGameObject() != NULL) {
-		
-		return;
-	}
+
+	PasteTo = pIn->GetCellClicked();//gets the postion to paste in
+	
+	
 	pOut->ClearStatusBar();
  }
 
 void PasteCardAction::Execute() {
 	ReadActionParameters();
-	if (pManager->GetGrid()->GetClipboard() != NULL) {
-		int num=pManager->GetGrid()->GetClipboard()->GetCardNumber();
-		AddCardAction* ptr=new AddCardAction(pManager);
+	Grid* pGrid = pManager->GetGrid();
+	if (pGrid->GetClipboard() != NULL) //checks if there is card in the clipboard
+	{
+		int num=pGrid->GetClipboard()->GetCardNumber();
+		AddCardAction* ptr=new AddCardAction(pManager); //add a new card same to the one in the clipboard
 		ptr->setCardNum_Pos(num, PasteTo);
 		ptr->Execute();
 	}

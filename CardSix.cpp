@@ -1,9 +1,10 @@
 #include "CardSix.h"
-CardSix::CardSix(CellPosition& p, const int num) :Card(p) {
-	SetCardNumber(6);
+CardSix::CardSix(CellPosition& p) :Card(p) {
+	cardNumber= 6;
 }
 void CardSix::ReadCardParameters(Grid * pGrid) {
-	pGrid->GetOutput()->PrintMessage("Please, Click on the destination cell....");
+
+	pGrid->GetOutput()->PrintMessage("Please, Click on the destination cell...."); //read the cell to move to
 	cellToMove= pGrid->GetInput()->GetCellClicked();
 	pGrid->GetOutput()->ClearStatusBar();
 }
@@ -24,5 +25,6 @@ void CardSix::Apply(Grid* pGrid, Player * pPlayer) {
 	
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
+	//2- moving the player to the cell chosen in the design mode
 	pGrid->UpdatePlayerCell(pPlayer, cellToMove);
 }

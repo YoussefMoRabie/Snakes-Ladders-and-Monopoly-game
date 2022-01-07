@@ -5,7 +5,7 @@ class CardFive :
 {
 	
 public :
-	CardFive(CellPosition&, const int num);
+	CardFive(CellPosition&);
 	virtual void Apply(Grid* , Player* );
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& Infile);

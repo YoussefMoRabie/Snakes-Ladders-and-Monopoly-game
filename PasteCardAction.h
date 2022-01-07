@@ -3,8 +3,9 @@
 class PasteCardAction :
     public Action
 {
+	
+	CellPosition PasteTo; //the cell to the card paste in 
 
-	CellPosition PasteTo;
 public:
 
 	PasteCardAction(ApplicationManager* pApp);  // Constructor

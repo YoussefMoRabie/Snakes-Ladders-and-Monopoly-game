@@ -2,7 +2,7 @@
 #include "CardTen.h"
 #include "CardEleven.h"
 #include "CardTwelve.h"
-CardTwelve::CardTwelve(const CellPosition& pos,const int num) : Card(pos) // set the cell position of the card
+CardTwelve::CardTwelve(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 12; // set the inherited cardNumber data member with the card number 
 }

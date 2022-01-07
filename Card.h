@@ -12,7 +12,7 @@ protected:
 	int cardNumber; // an integer representing the card number
 
 public:
-	Card(const CellPosition & pos,int =0); // A Constructor for card that takes the cell position of it
+	Card(const CellPosition & pos); // A Constructor for card that takes the cell position of it
 	virtual bool IsOverlapping(GameObject*);
 
 	void SetCardNumber(int cnum);   // The setter of card number

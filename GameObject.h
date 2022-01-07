@@ -19,8 +19,8 @@ public:
 
 
 	// ============ Virtual Functions ============
-	virtual bool IsOverlapping(GameObject*) = 0;
-	bool setPos(CellPosition);
+	virtual bool IsOverlapping(GameObject*) = 0; //checks if two ladders or snakes overlapp
+	
 	virtual void Draw(Output* pOut) const = 0;	 // Draws the game object in the window in his position cell 
 											     // (drawing depends on GameObject Type, so virtual)
 

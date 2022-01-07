@@ -3,9 +3,9 @@
 #include"Card.h"
 class CutCardAction :public Action
 {
-	CellPosition CuttedPos;
-	Card* CuttedCard;
-	bool isValid;
+	CellPosition CuttedPos; //the postion of the card to be cutted
+	Card* CuttedCard; //point to the card to be cutted (if exist)
+	
 public:
 
 	CutCardAction(ApplicationManager* pApp);  // Constructor

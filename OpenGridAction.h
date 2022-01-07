@@ -4,8 +4,8 @@
 class OpenGridAction :
     public Action
 {
+	ifstream LoadGrid;  //object of ifstrean to read the information of the grid objects
 
-	ifstream LoadGrid;
 public:
 	OpenGridAction(ApplicationManager* pApp);
 

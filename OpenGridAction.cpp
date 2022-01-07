@@ -28,16 +28,19 @@ void OpenGridAction::ReadActionParameters() {
 
 }
 void OpenGridAction::Execute() {
-	LoadGrid.open("Grid.txt");
+
+	LoadGrid.open("Grid.txt"); //opens the grid text file to read
+
 	pManager->GetGrid()->GetOutput()->ClearGridArea();
 	Grid* pGrid = pManager->GetGrid();
-	int count;
+	int count; //count of the objects (ladder,snakes,cards)
 	LoadGrid >> count;
-	GameObject* pObj;
+
+	GameObject* pObj; 
 	for (int i = 0; i < count; i++) {
-		pObj = new Ladder(-1, -1);
+		pObj = new Ladder(-1, -1); //empty object of ladder
 		pObj->Load(LoadGrid);
-		pGrid->AddObjectToCell(pObj);
+		pGrid->AddObjectToCell(pObj); //add the read ladder to the grid
 	}
 	LoadGrid >> count;
 	for (int i = 0; i < count; i++) {
@@ -48,36 +51,38 @@ void OpenGridAction::Execute() {
 	CellPosition pos;
 	LoadGrid >> count;
 	for (int i = 0; i < count; i++) {
-		int num;
+		int num; //Card number
 		LoadGrid >> num; 
-		switch (num) {
-		case1: pObj = new CardOne(pos, -1);
+		switch (num)  //determine the card typr, then create an empty object of it
+		{
+		case1: pObj = new CardOne(pos);
 			break;
-		case 2: pObj = new CardTwo(pos, -1);
+		case 2: pObj = new CardTwo(pos);
 			break;
-		case 3: pObj = new CardThree(pos,pManager, -1);
+		case 3: pObj = new CardThree(pos,pManager);
 			break;
-		case 4: pObj = new CardFour(pos, -1);
+		case 4: pObj = new CardFour(pos);
 			break;
-		case 5: pObj = new CardFive(pos, -1);
+		case 5: pObj = new CardFive(pos);
 			break;
-		case 6: pObj = new CardSix(pos, -1);
+		case 6: pObj = new CardSix(pos);
 			break;
-		case 7: pObj = new CardSeven(pos, -1);
+		case 7: pObj = new CardSeven(pos);
 			break;
-		case 8: pObj = new CardEight(pos, -1);
+		case 8: pObj = new CardEight(pos);
 			break;
-		case 9: pObj = new CardNine(pos, -1);
+		case 9: pObj = new CardNine(pos);
 			break;
-		case 10: pObj = new CardTen(pos, -1);
+		case 10: pObj = new CardTen(pos);
 			break;
-		case 11:pObj = new CardEleven(pos, -1);
+		case 11:pObj = new CardEleven(pos);
 			break;
-		case 12: pObj = new CardTwelve(pos, -1);
+		case 12: pObj = new CardTwelve(pos);
 			break;
 		}
-		pObj->Load(LoadGrid);
-		pGrid->AddObjectToCell(pObj);
+
+		pObj->Load(LoadGrid); // loads the card information
+		pGrid->AddObjectToCell(pObj); //adds the card to the grid
 
 	}
 	

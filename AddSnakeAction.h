@@ -4,9 +4,8 @@ class AddSnakeAction :public Action
 {
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder
-	bool isValid;
 	// Note: These parameters should be read in ReadActionParameters()
-
+	bool isValid;  // checks if the snake's data given by the user valid or not
 public:
 
 	AddSnakeAction(ApplicationManager *pApp); // A Constructor

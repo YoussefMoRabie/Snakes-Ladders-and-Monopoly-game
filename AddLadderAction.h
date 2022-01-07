@@ -9,9 +9,8 @@ class AddLadderAction : public Action
 	// [Action Parameters]
 	CellPosition startPos; // 1- The start position of the ladder
 	CellPosition endPos;   // 2- The end position of the ladder
-	bool isValid;
 	// Note: These parameters should be read in ReadActionParameters()
-
+	bool isValid;  // checks if the ladder's data given by the user valid or not
 public:
 
 	AddLadderAction(ApplicationManager *pApp); // A Constructor

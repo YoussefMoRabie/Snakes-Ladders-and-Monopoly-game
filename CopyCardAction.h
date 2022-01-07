@@ -3,7 +3,8 @@
 #include"Card.h"
 class CopyCardAction :public Action
 {
-	Card* CopiedCard;
+	Card* CopiedCard; //points to the card copied
+
 public: 
 
 	CopyCardAction(ApplicationManager* pApp);  // Constructor

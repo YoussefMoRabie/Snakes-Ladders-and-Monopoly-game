@@ -2,9 +2,10 @@
 #include "Card.h"
 class CardSix :public Card
 {
-	CellPosition cellToMove;
+	CellPosition cellToMove; //the chosen cell to move to
+
 public:
-	CardSix(CellPosition&, const int num);
+	CardSix(CellPosition&);
 	virtual void Apply(Grid*, Player*);
 	virtual void ReadCardParameters(Grid * );
 	virtual void Save(ofstream& OutFile);

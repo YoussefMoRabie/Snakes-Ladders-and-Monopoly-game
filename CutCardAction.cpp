@@ -2,7 +2,7 @@
 #include"Grid.h"
 #include"CellPosition.h"
 CutCardAction::CutCardAction(ApplicationManager* pApp) :Action(pApp) {
-	isValid = true;
+	
 }
 
 void CutCardAction::ReadActionParameters() {
@@ -14,11 +14,14 @@ void CutCardAction::ReadActionParameters() {
 	
 		pOut->PrintMessage("Click On A Card...");
 		CuttedPos = pIn->GetCellClicked();
+
 		CuttedCard = pGrid->GetCell(CuttedPos.VCell(), CuttedPos.HCell())->HasCard();
-		if(CuttedCard == NULL) {
+
+		if(CuttedCard == NULL) //if there is no card in the cell
+		{
 			
 				pGrid->PrintErrorMessage("No Cards Here! Click on a Card...");
-				isValid = false;
+				
 				return;
 			
 	 }
@@ -30,15 +33,15 @@ void CutCardAction::ReadActionParameters() {
 
 void CutCardAction::Execute() {
 	ReadActionParameters();
-	if (!isValid) {
-		return;
+	
+	if (CuttedCard != NULL) // if there card on the cell clicked
+	{
+		pManager->GetGrid()->SetClipboard(CuttedCard);
+		pManager->GetGrid()->RemoveObjectFromCell(CuttedPos);
+		pManager->UpdateInterface();
+		pManager->GetGrid()->PrintErrorMessage("Cutted!...");
+
 	}
-	pManager->GetGrid()->SetClipboard(CuttedCard);
-	pManager->GetGrid()->RemoveObjectFromCell(CuttedPos);
-	pManager->UpdateInterface();
-	pManager->GetGrid()->PrintErrorMessage("Cutted!...");
-
-
 
 }  // Executes action (code depends on action type so virtual)
 CutCardAction:: ~CutCardAction() {

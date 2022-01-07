@@ -12,7 +12,7 @@ class CardOne :	public Card
 	int walletAmount; // the wallet value to decrease from the player
 
 public:
-	CardOne(const CellPosition & pos, const int num); // A Constructor takes card position
+	CardOne(const CellPosition & pos); // A Constructor takes card position
 	virtual void Save(ofstream& OutFile) ;
 	virtual void Load(ifstream& Infile) ;
 	void setWalletAmount(int);

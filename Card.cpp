@@ -1,16 +1,12 @@
 #include "Card.h"
 
 
-Card::Card(const CellPosition & pos,int cardnum) : GameObject(pos) // sets the cell position of the GameObject
+Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
 {
-	SetCardNumber(cardnum);
+	
 }
 
-void Card::SetCardNumber(int cnum)
-{
-	if (cnum > 0 && cnum <= 12)
-		cardNumber = cnum; // needs validation
-}
+
 
 int Card::GetCardNumber()
 {

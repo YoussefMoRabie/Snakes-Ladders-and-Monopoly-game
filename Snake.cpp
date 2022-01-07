@@ -9,9 +9,12 @@ Snake::Snake(const CellPosition & startCellPos, const CellPosition & endCellPos)
 
 
 	size = abs(-endCellPos.VCell() + startCellPos.VCell());
-	cellsCounter = new int[size + 1];
+
+	cellsCounter = new int[size + 1];   // the number of vertical cells on the ladder path
+
 	for (int i = 0; i <= size; i++) {
-		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) - i * 11;
+
+		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) - i * 11;  // getting the cell number of the cells on the ladder path
 
 	}
 
@@ -21,7 +24,7 @@ Snake::Snake(const CellPosition & startCellPos, const CellPosition & endCellPos)
 
 
 
-	///TODO: Do the needed validation
+	///TODO: Do the needed validation // the validation of the overlapping is below in function "IsOverlapping" 
 }
 
 void Snake::Draw(Output* pOut) const
@@ -32,7 +35,7 @@ void Snake::Draw(Output* pOut) const
 void Snake::Apply(Grid* pGrid, Player* pPlayer)
 {
 	pGrid->PrintErrorMessage("You have reached a snake. Click to continue ...");
-	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
+	pGrid->UpdatePlayerCell(pPlayer, endCellPos); // upadates the player cell to the end cell of the snake
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
@@ -57,7 +60,7 @@ bool Snake::IsOverlapping(GameObject*p)
 
 			for (int k = 0; k <= L->size; k++) {
 
-				if (cellsCounter[i] == L->cellsCounter[k])
+				if (cellsCounter[i] == L->cellsCounter[k]) // checks if there is at least one cell overlapping between the existing snake and the snake to be created
 					return true;
 			}
 
@@ -77,7 +80,7 @@ void Snake::Save(ofstream& OutFile) {
 }
 void Snake::Load(ifstream& Infile) {
 	int vstart = -1, vend = -1, h = -1; 
-	Infile >> vstart >> vend >> h;
+	Infile >> vstart >> vend >> h;  // loads the snake's information and setting the members
 	position.SetVCell(vstart);
 	position.SetHCell(h);
 	endCellPos.SetVCell(vend);

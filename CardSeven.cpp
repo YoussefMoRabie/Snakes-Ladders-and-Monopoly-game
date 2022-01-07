@@ -1,7 +1,7 @@
 #include "CardSeven.h"
 #include "RollDiceAction.h"
 
-CardSeven::CardSeven(const CellPosition& pos, const int num) : Card(pos) // set the cell position of the card
+CardSeven::CardSeven(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 7; // set the inherited cardNumber data member with the card number 
 }

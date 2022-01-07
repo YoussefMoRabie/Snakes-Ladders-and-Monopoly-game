@@ -146,7 +146,8 @@ void Grid::AdvanceCurrentPlayer()
 // ========= Other Getters =========
 
 
-bool Grid::IsOverlapping(GameObject*p) {
+bool Grid::IsOverlapping(GameObject*p) //checks if the ladder or snake to be created does not overlap with another
+{
 	int h = p->GetPosition().HCell();
 	
 	for (int i = 0; i < NumVerticalCells; i++) {

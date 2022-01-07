@@ -67,7 +67,7 @@ public:
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
-	bool IsOverlapping(GameObject*);
+	bool IsOverlapping(GameObject*); // calls the function IsOverlapping in the object class that checks if two ladders or snakes overlapps
 	Player * GetCurrentPlayer() const;	// Gets a Pointer to the Current Player	                                    
 	Player* GetPlayerWithNum(int)const;
 	Player * GetPlayerWithLeastMoney(Player * p) const;	// Gets a Pointer to the Player has s the least amount of coins in his wallet.                                     

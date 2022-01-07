@@ -2,8 +2,9 @@
 #include "Action.h"
 class DeleteGameObjectAction :public Action
 {
-	CellPosition DeletedObj;
-	bool thereObj;
+	CellPosition DeletedObj; //the position of the object to be deleted
+
+	GameObject* Obj; //points to the object to be deleted
 
 public:
 

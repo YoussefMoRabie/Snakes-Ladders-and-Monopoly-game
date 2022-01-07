@@ -6,7 +6,7 @@
 
 AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 {
-	isValid = true;
+	isValid = true; //Intializing 
 	// Initializes the pManager pointer of Action with the passed pointer
 }
 
@@ -25,9 +25,12 @@ void AddLadderAction::ReadActionParameters()
 
 	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
-	Snake* end;
-	bool thereSnake = false;
-	if (startPos.VCell() == 0 )
+
+	Snake* pSnake; //points on a snake (if exists) on the start or end of the ladder
+
+	bool thereSnake = false; // if there is end of a Snake at the start of the ladder
+
+	if (startPos.VCell() == 0 ) // the start of the ladder on last row
 	{
 		pGrid->PrintErrorMessage("Invalid Ladder, Click to Continue ...");
 		isValid = false;
@@ -38,10 +41,13 @@ void AddLadderAction::ReadActionParameters()
 	
 
 		
-		for (int i = 0; i < NumVerticalCells - 1; i++) {
-			end = pGrid->GetCell(i, startPos.HCell())->HasSnake();
-			if (end != NULL) {
-				if (end->GetEndPosition().GetCellNum() == startPos.GetCellNum())
+		for (int i = 0; i < NumVerticalCells - 1; i++) {                
+			                                                              // loops on the vertical column and checks if there are snakes whose end
+			                                                              // overlapps with the start of the ladder
+			pSnake = pGrid->GetCell(i, startPos.HCell())->HasSnake();
+
+			if (pSnake != NULL) {
+				if (pSnake->GetEndPosition().GetCellNum() == startPos.GetCellNum())
 				{
 					thereSnake = true;
 					break;
@@ -51,11 +57,9 @@ void AddLadderAction::ReadActionParameters()
 		
 		
 
-		if (thereSnake)
+		if (thereSnake)  // checks for the condition above
 		{
 			pGrid->PrintErrorMessage("Invalid Ladder,here is a snake, Click to Continue ...");
-			startPos.SetVCell(-1);
-			pGrid->GetOutput()->ClearStatusBar();
 			isValid = false;
 			return;
 		}
@@ -68,11 +72,10 @@ void AddLadderAction::ReadActionParameters()
 	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
 	
-	 end = pManager->GetGrid()->GetCell(endPos.VCell(), endPos.HCell())->HasSnake();
-	int x = -1;
-	if (end != NULL)
-		x = end->GetPosition().GetCellNum();
-	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell()|| x == endPos.GetCellNum())
+	pSnake = pManager->GetGrid()->GetCell(endPos.VCell(), endPos.HCell())->HasSnake();  // if there is a start of a snake at the end of the ladder
+
+	
+	if (startPos.VCell() <= endPos.VCell() || startPos.HCell() != endPos.HCell()|| pSnake!=NULL) // validation
 	{
 		pGrid->PrintErrorMessage("Invalid Ladder, Click to Continue ...");
 		isValid = false;
@@ -96,7 +99,8 @@ void AddLadderAction::Execute()
 	ReadActionParameters();
 	
 	if (!isValid)
-		return;
+		return; // if the ladder not valid, do not add it to the grid
+
 	// Create a Ladder object with the parameters read from the user
 	Ladder * pLadder = new Ladder(startPos, endPos);
 

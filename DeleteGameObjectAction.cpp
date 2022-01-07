@@ -2,7 +2,7 @@
 #include"CellPosition.h"
 #include"Grid.h"
 DeleteGameObjectAction::DeleteGameObjectAction(ApplicationManager* pApp) :Action(pApp) {
-	thereObj = true;
+	
 }  // Constructor
 
 void DeleteGameObjectAction:: ReadActionParameters() {
@@ -13,10 +13,11 @@ void DeleteGameObjectAction:: ReadActionParameters() {
 	pOut->PrintMessage("Click on an Object To Delete...");
 	
 		DeletedObj = pIn->GetCellClicked();
-		if (pGrid->GetCell(DeletedObj.VCell(), DeletedObj.HCell())->GetGameObject() == NULL) {
+		Obj = pGrid->GetCell(DeletedObj.VCell(), DeletedObj.HCell())->GetGameObject();
+		if (Obj==NULL) {
 
 			pGrid->PrintErrorMessage("There is no Object here!...");
-			thereObj = false;
+			
 			return;
 		}
 		pOut->ClearStatusBar();
@@ -25,16 +26,14 @@ void DeleteGameObjectAction:: ReadActionParameters() {
 
 void DeleteGameObjectAction::Execute() {
 	ReadActionParameters();
-	if (!thereObj ) {
-		return;
+	if (Obj != NULL) {
+		Grid* pGrid = pManager->GetGrid();
+		if (pGrid->RemoveObjectFromCell(DeletedObj)) {
+			pManager->UpdateInterface();
+			pGrid->PrintErrorMessage("ObjectDeleted!...");
 
+		}
 	}
-	if (pManager->GetGrid()->RemoveObjectFromCell(DeletedObj)) {
-		pManager->UpdateInterface();
-		pManager->GetGrid()->PrintErrorMessage("ObjectDeleted!...");
-
-	}
-
 } 
 DeleteGameObjectAction:: ~DeleteGameObjectAction() {
 
