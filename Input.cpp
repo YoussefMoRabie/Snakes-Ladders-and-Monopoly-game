@@ -50,11 +50,16 @@ int Input::GetInteger(Output *pO) const
 	
 
 
-
+	string str = GetString(pO);
+	if (str == "")
+		return -1;
 	// Note: stoi(s) converts string s into its equivalent integer (for example, "55" is converted to 55)
+	else
+	{
+		int x = stoi(str);
+		return x; // this line should be changed with your implementation
 
-	int x = stoi(GetString(pO));
-	return x; // this line should be changed with your implementation
+	}
 }
 
 //======================================================================================//
