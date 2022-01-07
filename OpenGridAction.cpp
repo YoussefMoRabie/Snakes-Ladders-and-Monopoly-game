@@ -29,6 +29,7 @@ void OpenGridAction::ReadActionParameters() {
 }
 void OpenGridAction::Execute() {
 	LoadGrid.open("Grid.txt");
+	pManager->GetGrid()->GetOutput()->ClearGridArea();
 	Grid* pGrid = pManager->GetGrid();
 	int count;
 	LoadGrid >> count;

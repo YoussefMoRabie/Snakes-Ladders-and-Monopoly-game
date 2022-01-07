@@ -6,6 +6,7 @@ void CardSix::ReadCardParameters(Grid * pGrid) {
 	pGrid->GetOutput()->PrintMessage("Please, Click on a Cell....");
 	pGrid->GetOutput()->PrintMessage("Please, Click on the destination cell....");
 	cellNumToMove= pGrid->GetInput()->GetCellClicked().GetCellNum();
+	pGrid->GetOutput()->ClearStatusBar();
 }
 void CardSix::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " "  << cellNumToMove<< endl;

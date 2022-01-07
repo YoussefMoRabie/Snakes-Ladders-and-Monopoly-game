@@ -19,7 +19,8 @@ void AddSnakeAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	
+	Ladder* end;
+	bool thereLadder = false;
 	// Read the startPos parameter
 
 	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
@@ -32,11 +33,25 @@ void AddSnakeAction::ReadActionParameters()
 		return;
 		
 	}
-
+	for (int i = 0; i < NumVerticalCells - 1; i++) {
+		end = pGrid->GetCell(i, startPos.HCell())->HasLadder();
+		if (end != NULL) {
+			if (end->GetEndPosition().GetCellNum() == startPos.GetCellNum())
+			{
+				thereLadder = true;
+				break;
+			}
+		}
+	}
+	if (thereLadder) {
+		pGrid->PrintErrorMessage("Invalid Snake, Click to continue  ...");
+		isValid = false;
+		return;
+	}
 	// Read the endPos parameter
 	pOut->PrintMessage("New Snake: Click on its End Cell ...");
 	endPos = pIn->GetCellClicked();
-	Ladder* end = pGrid->GetCell(endPos.VCell(), endPos.HCell())->HasLadder();
+	 end = pGrid->GetCell(endPos.VCell(), endPos.HCell())->HasLadder();
 	int x = -1;
 	if (end != NULL)
 		x = end->GetPosition().GetCellNum();

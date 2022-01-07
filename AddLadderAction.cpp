@@ -34,11 +34,7 @@ void AddLadderAction::ReadActionParameters()
 		return;
 	}
 	
-	if (pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL) {
-		pGrid->PrintErrorMessage("Invalid Ladder,here is a Card, Click to Continue ...");
-		isValid = false;
-		return;
-	}
+	
 	
 
 		
