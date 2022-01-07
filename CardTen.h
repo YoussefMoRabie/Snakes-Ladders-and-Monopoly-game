@@ -30,7 +30,5 @@ public:
 
 	virtual ~CardTen(); // A Virtual Destructor
 
-
-
 };
 

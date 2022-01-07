@@ -127,7 +127,7 @@ void CardEleven::PayStation(Grid * pGrid, Player * pPlayer)
 		{
 			Output *pOut = pGrid->GetOutput();
 			Input* pIn = pGrid->GetInput();
-			pOut->PrintMessage("Player NO." + to_string(pPlayer->getPlayerNum()) + " has to pay " + to_string(Fees) + " coins to the player NO." + to_string(Owner->getPlayerNum()) + " who owns the cell.");
+			pGrid->PrintErrorMessage("Player NO." + to_string(pPlayer->getPlayerNum()) + " has to pay " + to_string(Fees) + " coins to the player NO." + to_string(Owner->getPlayerNum()) + " who owns the cell.");
 			pPlayer->SetWallet(pPlayer->GetWallet() - Fees);
 			Owner->SetWallet(Owner->GetWallet() + Fees);
 			pOut->ClearStatusBar();

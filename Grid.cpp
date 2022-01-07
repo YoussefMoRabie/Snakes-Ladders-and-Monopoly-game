@@ -176,19 +176,11 @@ Player* Grid::GetPlayerWithNum(int num)const
 Player * Grid::GetPlayerWithLeastMoney(Player * p) const
 {
 	int min,index;
-	if (p != PlayerList[0])
-	{
 		min = PlayerList[0]->GetWallet();
 		index = 0;
-	}
-	else
-	{
-		min = PlayerList[1]->GetWallet();
-		index = 1;
-	}	
 	for (int i = 1; i < MaxPlayerCount; i++)
 	{
-		if (p != PlayerList[i] && min > PlayerList[i]->GetWallet())
+		if (min > PlayerList[i]->GetWallet())
 		{
 			min = PlayerList[i]->GetWallet();
 			index = i;
