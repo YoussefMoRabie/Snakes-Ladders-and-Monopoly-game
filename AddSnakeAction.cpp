@@ -26,7 +26,7 @@ void AddSnakeAction::ReadActionParameters()
 	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
 
-	if  (startPos.VCell() == NumVerticalCells - 1 || pGrid->GetCell(startPos.VCell(), startPos.HCell())->HasCard() != NULL)
+	if (startPos.VCell() == NumVerticalCells - 1 || startPos.GetCellNum() == NumHorizontalCells * NumVerticalCells)
 	{
 		pGrid->PrintErrorMessage("Invalid Snake, Click to continue  ...");
 		isValid = false;

@@ -80,6 +80,11 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 	player->setStepCount(newPosition.GetCellNum());
 	// Draw the player's circle on the new cell position
 	player->Draw(pOut);
+	// Apply() the game object of the reached cell (if any)
+	if (newCell->GetGameObject() != NULL)
+	{
+		newCell->GetGameObject()->Apply(this, player);
+	}
 }
 
 
@@ -129,17 +134,20 @@ void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 	UpdateInterface();
-	GetCurrentPlayer()->burnCheck(this);					    // Checks if the player is burning "deduct 20 coins"
-	GetCurrentPlayer()->skipCheck(this);					    // Checks if the new current player should skip the turn 
-	if (GetCurrentPlayer()->GetTurnCount() == 2)				// On their wallet turn the player can choose to launch a special attack 
-		GetCurrentPlayer()->AttackChoice(this);
+	if (!endGame)
+	{
+		GetCurrentPlayer()->burnCheck(this);					    // Checks if the player is burning "deduct 20 coins"
+		GetCurrentPlayer()->skipCheck(this);					    // Checks if the new current player should skip the turn 
+		if (GetCurrentPlayer()->GetTurnCount() == 2)				// On their wallet turn the player can choose to launch a special attack 
+			GetCurrentPlayer()->AttackChoice(this);
+	}
 }
 
 // ========= Other Getters =========
 
 
 bool Grid::IsOverlapping(GameObject*p) {
-	int h=p->GetPosition().HCell();
+	int h = p->GetPosition().HCell();
 	
 	for (int i = 0; i < NumVerticalCells; i++) {
 		

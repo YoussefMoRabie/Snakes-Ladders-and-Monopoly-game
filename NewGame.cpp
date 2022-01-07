@@ -20,6 +20,7 @@ void NewGame::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	pGrid->RestartAllPlayers();
 	pGrid->SetCurrentPlayer(0);
+	pGrid->SetEndGame(false);
 
 	// All stations must return without an owner
 	CardNine::SetOwner(NULL);

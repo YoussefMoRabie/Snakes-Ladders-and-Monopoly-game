@@ -53,6 +53,8 @@ void CardTen::ReadCardParameters(Grid * pGrid)
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
+	if (Fees != 0 || StationPrice != 0)
+		return;
 
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 

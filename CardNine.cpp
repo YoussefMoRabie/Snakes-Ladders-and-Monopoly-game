@@ -50,6 +50,9 @@ void CardNine::ReadCardParameters(Grid * pGrid)
 
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
+	if (Fees != 0 || StationPrice != 0)
+		return;
+		
 
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 	Output *pOut = pGrid->GetOutput();

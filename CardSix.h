@@ -2,7 +2,7 @@
 #include "Card.h"
 class CardSix :public Card
 {
-	int cellNumToMove;
+	CellPosition cellToMove;
 public:
 	CardSix(CellPosition&, const int num);
 	virtual void Apply(Grid*, Player*);

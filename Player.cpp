@@ -273,18 +273,6 @@ bool Player::UseAttack(AttackType atk, Grid* pGrid)
 	return false;
 }
 
-void Player:: MoveWithoutDice(Grid* pGrid,CellPosition & toCell) {
-	pGrid->UpdatePlayerCell(this, toCell);
-	stepCount = pCell->GetCellPosition().GetCellNum();
-	CellPosition pos = pCell->GetCellPosition();
-	if (pCell->GetGameObject() != NULL)
-	{
-		pCell->GetGameObject()->Apply(pGrid, this);
-	}
-	// Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells + 1)
-		pGrid->SetEndGame(true);
-}
 
 void Player::restart(Grid* pGrid)
 {
@@ -321,6 +309,22 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	}
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	justRolledDiceNum = diceNumber;
+
+	if (GetStepCount() >= 94)
+	{
+		if (GetStepCount() + justRolledDiceNum == 100)
+		{
+			pGrid->SetEndGame(true);
+			pGrid->UpdatePlayerCell(this,CellPosition::GetCellPositionFromNum(99));
+			pGrid->PrintErrorMessage("Player " + to_string(getPlayerNum()) + "Won, Winner winner chicken dinner!");
+			return;
+		}
+		else if (GetStepCount() + justRolledDiceNum > 100)
+		{
+			justRolledDiceNum = 0;
+			pGrid->PrintErrorMessage("too much");
+		}
+	}
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)
 	//    Using the appropriate function of CellPosition class to update "pos"
 	CellPosition pos = pCell->GetCellPosition();
@@ -328,14 +332,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 5- Use pGrid->UpdatePlayerCell() func to Update player's cell POINTER (pCell) with the cell in the passed position, "pos" (the updated one)
 	//    the importance of this function is that it Updates the pCell pointer of the player and Draws it in the new position
 	pGrid->UpdatePlayerCell(this, pos);
-	// 6- Apply() the game object of the reached cell (if any)
-	if (pCell->GetGameObject() != NULL)
-	{
-		pCell->GetGameObject()->Apply(pGrid, this);
-	}
-	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
-	if (pos.GetCellNum() == NumHorizontalCells * NumVerticalCells + 1)
-		pGrid->SetEndGame(true);
+	
 }
 
 void Player::AppendPlayerInfo(string & playersInfo) const
