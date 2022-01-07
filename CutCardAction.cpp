@@ -2,7 +2,7 @@
 #include"Grid.h"
 #include"CellPosition.h"
 CutCardAction::CutCardAction(ApplicationManager* pApp) :Action(pApp) {
-
+	isValid = true;
 }
 
 void CutCardAction::ReadActionParameters() {
@@ -15,11 +15,11 @@ void CutCardAction::ReadActionParameters() {
 		pOut->PrintMessage("Click On A Card...");
 		CuttedPos = pIn->GetCellClicked();
 		CuttedCard = pGrid->GetCell(CuttedPos.VCell(), CuttedPos.HCell())->HasCard();
-		while (CuttedCard == NULL) {
+		if(CuttedCard == NULL) {
 			
 				pGrid->PrintErrorMessage("No Cards Here! Click on a Card...");
-				CellPosition CuttedPos = pIn->GetCellClicked();
-				CuttedCard = pGrid->GetCell(CuttedPos.VCell(), CuttedPos.HCell())->HasCard();
+				isValid = false;
+				return;
 			
 	 }
 	pOut->ClearStatusBar();
@@ -30,6 +30,9 @@ void CutCardAction::ReadActionParameters() {
 
 void CutCardAction::Execute() {
 	ReadActionParameters();
+	if (!isValid) {
+		return;
+	}
 	pManager->GetGrid()->SetClipboard(CuttedCard);
 	pManager->GetGrid()->RemoveObjectFromCell(CuttedPos);
 	pManager->UpdateInterface();

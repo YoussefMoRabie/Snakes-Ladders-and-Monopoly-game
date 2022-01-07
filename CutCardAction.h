@@ -5,6 +5,7 @@ class CutCardAction :public Action
 {
 	CellPosition CuttedPos;
 	Card* CuttedCard;
+	bool isValid;
 public:
 
 	CutCardAction(ApplicationManager* pApp);  // Constructor
