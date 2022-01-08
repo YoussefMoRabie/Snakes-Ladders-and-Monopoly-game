@@ -8,6 +8,8 @@
 #include "AddSnakeAction.h"
 #include "AddCardAction.h"
 #include "RollDiceAction.h"
+#include "ToPlayModeAction.h"
+#include "ToDesignModeAction.h"
 #include "CopyCardAction.h"
 #include "InputDiceValue.h"
 #include "SaveGridAction.h"
@@ -96,7 +98,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new OpenGridAction(this);
 		break;
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new ToPlayModeAction(this); // temporary till you made its action class (CHANGE THIS LATTER) //Done
 		break;
 
 	case ROLL_DICE:
@@ -106,7 +108,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct= new ToDesignModeAction(this); // temporary till you made its action class (CHANGE THIS LATTER) //Done
 		break;
 
 
