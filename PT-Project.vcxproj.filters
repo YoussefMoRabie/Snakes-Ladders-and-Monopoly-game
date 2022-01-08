@@ -271,6 +271,9 @@
     <ClCompile Include="Lightning.cpp">
       <Filter>Attacks</Filter>
     </ClCompile>
+    <ClCompile Include="Card9_11.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -465,6 +468,9 @@
     </ClInclude>
     <ClInclude Include="Lightning.h">
       <Filter>Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="Card9_11.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

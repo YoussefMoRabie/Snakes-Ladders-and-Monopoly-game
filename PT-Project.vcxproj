@@ -136,6 +136,7 @@
     <ClCompile Include="ApplicationManager.cpp" />
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Card9_11.cpp" />
     <ClCompile Include="CardEight.cpp" />
     <ClCompile Include="CardEleven.cpp" />
     <ClCompile Include="CardFive.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="Card9_11.h" />
     <ClInclude Include="CardEight.h" />
     <ClInclude Include="CardEleven.h" />
     <ClInclude Include="CardFive.h" />
