@@ -22,7 +22,7 @@ bool Card9_11::StationIsBought(Player* Owner)
 }
 
 
-void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player* Owner)
+void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player*& Owner)
 {
 	if (!StationIsBought( Owner))
 	{
@@ -42,7 +42,7 @@ void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player
 			else
 			{
 				pPlayer->SetWallet(pPlayer->GetWallet() - StationPrice);
-				Owner=pPlayer;
+				Owner = pPlayer;
 				pOut->PrintMessage("Congratulations, you have purchased that station");
 			}
 		}
