@@ -14,7 +14,7 @@ public :
 
 	virtual void Save(ofstream& OutFile)=0;
 	virtual void Load(ifstream& Infile)=0;
-	void BuyStation(Grid* pGrid, Player* pPlayer , int StationPrice, Player* Owner);
+	void BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player*& Owner);
 	void PayStation(Grid* pGrid, Player* pPlayer, int Fees, Player* Owner);
 	bool StationIsBought(Player* Owner);
 
