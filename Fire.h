@@ -8,9 +8,9 @@ class Fire :
 public:
     Fire(Grid* pGr, Player* attacker);
 
-    void ReadAttackTarget();
+    void ReadAttackTarget();            // Read the attack target from the user
 
-    Player* getAttackTarget();
+    Player* getAttackTarget();          
 
     virtual void Execute();
 };

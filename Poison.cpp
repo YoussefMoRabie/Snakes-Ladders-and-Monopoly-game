@@ -16,6 +16,7 @@ void Poison::ReadAttackTarget()
 		int targetNum = pIn->GetInteger(pOut);
 		pOut->ClearStatusBar();
 
+		// get the player pointer with the num the user has entered
 		Player* targetPlayer = pGrid->GetPlayerWithNum(targetNum);
 		if (targetPlayer != NULL)
 		{
@@ -40,6 +41,7 @@ void Poison::Execute()
 {
 	ReadAttackTarget();
 
+	// set the poisoned data member in the attacked player to 5
 	AttackTarget->setPoisoned(5);
 
 	pGrid->AdvanceCurrentPlayer();

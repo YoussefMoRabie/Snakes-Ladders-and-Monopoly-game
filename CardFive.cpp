@@ -25,10 +25,12 @@ Card* CardFive::CopyCard(CellPosition pos)
 void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
-	//2- Calculating the justrolledDice value
+	// 2- Calculating the justrolledDice value
 	int x = pPlayer->getJustRolledDice();
-	//returning the player number of cells equal to the just rolled dice
-
+	// 3-returning the player number of cells equal to the just rolled dice
+	pGrid->PrintErrorMessage("You return the same number you just rolled, click to continue...");
 	int newCell = pPlayer->GetCell()->GetCellPosition().GetCellNum() - x;
-	pGrid->UpdatePlayerCell(pPlayer, CellPosition::GetCellPositionFromNum(newCell));
+	// 4-if the cell is valid they return to it "by Hagag"
+	if(CellPosition::GetCellPositionFromNum(newCell).IsValidCell())
+		pGrid->UpdatePlayerCell(pPlayer, CellPosition::GetCellPositionFromNum(newCell));
 }

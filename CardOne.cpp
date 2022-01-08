@@ -76,5 +76,6 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
+	pGrid->PrintErrorMessage("You lose " + to_string(walletAmount) + " coins, click to continue...");
 	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
 }
