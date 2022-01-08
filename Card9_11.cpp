@@ -68,5 +68,4 @@ void Card9_11::PayStation(Grid* pGrid, Player* pPlayer,int Fees, Player* Owner)
 void Card9_11::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-
 }

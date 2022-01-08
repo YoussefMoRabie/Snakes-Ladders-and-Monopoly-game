@@ -90,7 +90,8 @@ void OpenGridAction::Execute() {
 
 	}
 	
-		
+	// start all players from scratch 
+	pManager->ExecuteAction(NEW_GAME);
 }
 	
 		
