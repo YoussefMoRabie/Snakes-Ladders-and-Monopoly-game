@@ -13,6 +13,7 @@ public :
 	static Player* GetOwner();
 	static int GetStationPrice();
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: walletAmount
+	Card* CopyCard(CellPosition);
 	bool StationIsBought();
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 	virtual void Save(ofstream& OutFile);

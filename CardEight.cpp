@@ -42,6 +42,13 @@ void CardEight::ReadCardParameters(Grid * pGrid)
 	pOut->ClearStatusBar();
 }
 
+Card* CardEight::CopyCard(CellPosition pos)
+{
+	CardEight* ptr = new CardEight(pos);
+	ptr->GoOut = GoOut;
+	return ptr;
+}
+
 void CardEight::Apply(Grid* pGrid, Player* pPlayer)
 {
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number

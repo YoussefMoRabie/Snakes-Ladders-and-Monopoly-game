@@ -30,6 +30,11 @@ void Card::ReadCardParameters(Grid * pGrid)
 	// and if we make it pure virtual, that will make those Cards abstract classes
 }
 
+Card* Card::CopyCard(CellPosition)
+{
+	return nullptr;
+}
+
 void Card::Apply(Grid* pGrid, Player* pPlayer) 
 {
 	// As written below the "Roll Dice" action in the document ==> Check the Project Document

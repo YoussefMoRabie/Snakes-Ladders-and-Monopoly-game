@@ -24,10 +24,14 @@ OpenGridAction::OpenGridAction(ApplicationManager* pApp) :Action(pApp) {
 
 
 
-void OpenGridAction::ReadActionParameters() {
+void OpenGridAction::ReadActionParameters() 
+{
 
 }
+
 void OpenGridAction::Execute() {
+
+	pManager->GetGrid()->CleanGrid();
 
 	LoadGrid.open("Grid.txt"); //opens the grid text file to read
 
@@ -36,7 +40,7 @@ void OpenGridAction::Execute() {
 	int count; //count of the objects (ladder,snakes,cards)
 	LoadGrid >> count;
 
-	GameObject* pObj; 
+	GameObject* pObj = NULL; 
 	for (int i = 0; i < count; i++) {
 		pObj = new Ladder(-1, -1); //empty object of ladder
 		pObj->Load(LoadGrid);
@@ -55,7 +59,7 @@ void OpenGridAction::Execute() {
 		LoadGrid >> num; 
 		switch (num)  //determine the card typr, then create an empty object of it
 		{
-		case1: pObj = new CardOne(pos);
+		case 1: pObj = new CardOne(pos);
 			break;
 		case 2: pObj = new CardTwo(pos);
 			break;
@@ -87,7 +91,7 @@ void OpenGridAction::Execute() {
 	}
 	
 		
-	}
+}
 	
 		
 		

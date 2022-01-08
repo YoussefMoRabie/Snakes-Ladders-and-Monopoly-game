@@ -40,6 +40,14 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
+
+Card* CardOne::CopyCard(CellPosition pos)
+{
+	CardOne* ptr = new CardOne(pos);
+	ptr->walletAmount = walletAmount;
+	return ptr;
+}
+
 void CardOne::setWalletAmount(int w) {
 	walletAmount = w;
 }

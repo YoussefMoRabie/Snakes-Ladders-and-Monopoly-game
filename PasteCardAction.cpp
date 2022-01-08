@@ -2,6 +2,7 @@
 #include"Card.h"
 #include"Grid.h"
 #include"AddCardAction.h"
+#include "CardOne.h"
 PasteCardAction::PasteCardAction(ApplicationManager* pApp) :Action(pApp) {
 	
 }  // Constructor
@@ -25,23 +26,12 @@ void PasteCardAction::Execute() {
 	Grid* pGrid = pManager->GetGrid();
 	if (pGrid->GetClipboard() != NULL) //checks if there is card in the clipboard
 	{
-		int num=pGrid->GetClipboard()->GetCardNumber();
-		AddCardAction* ptr=new AddCardAction(pManager); //add a new card same to the one in the clipboard
-		ptr->setCardNum_Pos(num, PasteTo);
-		ptr->Execute();
+		Card* pCard = pGrid->GetClipboard()->CopyCard(PasteTo);
+		pGrid->AddObjectToCell(pCard);
 	}
-
-		
-
 
 	else 
 		pManager->GetGrid()->PrintErrorMessage("No Cards In Clipboard! click to continue...");
-	
-
-	
-
-	
-	
 } // Executes action (code depends on action type so virtual)
 
 PasteCardAction:: ~PasteCardAction() {

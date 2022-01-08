@@ -8,6 +8,14 @@ void CardSix::ReadCardParameters(Grid * pGrid) {
 	cellToMove= pGrid->GetInput()->GetCellClicked();
 	pGrid->GetOutput()->ClearStatusBar();
 }
+
+Card* CardSix::CopyCard(CellPosition pos)
+{
+	CardSix* ptr = new CardSix(pos);
+	ptr->cellToMove = cellToMove;
+	return ptr;
+}
+
 void CardSix::Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " "  << cellToMove.GetCellNum() << endl;
 }

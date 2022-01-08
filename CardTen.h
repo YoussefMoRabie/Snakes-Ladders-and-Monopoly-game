@@ -1,9 +1,6 @@
-
 #pragma once
 #include "Card9_11.h"
 
-
-	
 
 	class CardTen : public Card9_11
 {

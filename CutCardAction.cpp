@@ -19,12 +19,9 @@ void CutCardAction::ReadActionParameters() {
 
 		if(CuttedCard == NULL) //if there is no card in the cell
 		{
-			
 				pGrid->PrintErrorMessage("No Cards Here! Click on a Card...");
-				
 				return;
-			
-	 }
+		}
 	pOut->ClearStatusBar();
 
 
@@ -36,11 +33,11 @@ void CutCardAction::Execute() {
 	
 	if (CuttedCard != NULL) // if there card on the cell clicked
 	{
-		pManager->GetGrid()->SetClipboard(CuttedCard);
-		pManager->GetGrid()->RemoveObjectFromCell(CuttedPos);
+		Grid* pGrid = pManager->GetGrid();
+		pGrid->SetClipboard(CuttedCard);
+		pGrid->RemoveObjectFromCell(CuttedPos);
 		pManager->UpdateInterface();
-		pManager->GetGrid()->PrintErrorMessage("Cutted!...");
-
+		pGrid->PrintErrorMessage("Cutted!...");
 	}
 
 }  // Executes action (code depends on action type so virtual)

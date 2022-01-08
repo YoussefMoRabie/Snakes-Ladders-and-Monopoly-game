@@ -23,6 +23,12 @@ void CardTwelve::Load(ifstream& Infile) {
 
 }
 
+Card* CardTwelve::CopyCard(CellPosition pos)
+{
+	CardTwelve* ptr = new CardTwelve(pos);
+	return ptr;
+}
+
 void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 {
 	

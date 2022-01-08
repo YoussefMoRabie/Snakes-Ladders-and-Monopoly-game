@@ -18,6 +18,7 @@ class CardEight : public Card
 		CardEight(const CellPosition & pos); // A Constructor takes card position
 
 		virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardEight which is: GoOut
+		Card* CopyCard(CellPosition);
 
 		virtual void Apply(Grid* pGrid, Player* pPlayer); 
 		virtual void Save(ofstream& OutFile);

@@ -306,6 +306,15 @@ void Output::PrintPlayersInfo(string info)
 //			         			Game Drawing Functions   								//
 //======================================================================================//
 
+void Output::DrawBackground() const
+{
+	pWind->SetPen(UI.GridLineColor, 1);
+	pWind->SetBrush(WHITE);
+	UI.ToolBarHeight = 55;
+	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
+}
+
+
 void Output::DrawCell(const CellPosition & cellPos, int cardNum) const
 {
 	if (cardNum != -1)

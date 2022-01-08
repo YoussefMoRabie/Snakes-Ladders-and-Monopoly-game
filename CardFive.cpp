@@ -15,6 +15,13 @@ void CardFive::Load(ifstream& Infile) {
 	
 
 }
+
+Card* CardFive::CopyCard(CellPosition pos)
+{
+	CardFive* ptr = new CardFive(pos);
+	return ptr;
+}
+
 void CardFive::Apply(Grid* pGrid, Player* pPlayer) {
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);

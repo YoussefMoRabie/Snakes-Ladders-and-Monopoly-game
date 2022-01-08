@@ -8,6 +8,7 @@ public:
 	CardTwo(const CellPosition& pos); // A Constructor takes card position
 
 	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardTwo which is: walletAmount
+	Card* CopyCard(CellPosition);
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 	// Applies the effect of CardTwo on the passed Player

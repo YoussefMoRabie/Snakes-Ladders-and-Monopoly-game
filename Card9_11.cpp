@@ -77,6 +77,16 @@ void Card9_11::ReadCardParameters(Grid* pGrid)
 	// 3- Clear the status bar
 	pOut->ClearStatusBar();
 }
+
+Card* Card9_11::CopyCard(CellPosition pos)
+{
+	Card9_11* ptr = new Card9_11(pos);
+	ptr->Fees = Fees;
+	ptr->StationPrice = StationPrice;
+	ptr->Owner = Owner;
+	return ptr;
+}
+
 bool Card9_11::StationIsBought()
 {
 	if (Owner == NULL)

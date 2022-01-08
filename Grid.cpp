@@ -64,7 +64,7 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
+		pOut->DrawBackground();
 		return CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 }
@@ -245,6 +245,7 @@ void Grid::RestartAllPlayers()
 
 void Grid::UpdateInterface() const
 {
+
 	if (UI.InterfaceMode == MODE_DESIGN)
 	{
 		// 1- Draw cells with or without cards 
@@ -299,6 +300,17 @@ void Grid::PrintErrorMessage(string msg)
 	pOut->ClearStatusBar();
 }
 
+void Grid::CleanGrid()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+		}
+	}
+}
+
 Grid::~Grid()
 {
 	delete pIn;
@@ -309,6 +321,8 @@ Grid::~Grid()
 	{
 		for (int j = 0; j < NumHorizontalCells; j++) 
 		{
+			if (CellList[i][j]->GetGameObject() != NULL)
+				RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
 			delete CellList[i][j];
 		}
 	}

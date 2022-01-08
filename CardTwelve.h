@@ -7,6 +7,7 @@ public:
 
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); 
+	Card* CopyCard(CellPosition);
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& Infile);
 	virtual ~CardTwelve(); // A Virtual Destructor

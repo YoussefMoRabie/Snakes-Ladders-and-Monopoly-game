@@ -27,6 +27,12 @@ void CardThree::Load(ifstream& Infile) {
 
 }
 
+Card* CardThree::CopyCard(CellPosition pos)
+{
+	CardThree* ptr = new CardThree(pos, pManager);
+	return ptr;
+}
+
 void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 {
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number

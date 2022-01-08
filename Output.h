@@ -57,6 +57,8 @@ public:
 
 	// ========== Game Drawing Functions ==========
 
+	void DrawBackground()const;
+
 	///TODO: COMPLETE THE IMPLEMENTATIN OF THE FOLLOWING FUNCTION	
 	void DrawCell(const CellPosition & cellpos, int cardNum=-1) const;	
 													// Draws "Cell Rectangle" with "Cell Number"

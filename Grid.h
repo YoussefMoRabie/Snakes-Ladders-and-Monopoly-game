@@ -75,6 +75,7 @@ public:
 	CellPosition GetNextCellWithPlayers(const Cell& cell);
 	void RestartPlayersOnCell(CellPosition* cell);
 	void RestartAllPlayers();
+	void CleanGrid();
 	// ========= User Interface Functions =========
 
 	void UpdateInterface() const;		// It Updates the Grid according to the last state of the game

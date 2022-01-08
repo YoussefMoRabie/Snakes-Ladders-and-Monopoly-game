@@ -14,6 +14,13 @@ void CardTwo::ReadCardParameters(Grid* pGrid)
 {
 	//This card has no parameters
 }
+
+Card* CardTwo::CopyCard(CellPosition pos)
+{
+	CardTwo* ptr = new CardTwo(pos);
+	return ptr;
+}
+
 void CardTwo:: Save(ofstream& OutFile) {
 	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << endl;
 }
