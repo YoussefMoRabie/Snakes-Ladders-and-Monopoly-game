@@ -70,4 +70,6 @@ public:
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 													   // for example: P0(wallet, turnCount)
 
+
+	Player* GetPlayerWithLeastMoney(Grid * pGrid);// Gets a Pointer to the Player has s the least amount of coins in his wallet.
 };

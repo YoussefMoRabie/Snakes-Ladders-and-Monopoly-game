@@ -64,18 +64,18 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	//Transfer the most expensive station to the player with the least amount of coins
 	if (p1 >= p2 && p1 >= p3)
 	{
-		CardNine::SetOwner(pGrid->GetPlayerWithLeastMoney(pPlayer));
+		CardNine::SetOwner(pPlayer->GetPlayerWithLeastMoney(pGrid));
 		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum ()) + "take station NO.9 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 	}
 	else if (p2 >= p1 && p2 >= p3)
 	{
-		CardTen::SetOwner(pGrid->GetPlayerWithLeastMoney(pPlayer));
+		CardTen::SetOwner(pPlayer->GetPlayerWithLeastMoney(pGrid));
 		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum()) + "take station NO.10 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 
 	}
 	else if (p3 >= p1 && p3 >= p2)
 	{
-		CardEleven::SetOwner(pGrid->GetPlayerWithLeastMoney(pPlayer));
+		CardEleven::SetOwner(pPlayer->GetPlayerWithLeastMoney(pGrid));
 		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum()) + "take station NO.11 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 
 	}

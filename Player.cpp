@@ -349,3 +349,20 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	playersInfo += to_string(wallet) + ", ";
 	playersInfo += to_string(turnCount) + ")";
 }
+
+Player* Player::GetPlayerWithLeastMoney(Grid * pGrid)
+{
+	int min, index;
+	min = pGrid->GetPlayerWithNum(0)->GetWallet();
+	index = 0;
+	for (int i = 1; i < MaxPlayerCount; i++)
+	{
+		if (min > pGrid->GetPlayerWithNum(i)->GetWallet())
+		{
+			min = pGrid->GetPlayerWithNum(i)->GetWallet();
+			index = i;
+
+		}
+	}
+	return pGrid->GetPlayerWithNum(index);
+}

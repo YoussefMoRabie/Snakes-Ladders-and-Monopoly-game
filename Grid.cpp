@@ -173,22 +173,7 @@ Player* Grid::GetPlayerWithNum(int num)const
 		return NULL;
 }
 
-Player * Grid::GetPlayerWithLeastMoney(Player * p) const
-{
-	int min,index;
-		min = PlayerList[0]->GetWallet();
-		index = 0;
-	for (int i = 1; i < MaxPlayerCount; i++)
-	{
-		if (min > PlayerList[i]->GetWallet())
-		{
-			min = PlayerList[i]->GetWallet();
-			index = i;
 
-		}
-	}
-	return PlayerList[index];
-}
 
 Ladder * Grid::GetNextLadder(const CellPosition & position)
 {
