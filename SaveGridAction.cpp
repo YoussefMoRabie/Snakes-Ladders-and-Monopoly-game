@@ -13,13 +13,27 @@ SaveGridAction::SaveGridAction(ApplicationManager* pApp) :Action(pApp) {
 
 void SaveGridAction::ReadActionParameters() {
 
+	Grid* pGrid = pManager->GetGrid();
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+
+	pOut->PrintMessage("Save Grid: Enter file name:");
+	Filename = pIn->GetString(pOut);
+
+	pOut->ClearStatusBar();
+
  }
 void SaveGridAction::Execute() {
 
-	saveGrid.open("Grid.txt"); //opens the file to save into
+	ReadActionParameters();
+	saveGrid.open(Filename); //opens the file to save into
 
 	Grid* pGrid = pManager->GetGrid();
-
+	if (!saveGrid.is_open())
+	{
+		pGrid->PrintErrorMessage("Error: Can't open file ! Click to continue ...");
+		return;
+	}
 	Cell* pCell; //points on a cell in the grid
 
 	CellPosition objPos; // the object position

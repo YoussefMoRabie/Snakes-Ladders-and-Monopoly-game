@@ -26,17 +26,32 @@ OpenGridAction::OpenGridAction(ApplicationManager* pApp) :Action(pApp) {
 
 void OpenGridAction::ReadActionParameters() 
 {
+	Grid* pGrid = pManager->GetGrid();
+	Input* pIn = pGrid->GetInput();
+	Output* pOut = pGrid->GetOutput();
+
+	pOut->PrintMessage("Open Grid: Enter file name:");
+	Filename = pIn->GetString(pOut);
+
+	pOut->ClearStatusBar();
 
 }
 
 void OpenGridAction::Execute() {
+	ReadActionParameters();
 
 	pManager->GetGrid()->CleanGrid();
 
-	LoadGrid.open("Grid.txt"); //opens the grid text file to read
-
-	pManager->GetGrid()->GetOutput()->ClearGridArea();
+	LoadGrid.open(Filename);
+	//opens the grid text file to read
 	Grid* pGrid = pManager->GetGrid();
+	if (!LoadGrid.is_open())
+	{
+		pGrid->PrintErrorMessage("Error: Can't open file ! Click to continue ...");
+		return;
+	}
+	pGrid->GetOutput()->ClearGridArea();
+	
 	int count; //count of the objects (ladder,snakes,cards)
 	LoadGrid >> count;
 
