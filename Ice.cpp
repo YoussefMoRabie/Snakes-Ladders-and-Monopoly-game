@@ -16,6 +16,7 @@ void Ice::ReadAttackTarget()
 		int targetNum = pIn->GetInteger(pOut);
 		pOut->ClearStatusBar();
 
+		// get the player pointer with the num the user has entered
 		Player* targetPlayer = pGrid->GetPlayerWithNum(targetNum);
 		if (targetPlayer != NULL)
 		{
@@ -40,6 +41,7 @@ void Ice::Execute()
 {
 	ReadAttackTarget();
 
+	// make the attacked player skip his next turn 
 	AttackTarget->setTurnsToSkip(1);
 
 	pGrid->AdvanceCurrentPlayer();

@@ -16,6 +16,7 @@ void Fire::ReadAttackTarget()
 		int targetNum = pIn->GetInteger(pOut);
 		pOut->ClearStatusBar();
 
+		// get the player pointer with the num the user has entered
 		Player* targetPlayer = pGrid->GetPlayerWithNum(targetNum);
 		if (targetPlayer != NULL)
 		{
@@ -40,6 +41,7 @@ void Fire::Execute()
 {
 	ReadAttackTarget();
 
+	// set the burning datamember of the attacked player to 3
 	AttackTarget->setBurning(3);
 
 	pGrid->AdvanceCurrentPlayer();
