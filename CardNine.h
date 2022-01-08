@@ -11,7 +11,7 @@ public:
 	static void SetOwner(Player* p);
 	static Player* GetOwner();
 	static int GetStationPrice();
-	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: walletAmount
+	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardNine
 	virtual ~CardNine(); // A Virtual Destructor
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& Infile);

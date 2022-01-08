@@ -7,8 +7,7 @@ class CardEleven :public Card9_11
 	static Player* Owner;
 public:
 	CardEleven(const CellPosition & pos); // A Constructor takes card position
-	virtual ~CardEleven(); // A Virtual Destructor
-	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: walletAmount
+	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardEleven
 	static void SetOwner(Player* p);
 	static Player* GetOwner();
 	static int GetStationPrice();
@@ -16,6 +15,8 @@ public:
 	virtual void Save(ofstream& OutFile);
 	virtual void Load(ifstream& Infile);
 	Card* CopyCard(CellPosition);
+	virtual ~CardEleven(); // A Virtual Destructor
+
 
 };
 

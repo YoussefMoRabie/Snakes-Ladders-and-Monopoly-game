@@ -23,8 +23,6 @@ void CardEight::ReadCardParameters(Grid * pGrid)
 {
 
 
-
-
 	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
 	Output *pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();

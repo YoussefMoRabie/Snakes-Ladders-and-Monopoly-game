@@ -14,9 +14,9 @@ public :
 
 	virtual void Save(ofstream& OutFile)=0;
 	virtual void Load(ifstream& Infile)=0;
-	void BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player*& Owner);
-	void PayStation(Grid* pGrid, Player* pPlayer, int Fees, Player* Owner);
-	bool StationIsBought(Player* Owner);
+	void BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player*& Owner); // buy station 
+	void PayStation(Grid* pGrid, Player* pPlayer, int Fees, Player* Owner);// pay fees for station owner 
+	bool StationIsBought(Player* Owner); // check if station is brught or not 
 
 	virtual ~Card9_11(); // A Virtual Destructor
 
