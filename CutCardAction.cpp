@@ -2,7 +2,7 @@
 #include"Grid.h"
 #include"CellPosition.h"
 CutCardAction::CutCardAction(ApplicationManager* pApp) :Action(pApp) {
-	
+	CuttedCard = NULL;
 }
 
 void CutCardAction::ReadActionParameters() {
@@ -14,12 +14,12 @@ void CutCardAction::ReadActionParameters() {
 	
 		pOut->PrintMessage("Click On A Card...");
 		CuttedPos = pIn->GetCellClicked();
-
+		
 		CuttedCard = pGrid->GetCell(CuttedPos.VCell(), CuttedPos.HCell())->HasCard();
 
 		if(CuttedCard == NULL) //if there is no card in the cell
 		{
-				pGrid->PrintErrorMessage("No Cards Here! Click on a Card...");
+				pGrid->PrintErrorMessage("No Cards Here! Click to continue...");
 				return;
 		}
 	pOut->ClearStatusBar();
@@ -34,7 +34,10 @@ void CutCardAction::Execute() {
 
 	if (pGrid->GetClipboard() != NULL) {
 		if (pGrid->GetClipboard() != pGrid->GetCell(pGrid->GetClipboard()->GetPosition().VCell(), pGrid->GetClipboard()->GetPosition().HCell())->GetGameObject())
+		{
 			delete pGrid->GetClipboard();
+			pGrid->SetClipboard(NULL);
+		}
 	}
 	if (CuttedCard != NULL) // if there card on the cell clicked
 	{
