@@ -6,12 +6,14 @@ void CardSix::ReadCardParameters(Grid * pGrid) {
 
 	pGrid->GetOutput()->PrintMessage("Please, Click on the destination cell...."); //read the cell to move to
 	cellToMove = pGrid->GetInput()->GetCellClicked();
-	while(cellToMove.GetCellNum() == position.GetCellNum())
+
+	CardSix* ptr = dynamic_cast<CardSix*>(pGrid->GetCell(cellToMove.VCell(), cellToMove.HCell())->GetGameObject());
+	while (cellToMove.GetCellNum() == position.GetCellNum() || ptr)
 	{
-		pGrid->GetOutput()->PrintMessage("The destination cell can't be the card's own cell, click on another!");
+		pGrid->GetOutput()->PrintMessage("The destination cell can't be a CardSix, click on another!");
 		cellToMove = pGrid->GetInput()->GetCellClicked();
+		ptr = dynamic_cast<CardSix*>(pGrid->GetCell(cellToMove.VCell(), cellToMove.HCell())->GetGameObject());
 	}
-	
 	pGrid->GetOutput()->ClearStatusBar();
 }
 

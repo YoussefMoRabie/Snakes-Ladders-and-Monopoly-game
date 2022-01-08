@@ -56,7 +56,7 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 		return;
 	}
 	//Check if the player has least amount of coins
-	if (pGrid->GetPlayerWithLeastMoney(pPlayer)==pPlayer)
+	if (pPlayer->GetPlayerWithLeastMoney(pGrid)==pPlayer)
 	{
 		pGrid->PrintErrorMessage("You are the player with the least amount of coins. You don't lose any of your stations ...");
 		return;
@@ -65,18 +65,18 @@ void CardTwelve::Apply(Grid* pGrid, Player* pPlayer)
 	if (p1 >= p2 && p1 >= p3)
 	{
 		CardNine::SetOwner(pPlayer->GetPlayerWithLeastMoney(pGrid));
-		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum ()) + "take station NO.9 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
+		pGrid->PrintErrorMessage("Now Player NO." + to_string((pPlayer->GetPlayerWithLeastMoney(pGrid))->getPlayerNum ()) + "take station NO.9 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 	}
 	else if (p2 >= p1 && p2 >= p3)
 	{
 		CardTen::SetOwner(pPlayer->GetPlayerWithLeastMoney(pGrid));
-		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum()) + "take station NO.10 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
+		pGrid->PrintErrorMessage("Now Player NO." + to_string((pPlayer->GetPlayerWithLeastMoney(pGrid))->getPlayerNum()) + "take station NO.10 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 
 	}
 	else if (p3 >= p1 && p3 >= p2)
 	{
 		CardEleven::SetOwner(pPlayer->GetPlayerWithLeastMoney(pGrid));
-		pGrid->PrintErrorMessage("Now Player NO." + to_string((pGrid->GetPlayerWithLeastMoney(pPlayer))->getPlayerNum()) + "take station NO.11 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
+		pGrid->PrintErrorMessage("Now Player NO." + to_string((pPlayer->GetPlayerWithLeastMoney(pGrid))->getPlayerNum()) + "take station NO.11 from Player NO." + to_string(pPlayer->getPlayerNum()) + "  ...");
 
 	}
 
