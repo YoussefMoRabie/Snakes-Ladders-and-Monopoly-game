@@ -1,9 +1,5 @@
 #include "Card9_11.h"
-int Card9_11::StationPrice = 0;
 
-int Card9_11::Fees = 0;
-
-Player* Card9_11::Owner = NULL;
 
 Card9_11::Card9_11(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {}
@@ -11,83 +7,9 @@ Card9_11::~Card9_11(void)
 {
 }
 
-void Card9_11::Save(ofstream& OutFile) {
-	OutFile << GetCardNumber() << " " << position.VCell() << " " << position.HCell() << " " << StationPrice << " " << Fees << endl;
-}
-void Card9_11::Load(ifstream& Infile) {
-	int vstart = -1, h = -1;
 
 
-	Infile >> vstart >> h >> StationPrice >> Fees;
-	position.SetHCell(h);
-	position.SetVCell(vstart);
-
-
-}
-void Card9_11::SetOwner(Player* p)
-{
-	Owner = p;
-}
-
-Player* Card9_11::GetOwner()
-{
-	return Owner;
-}
-
-int Card9_11::GetStationPrice()
-{
-	return StationPrice;
-}
-
-void Card9_11::ReadCardParameters(Grid* pGrid)
-{
-
-
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
-
-	if (Fees != 0 || StationPrice != 0)
-		return;
-
-
-	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
-	Output* pOut = pGrid->GetOutput();
-	Input* pIn = pGrid->GetInput();
-
-	pOut->PrintMessage("New Station No."+to_string(cardNumber) + " : Enter The amount of coins needed to  buy the cell ...");
-	StationPrice = pIn->GetInteger(pOut);
-	while (StationPrice < 1)
-	{
-		pOut->PrintMessage("You entered an invalid Number: Plase enter The amount of coins needed to  buy the cell ...");
-		StationPrice = pIn->GetInteger(pOut);
-	}
-
-	//---------------------------------------------------------------------------
-	pOut->PrintMessage("New Station No." + to_string(cardNumber) + " : Enter The amount of coins needed  to pay fees to the player who owns the cell ...");
-	Fees = pIn->GetInteger(pOut);
-	while (Fees < 1)
-	{
-		pOut->PrintMessage("You entered an invalid Number: Plase enter The amount of coins needed  to pay fees to the player who owns the cell ...");
-		Fees = pIn->GetInteger(pOut);
-	}
-
-
-	// 3- Clear the status bar
-	pOut->ClearStatusBar();
-}
-
-Card* Card9_11::CopyCard(CellPosition pos)
-{
-	Card9_11* ptr = new Card9_11(pos);
-	ptr->Fees = Fees;
-	ptr->StationPrice = StationPrice;
-	ptr->Owner = Owner;
-	return ptr;
-}
-
-bool Card9_11::StationIsBought()
+bool Card9_11::StationIsBought(Player* Owner)
 {
 	if (Owner == NULL)
 	{
@@ -100,9 +22,9 @@ bool Card9_11::StationIsBought()
 }
 
 
-void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer)
+void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer, int StationPrice, Player* Owner)
 {
-	if (!StationIsBought())
+	if (!StationIsBought( Owner))
 	{
 		Output* pOut = pGrid->GetOutput();
 		Input* pIn = pGrid->GetInput();
@@ -120,7 +42,7 @@ void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer)
 			else
 			{
 				pPlayer->SetWallet(pPlayer->GetWallet() - StationPrice);
-				SetOwner(pPlayer);
+				Owner=pPlayer;
 				pOut->PrintMessage("Congratulations, you have purchased that station");
 			}
 		}
@@ -129,9 +51,9 @@ void Card9_11::BuyStation(Grid* pGrid, Player* pPlayer)
 
 }
 
-void Card9_11::PayStation(Grid* pGrid, Player* pPlayer)
+void Card9_11::PayStation(Grid* pGrid, Player* pPlayer,int Fees, Player* Owner)
 {
-	if (StationIsBought())
+	if (StationIsBought(Owner))
 		if (Owner != pPlayer)
 		{
 			Output* pOut = pGrid->GetOutput();
@@ -146,6 +68,5 @@ void Card9_11::PayStation(Grid* pGrid, Player* pPlayer)
 void Card9_11::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-	BuyStation(pGrid, pPlayer);
-	PayStation(pGrid, pPlayer);
+
 }
