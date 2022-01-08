@@ -176,7 +176,8 @@ CellPosition Input::GetCellClicked() const
 			///TODO: SetHCell and SetVCell of the object cellPost appropriately
 			//       using the coordinates x, y and the appropriate variables of the UI_Info Object (UI)
 			pWind->WaitMouseClick(x, y);	// Get the coordinates of the user click
-			cellPos.SetVCell((y - UI.ToolBarHeight) / UI.CellHeight);
+			int v = ((y - UI.ToolBarHeight) > 0) ? (y - UI.ToolBarHeight) / UI.CellHeight : -1;
+			cellPos.SetVCell(v);
 			cellPos.SetHCell(x / UI.CellWidth);
 		} 
 	}

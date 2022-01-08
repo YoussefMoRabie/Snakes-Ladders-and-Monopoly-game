@@ -310,19 +310,27 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 3- Set the justRolledDiceNum with the passed diceNumber
 	justRolledDiceNum = diceNumber;
 
+	// Players can't move if their wallet is at 0
+	if (wallet == 0)
+	{
+		pGrid->PrintErrorMessage("Player NO." + to_string(playerNum) + " doesn't have any coins so they can't move");
+		return;
+	}
+
+	// Check if the player won
 	if (GetStepCount() >= 94)
 	{
 		if (GetStepCount() + justRolledDiceNum == 100)
 		{
 			pGrid->SetEndGame(true);
 			pGrid->UpdatePlayerCell(this,CellPosition::GetCellPositionFromNum(99));
-			pGrid->PrintErrorMessage("Player " + to_string(getPlayerNum()) + "Won, Winner winner chicken dinner!");
+			pGrid->PrintErrorMessage("Player No." + to_string(getPlayerNum()) + " wins, better luck next time for other players!");
 			return;
 		}
 		else if (GetStepCount() + justRolledDiceNum > 100)
 		{
-			justRolledDiceNum = 0;
-			pGrid->PrintErrorMessage("too much");
+			pGrid->PrintErrorMessage("too much, you need to reach exactly 100 to win!");
+			return;
 		}
 	}
 	// 4- Get the player current cell position, say "pos", and add to it the diceNumber (update the position)

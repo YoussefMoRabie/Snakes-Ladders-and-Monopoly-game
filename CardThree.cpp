@@ -1,5 +1,4 @@
 #include "CardThree.h"
-#include "RollDiceAction.h"
 
 CardThree::CardThree(const CellPosition& pos, ApplicationManager* pApp) : Card(pos), pManager(pApp) // set the cell position of the card
 {

@@ -6,7 +6,7 @@ class SaveGridAction :
     public Action
 {
 	ofstream saveGrid; //object of ofstream that saves the information of grid objects (ladder,snakes,cards) in text file
-
+	string Filename;
 	public:
 
 	SaveGridAction(ApplicationManager* pApp);

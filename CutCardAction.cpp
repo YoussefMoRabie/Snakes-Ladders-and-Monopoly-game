@@ -47,7 +47,7 @@ void CutCardAction::Execute() {
 		pGrid->SetClipboard(CuttedCard); //set the card in clipboard
 		pGrid->RemoveObjectFromCell(CuttedPos); // remove it from its position
 		pManager->UpdateInterface();
-		pGrid->PrintErrorMessage("Cutted!...");
+		pGrid->PrintErrorMessage("Cut!...");
 	}
 
 }  // Executes action (code depends on action type so virtual)
