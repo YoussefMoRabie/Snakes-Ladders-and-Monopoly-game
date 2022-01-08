@@ -13,8 +13,9 @@ void DeleteGameObjectAction:: ReadActionParameters() {
 	pOut->PrintMessage("Click on an Object To Delete...");
 	
 		DeletedObj = pIn->GetCellClicked();
-		Obj = pGrid->GetCell(DeletedObj.VCell(), DeletedObj.HCell())->GetGameObject();
-		if (Obj==NULL) {
+		Obj = pGrid->GetCell(DeletedObj.VCell(), DeletedObj.HCell())->GetGameObject(); //Gets the gameobj to be deleted (if exist)
+		if (Obj==NULL) //if there is no object
+		{
 
 			pGrid->PrintErrorMessage("There is no Object here!...");
 			
@@ -22,13 +23,15 @@ void DeleteGameObjectAction:: ReadActionParameters() {
 		}
 		pOut->ClearStatusBar();
 	
-}
+} 
 
 void DeleteGameObjectAction::Execute() {
 	ReadActionParameters();
-	if (Obj != NULL) {
+	if (Obj != NULL) 
+	{
 		Grid* pGrid = pManager->GetGrid();
-		if (pGrid->RemoveObjectFromCell(DeletedObj)) {
+		if (pGrid->RemoveObjectFromCell(DeletedObj)) //if deleted successfully
+		{
 			pManager->UpdateInterface();
 			pGrid->PrintErrorMessage("ObjectDeleted!...");
 

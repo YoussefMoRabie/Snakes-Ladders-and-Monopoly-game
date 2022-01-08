@@ -33,7 +33,10 @@ void CopyCardAction::ReadActionParameters() {
 void CopyCardAction::Execute() {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-	if (pGrid->GetClipboard() != NULL) {
+
+	if (pGrid->GetClipboard() != NULL) //checks if there is no cards in clipboard
+	{
+		// checks if the card in clipboard is cutted or not, then we delete it if cutted
 		if (pGrid->GetClipboard() != pGrid->GetCell(pGrid->GetClipboard()->GetPosition().VCell(), pGrid->GetClipboard()->GetPosition().HCell())->GetGameObject())
 			delete pGrid->GetClipboard();
 	}

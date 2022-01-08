@@ -32,15 +32,17 @@ void CutCardAction::Execute() {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
 
-	if (pGrid->GetClipboard() != NULL) {
+	if (pGrid->GetClipboard() != NULL) //checks if there is no cards in clipboard
+	{ 
+		// checks if the card in clipboard is cutted or not, then we delete it if cutted
 		if (pGrid->GetClipboard() != pGrid->GetCell(pGrid->GetClipboard()->GetPosition().VCell(), pGrid->GetClipboard()->GetPosition().HCell())->GetGameObject())
 			delete pGrid->GetClipboard();
 	}
 	if (CuttedCard != NULL) // if there card on the cell clicked
 	{
 		Grid* pGrid = pManager->GetGrid();
-		pGrid->SetClipboard(CuttedCard);
-		pGrid->RemoveObjectFromCell(CuttedPos);
+		pGrid->SetClipboard(CuttedCard); //set the card in clipboard
+		pGrid->RemoveObjectFromCell(CuttedPos); // remove it from its position
 		pManager->UpdateInterface();
 		pGrid->PrintErrorMessage("Cutted!...");
 	}
