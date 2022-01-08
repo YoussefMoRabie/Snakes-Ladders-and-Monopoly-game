@@ -5,7 +5,13 @@ CardSix::CardSix(CellPosition& p) :Card(p) {
 void CardSix::ReadCardParameters(Grid * pGrid) {
 
 	pGrid->GetOutput()->PrintMessage("Please, Click on the destination cell...."); //read the cell to move to
-	cellToMove= pGrid->GetInput()->GetCellClicked();
+	cellToMove = pGrid->GetInput()->GetCellClicked();
+	while(cellToMove.GetCellNum() == position.GetCellNum())
+	{
+		pGrid->GetOutput()->PrintMessage("The destination cell can't be the card's own cell, click on another!");
+		cellToMove = pGrid->GetInput()->GetCellClicked();
+	}
+	
 	pGrid->GetOutput()->ClearStatusBar();
 }
 

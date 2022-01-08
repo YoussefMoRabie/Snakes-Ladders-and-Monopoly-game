@@ -40,7 +40,7 @@ void OpenGridAction::ReadActionParameters()
 void OpenGridAction::Execute() {
 	ReadActionParameters();
 
-	pManager->GetGrid()->CleanGrid();
+	
 
 	LoadGrid.open(Filename);
 	//opens the grid text file to read
@@ -50,6 +50,7 @@ void OpenGridAction::Execute() {
 		pGrid->PrintErrorMessage("Error: Can't open file ! Click to continue ...");
 		return;
 	}
+	pManager->GetGrid()->CleanGrid();
 	pGrid->GetOutput()->ClearGridArea();
 	
 	int count; //count of the objects (ladder,snakes,cards)

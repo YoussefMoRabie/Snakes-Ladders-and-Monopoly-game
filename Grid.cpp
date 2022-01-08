@@ -321,8 +321,7 @@ Grid::~Grid()
 	{
 		for (int j = 0; j < NumHorizontalCells; j++) 
 		{
-			if (CellList[i][j]->GetGameObject() != NULL)
-				RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+			delete CellList[i][j]->GetGameObject();
 			delete CellList[i][j];
 		}
 	}

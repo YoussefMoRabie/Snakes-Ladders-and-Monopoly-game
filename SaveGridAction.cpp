@@ -46,7 +46,7 @@ void SaveGridAction::Execute() {
 
 	for (int i = NumVerticalCells - 1; i >= 0; i--) //loop on the grid cells and count the objects & store their cell numbers in the arrays
 	{
-		for (int j = 0; j < NumHorizontalCells - 1; j++) {
+		for (int j = 0; j < NumHorizontalCells; j++) {
 			pCell = pGrid->GetCell(i, j);
 			
 			if (pCell->HasLadder())
