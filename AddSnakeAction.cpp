@@ -26,6 +26,7 @@ void AddSnakeAction::ReadActionParameters()
 	bool thereLadder = false; // if there is end of a ladder at the start of the snake
 
 	// Read the startPos parameter
+	//..
 
 	pOut->PrintMessage("New Snake: Click on its Start Cell ...");
 	startPos = pIn->GetCellClicked();
