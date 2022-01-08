@@ -48,7 +48,6 @@ public:
 	void setTurnsToSkip(int);
 	void setBurning(int);
 	void setPoisoned(int);
-	void MoveWithoutDice(Grid*,CellPosition&);
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Circle on its current cell
@@ -71,4 +70,6 @@ public:
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 													   // for example: P0(wallet, turnCount)
 
+
+	Player* GetPlayerWithLeastMoney(Grid * pGrid);// Gets a Pointer to the Player has s the least amount of coins in his wallet.
 };
