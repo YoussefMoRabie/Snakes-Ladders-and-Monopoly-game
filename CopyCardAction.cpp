@@ -33,8 +33,10 @@ void CopyCardAction::ReadActionParameters() {
 void CopyCardAction::Execute() {
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid();
-
-	
+	if (pGrid->GetClipboard() != NULL) {
+		if (pGrid->GetClipboard() != pGrid->GetCell(pGrid->GetClipboard()->GetPosition().VCell(), pGrid->GetClipboard()->GetPosition().HCell())->GetGameObject())
+			delete pGrid->GetClipboard();
+	}
 
 	pGrid->SetClipboard(CopiedCard);
 	pManager->UpdateInterface();

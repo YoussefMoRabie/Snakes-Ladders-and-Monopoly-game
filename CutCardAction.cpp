@@ -30,7 +30,12 @@ void CutCardAction::ReadActionParameters() {
 
 void CutCardAction::Execute() {
 	ReadActionParameters();
-	
+	Grid* pGrid = pManager->GetGrid();
+
+	if (pGrid->GetClipboard() != NULL) {
+		if (pGrid->GetClipboard() != pGrid->GetCell(pGrid->GetClipboard()->GetPosition().VCell(), pGrid->GetClipboard()->GetPosition().HCell())->GetGameObject())
+			delete pGrid->GetClipboard();
+	}
 	if (CuttedCard != NULL) // if there card on the cell clicked
 	{
 		Grid* pGrid = pManager->GetGrid();
