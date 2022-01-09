@@ -30,13 +30,7 @@ void AddCardAction::setCardNum_Pos(int num,CellPosition pos) {
 void AddCardAction::ReadActionParameters() 
 {	
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) to implement this function ==
-
-	/// 1- Get a Pointer to the Input / Output Interfaces
-
+	
 	// Get a Pointer to the Input / Output Interfaces
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
@@ -60,7 +54,7 @@ void AddCardAction::ReadActionParameters()
 	pOut->PrintMessage("New Card: Please click on its Cell (Except for Cell No. 1 to Cell No. 99) ...");
 	
 	cardPosition = pIn->GetCellClicked();
-	
+	/// 4- Make the needed validations on the read parameters
 	while(!cardPosition.IsValidCell())
 	{
 		pOut->PrintMessage("You didn't click on the  Cell : Please click on Card Cell (Except for Cell No. 1 to Cell No. 99) ...");
@@ -72,7 +66,6 @@ void AddCardAction::ReadActionParameters()
 		cardPosition = pIn->GetCellClicked();
 	}
 	
-	/// 4- Make the needed validations on the read parameters
 
 	/// 5- Clear status bar
 	pOut->ClearStatusBar();
@@ -82,11 +75,7 @@ void AddCardAction::Execute()
 {
 
 	
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) to implement this function ==
-
+	
 	// 1- The first line of any Action Execution is to read its parameter first
 	if (cardNumber == -1) {
 		ReadActionParameters();

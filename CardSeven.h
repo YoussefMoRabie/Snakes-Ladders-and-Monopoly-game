@@ -17,7 +17,7 @@ class CardSeven : public Card
 public:
 	CardSeven(const CellPosition& pos); // A Constructor takes card position
 
-	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardSeven which is: walletAmount
+	virtual void ReadCardParameters(Grid* pGrid); 
 	Card* CopyCard(CellPosition);
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);

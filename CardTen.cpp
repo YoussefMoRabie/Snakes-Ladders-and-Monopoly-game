@@ -36,20 +36,18 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 {
 
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
-
-	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
+	// check if station Parameters take value before or not
 
 	if (Fees != 0 || StationPrice != 0)
 		return;
 
 
-	// 1- Get a Pointer to the Input / Output Interfaces from the Grid
+	// Get a Pointer to the Input / Output Interfaces from the Grid
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	pOut->PrintMessage("New Station No." + to_string(cardNumber) + " : Enter The amount of coins needed to  buy the cell ...");
+	pOut->PrintMessage("New Station Ten : Enter The amount of coins needed to  buy the cell ...");
+	// Get a StationPrice
 	StationPrice = pIn->GetInteger(pOut);
 	while (StationPrice < 1)
 	{
@@ -58,7 +56,8 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 	}
 
 	//---------------------------------------------------------------------------
-	pOut->PrintMessage("New Station No." + to_string(cardNumber) + " : Enter The amount of coins needed  to pay fees to the player who owns the cell ...");
+	pOut->PrintMessage("New Station Ten : Enter The amount of coins needed  to pay fees to the player who owns the cell ...");
+	// Get Fees
 	Fees = pIn->GetInteger(pOut);
 	while (Fees < 1)
 	{
@@ -67,7 +66,7 @@ void CardTen::ReadCardParameters(Grid* pGrid)
 	}
 
 
-	// 3- Clear the status bar
+	//  Clear the status bar
 	pOut->ClearStatusBar();
 }
 Card* CardTen::CopyCard(CellPosition pos)

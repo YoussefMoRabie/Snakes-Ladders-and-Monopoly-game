@@ -37,5 +37,6 @@ void CardThree::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
 	// 2- Call appmanager's ExecuteAction to execute an extra dice roll
+	pGrid->PrintErrorMessage("You get an extra dice roll, click to continue...");
 	pManager->ExecuteAction(ROLL_DICE);
 }

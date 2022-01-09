@@ -39,6 +39,7 @@ void CardTwo::Apply(Grid* pGrid, Player* pPlayer)
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
 	// 2- Get the Player's next ladder
+	pGrid->PrintErrorMessage("You go to the next ladder, click to continue...");
 	Ladder* nextLadder = pGrid->GetNextLadder(pPlayer->GetCell()->GetCellPosition());
 	// 3- If a nextLadder exists, move the player to it then applay it
 	if (nextLadder != NULL) {

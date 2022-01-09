@@ -1,13 +1,15 @@
 #include "CardSeven.h"
 #include "RollDiceAction.h"
 
-CardSeven::CardSeven(const CellPosition& pos) : Card(pos) // set the cell position of the card
-{
-	cardNumber = 7; // set the inherited cardNumber data member with the card number 
-}
+
 
 CardSeven::~CardSeven(void)
 {
+}
+
+CardSeven::CardSeven(const CellPosition& pos) : Card(pos) // set the cell position of the card
+{
+	cardNumber = 7; // set the inherited cardNumber data member with the card number 
 }
 
 void CardSeven::ReadCardParameters(Grid* pGrid)
@@ -38,6 +40,7 @@ void CardSeven::Apply(Grid* pGrid, Player* pPlayer)
 {
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
+	pGrid->PrintErrorMessage("The next player on the grid returns to the start, click to continue...");
 	//2- find the next cell that has player(s) on it
 	CellPosition NextPlayerCell = pGrid->GetNextCellWithPlayers(position);
 	//3- move the player(s) back to the first cell

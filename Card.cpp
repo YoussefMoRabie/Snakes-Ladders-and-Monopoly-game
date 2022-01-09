@@ -1,16 +1,16 @@
 #include "Card.h"
 
 
-Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position of the GameObject
-{
-	
-}
+
 
 
 
 int Card::GetCardNumber()
 {
 	return cardNumber;
+}
+Card::Card(const CellPosition& pos) : GameObject(pos) // sets the cell position of the GameObject
+{
 }
 bool Card::IsOverlapping(GameObject* g) {
 	return false;

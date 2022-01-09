@@ -42,5 +42,6 @@ void CardSix::Apply(Grid* pGrid, Player * pPlayer) {
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number
 	Card::Apply(pGrid, pPlayer);
 	//2- moving the player to the cell chosen in the design mode
+	pGrid->PrintErrorMessage("You go to cell number " +to_string(cellToMove.GetCellNum()) + ", click to continue...");
 	pGrid->UpdatePlayerCell(pPlayer, cellToMove);
 }

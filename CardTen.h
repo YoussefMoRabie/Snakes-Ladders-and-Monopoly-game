@@ -10,7 +10,7 @@
 	
 public:
 	CardTen(const CellPosition & pos); // A Constructor takes card position
-	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardOne which is: walletAmount
+	virtual void ReadCardParameters(Grid* pGrid); // Reads the parameters of CardTen
 	static void SetOwner(Player* p);
 	static Player* GetOwner();
 	static int GetStationPrice();
