@@ -10,13 +10,7 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 	this->endCellPos = endCellPos;
 	
 	
-	size =abs( -endCellPos.VCell() + startCellPos.VCell()); // the number of vertical cells on the ladder path
-	cellsCounter = new int[size+1];
-	for (int i = 0; i <= size; i++) 
-	{
-		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;  // getting the cell number of the cells on the ladder path 
-	}
-	///TODO: Do the needed validation  // the validation of the overlapping is below in function "IsOverlapping" 
+	
 }
 
 void Ladder::Draw(Output* pOut) const
@@ -44,6 +38,13 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 
 bool Ladder::IsOverlapping(GameObject*p)
 {
+	size = abs(-endCellPos.VCell() + position.VCell()); // the number of vertical cells on the ladder path
+	cellsCounter = new int[size + 1];
+	for (int i = 0; i <= size; i++)
+	{
+		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) + i * 11;  // getting the cell number of the cells on the ladder path 
+	}
+
 	int h = endCellPos.HCell();
 		
 		Ladder* L = dynamic_cast<Ladder*>(p);

@@ -8,7 +8,7 @@ CardEight::~CardEight(void)
 {
 }
 void CardEight::Save(ofstream& OutFile) {
-	OutFile << " " << GetCardNumber() << position.VCell() << " " << position.HCell()  <<" " << GoOut << endl;
+	OutFile  << GetCardNumber() << " " << position.VCell() << " " << position.HCell()  <<" " << GoOut << endl;
 }
 void CardEight::Load(ifstream& Infile) {
 	int vstart = -1, h = -1;

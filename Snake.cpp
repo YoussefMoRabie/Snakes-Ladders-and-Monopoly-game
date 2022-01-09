@@ -8,15 +8,7 @@ Snake::Snake(const CellPosition & startCellPos, const CellPosition & endCellPos)
 	this->endCellPos = endCellPos;
 
 
-	size = abs(-endCellPos.VCell() + startCellPos.VCell());
-
-	cellsCounter = new int[size + 1];   // the number of vertical cells on the ladder path
-
-	for (int i = 0; i <= size; i++) {
-
-		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) - i * 11;  // getting the cell number of the cells on the ladder path
-
-	}
+	
 
 
 
@@ -49,6 +41,15 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 }
 bool Snake::IsOverlapping(GameObject*p)
 {
+	size = abs(-endCellPos.VCell() + position.VCell());
+
+	cellsCounter = new int[size + 1];   // the number of vertical cells on the ladder path
+
+	for (int i = 0; i <= size; i++) {
+
+		cellsCounter[i] = CellPosition::GetCellNumFromPosition(position) - i * 11;  // getting the cell number of the cells on the ladder path
+
+	}
 	int h = endCellPos.HCell();
 
 	Snake* L = dynamic_cast<Snake*>(p);
