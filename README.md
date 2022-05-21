@@ -103,3 +103,12 @@ from the current user to the player that has the least amount of coins in his wa
 **Important Note:** all the above cards are executed only if the current player stops at it (not passing
 on it on his way).
 
+
+# Team Members:
+ - Yousef Mohamed El-Said Rabia
+ - Mahmoud Sobhy Rashid
+ - Yousef Mohamed Hajjaj
+
+## Teacher Assistants Supervisor:
+ - Eng. Eman Hossam
+ - Eng. Marwa
